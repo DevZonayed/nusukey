@@ -3,8 +3,8 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 OUT=$(mktemp -d)
-cp index.html app.js config.js favicon.svg codes.json "$OUT"/
-cp -R fonts img "$OUT"/
+cp index.html app.js config.js sw.js manifest.webmanifest favicon.svg admin.html admin.js "$OUT"/
+cp -R fonts "$OUT"/
 cat > "$OUT/_headers" <<'H'
 /*
   X-Content-Type-Options: nosniff
@@ -13,10 +13,11 @@ cat > "$OUT/_headers" <<'H'
   Permissions-Policy: camera=(), microphone=(), geolocation=()
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
-/img/*
-  Cache-Control: public, max-age=31536000, immutable
-/*.js
-  Cache-Control: public, max-age=300, must-revalidate
+/sw.js
+  Cache-Control: no-cache
+/admin.html
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
 H
 npx wrangler pages deploy "$OUT" --project-name nusukey --branch main --commit-dirty=true
-rm -rf "$OUT"
+/bin/rm -rf "$OUT"

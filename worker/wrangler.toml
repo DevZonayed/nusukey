@@ -11,11 +11,11 @@ binding = "DB"
 database_name = "nusukey"
 database_id = "3ea60af9-5703-4241-ad9b-0f6734cb55c9"
 
-# Edge rate limits (per IP / per key). 30 writes per minute.
+# Edge rate limit per network address: 60 writes per minute (browsers batch their events).
 [[ratelimits]]
 name = "RL"
 namespace_id = "7301"
-simple = { limit = 30, period = 60 }
+simple = { limit = 60, period = 60 }
 
 # Secret (not here): npx wrangler secret put KEY_PEPPER
 
