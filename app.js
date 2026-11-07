@@ -47,11 +47,14 @@
       pinned: 'পিন করা', fresh: 'নতুন',
       emptyNext: 'এখনকার সব কোড আপনি নিয়ে ফেলেছেন। সারাদিনই নতুন কোড আসে, একটু পরে আবার দেখুন।',
       emptyPool: 'এখনো কেউ কোড দেয়নি। প্রথম কোডটা আপনিই দিন।', loadingFirst: 'কোড আনা হচ্ছে…',
-      stCopies: 'আজ কপি', stAdded: 'আজ নতুন', stActive: 'এখন সক্রিয়',
+      stCopies: 'আজ কপি', stActive: 'এখন সক্রিয়',
       moreTitle: 'আরও কোড', totalCodes: 'মোট {n}টা কোড', loading: 'আরও কোড আনা হচ্ছে…', endList: 'এখন পর্যন্ত এই কয়টাই। নতুন কোড এলে এখানেই দেখাবে।',
       tapRedeem: 'রিডিম', tapCopy: 'কপি',
       navTake: 'কোড নিন', navGive: 'কোড দিন', navMine: 'আমার', navHelp: 'সাহায্য',
       eyebrowGive: 'অন্যকে সাপোর্ট করুন', giveTitle: 'আপনার কোড দিন',
+      ctaTitle: 'আপনার কোডটাও দিন', ctaSub: 'অন্যরা আপনার কোড ব্যবহার করলে আপনার কী বাড়তে থাকবে',
+      sheetTitle: 'আপনার কোডটাও দিন', sheetMsg: 'যত বেশি মানুষ কোডটা ব্যবহার করবে, নুসুকে আপনার কী তত বাড়তে থাকবে। শুধু অ্যাপের শেয়ার মেসেজটা এখানে পেস্ট করুন।',
+      later: 'পরে দেব', plusOne: '+১', close: 'বন্ধ করুন',
       giveSub: 'নুসুক অ্যাপ থেকে কপি করা পুরো মেসেজটাই এখানে পেস্ট করুন। কোডটা আমরা নিজেরাই খুঁজে নেব।',
       givePh: 'নুসুকের মেসেজটা এখানে পেস্ট করুন…', paste: 'পেস্ট করুন', addNone: 'কোড যোগ করুন', addN: '{n}টা কোড যোগ করুন',
       found: '{n}টা কোড পাওয়া গেছে', notFound: 'এখানে কোনো কোড পাইনি। নুসুকের কোড দেখতে এমন: NG-vW7So71R',
@@ -81,11 +84,14 @@
       pinned: 'pinned', fresh: 'new',
       emptyNext: "You've taken every code for now. New ones come in all day, so check back a bit later.",
       emptyPool: 'No codes yet. Be the first to share yours.', loadingFirst: 'Loading codes…',
-      stCopies: 'copied today', stAdded: 'new today', stActive: 'active now',
+      stCopies: 'copied today', stActive: 'active now',
       moreTitle: 'More codes', totalCodes: '{n} codes in total', loading: 'Loading more codes…', endList: "That's all for now. New codes show up here as they come in.",
       tapRedeem: 'Redeem', tapCopy: 'Copy',
       navTake: 'Get code', navGive: 'Give code', navMine: 'Mine', navHelp: 'Help',
       eyebrowGive: 'Support others', giveTitle: 'Share your code',
+      ctaTitle: 'Share your code too', ctaSub: 'Every time someone uses it, your keys go up',
+      sheetTitle: 'Share your code too', sheetMsg: "The more people use your code, the more keys you collect in Nusuk. Just paste the app's share message here.",
+      later: 'Maybe later', plusOne: '+1', close: 'Close',
       giveSub: "Paste the whole message from the Nusuk app. We'll find the code in it.",
       givePh: 'Paste the Nusuk message here…', paste: 'Paste', addNone: 'Add code', addN: 'Add {n} code(s)',
       found: 'Found {n}', notFound: 'No code found. A Nusuk code looks like NG-vW7So71R.',
@@ -115,11 +121,14 @@
       pinned: 'مثبّت', fresh: 'جديد',
       emptyNext: 'أخذت كل الرموز المتاحة الآن. تصل رموز جديدة طوال اليوم، فعُد بعد قليل.',
       emptyPool: 'لا توجد رموز بعد. كن أول من يشارك رمزه.', loadingFirst: 'جارٍ تحميل الرموز…',
-      stCopies: 'نُسخ اليوم', stAdded: 'جديد اليوم', stActive: 'نشط الآن',
+      stCopies: 'نُسخ اليوم', stActive: 'نشط الآن',
       moreTitle: 'رموز أخرى', totalCodes: 'إجمالي {n} رمز', loading: 'جارٍ تحميل المزيد…', endList: 'هذا كل شيء الآن. تظهر الرموز الجديدة هنا فور وصولها.',
       tapRedeem: 'استخدم', tapCopy: 'نسخ',
       navTake: 'خذ رمزًا', navGive: 'شارك رمزك', navMine: 'رموزي', navHelp: 'مساعدة',
       eyebrowGive: 'ادعم غيرك', giveTitle: 'شارك رمزك',
+      ctaTitle: 'شارك رمزك أيضًا', ctaSub: 'كلما استخدمه أحد زادت مفاتيحك',
+      sheetTitle: 'شارك رمزك أيضًا', sheetMsg: 'كلما استخدم الناس رمزك زادت مفاتيحك في نسك. فقط الصق رسالة المشاركة من التطبيق هنا.',
+      later: 'لاحقًا', plusOne: '+١', close: 'إغلاق',
       giveSub: 'الصق رسالة تطبيق نسك كاملة، وسنستخرج الرمز منها.',
       givePh: 'الصق رسالة نسك هنا…', paste: 'لصق', addNone: 'أضف الرمز', addN: 'أضف {n}',
       found: 'وُجد {n}', notFound: 'لم نجد رمزًا. رمز نسك يشبه NG-vW7So71R',
@@ -287,6 +296,8 @@
     copyText('NG-' + c);
     markTaken(c);
     beacon(); // the page is about to hand over to the Nusuk app
+    S.askOnReturn = true;
+    try { sessionStorage.setItem('nk.askReturn', '1'); } catch { /* ignore */ } // survives the trip to the app
     if (el) el.classList.add('go');
     setTimeout(() => { if (c === S.current) pickNext(); renderAll(false); ensureBuffer(); }, 450);
   }
@@ -294,6 +305,7 @@
     if (!(await copyText('NG-' + c))) { toast(t('copyFail')); return; }
     markTaken(c);
     toast(t('copied'));
+    if (!S.asked) { S.asked = true; setTimeout(maybeAskGive, 1600); }
     if (c === S.current) pickNext();
     renderAll(false); ensureBuffer();
   }
@@ -331,6 +343,7 @@
 
       $('giveText').value = ''; found = []; $('found').textContent = ''; labelAdd();
       setMsg(t('listed'), 'ok');
+      setTimeout(() => { if (sheet().open) { closeGive(); toast(t('listed')); setMsg(''); } }, 2200);
       if (S.current && mineSet().has(S.current)) pickNext();
       renderAll(false);
     } catch { setMsg(t('addFail'), 'bad'); labelAdd(); }
@@ -363,6 +376,7 @@
     document.documentElement.dir = S.lang === 'ar' ? 'rtl' : 'ltr';
     for (const el of document.querySelectorAll('[data-t]')) el.textContent = t(el.dataset.t);
     for (const el of document.querySelectorAll('[data-tp]')) el.placeholder = t(el.dataset.tp);
+    for (const el of document.querySelectorAll('[data-ta]')) el.setAttribute('aria-label', t(el.dataset.ta));
     for (const b of document.querySelectorAll('[data-lang]')) b.setAttribute('aria-pressed', String(b.dataset.lang === S.lang));
     $('langBtn').textContent = t('langShort');
     const sample = $('sample'); sample.textContent = SAMPLE;
@@ -396,7 +410,6 @@
   function renderStats() {
     const s = S.stats || {};
     $('stCopies').textContent = num(s.copiesToday || 0);
-    $('stAdded').textContent = num(s.addedToday || 0);
     $('stActive').textContent = num(Math.max(1, s.active || 0));
     $('countNum').textContent = num(remainingCount());
   }
@@ -458,8 +471,25 @@
     renderHero0(); renderStats(); renderGrid(); if (S.view === 'mine') renderMine();
   }
 
+  const sheet = () => $('giveSheet');
+  function openGive() {
+    const d = sheet(); if (d.open) return;
+    store.set('askAt', Date.now());
+    if (d.showModal) d.showModal(); else d.setAttribute('open', '');
+  }
+  function closeGive() {
+    const d = sheet(); if (d.open) { if (d.close) d.close(); else d.removeAttribute('open'); }
+    if (location.hash === '#give') history.replaceState(null, '', '#' + S.view);
+  }
+  // after someone takes their first code, invite them to share theirs: shown by itself only once, ever
+  function maybeAskGive() {
+    if (S.mine.length || sheet().open || store.get('askAt', 0)) return;
+    openGive();
+  }
   function show(view) {
-    if (!['take', 'give', 'mine', 'help'].includes(view)) view = 'take';
+    if (view === 'give') { openGive(); return; }
+    if (sheet().open) closeGive();
+    if (!['take', 'mine', 'help'].includes(view)) view = 'take';
     S.view = view;
     for (const v of document.querySelectorAll('.view')) v.hidden = v.dataset.view !== view;
     for (const a of document.querySelectorAll('[data-nav]')) { if (a.dataset.nav === view) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); }
@@ -502,9 +532,19 @@
       if (['input', 'textarea', 'button', 'a', 'select'].includes(tag)) return;
       e.preventDefault(); if (S.current) onCopy(S.current);
     });
-    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') beacon(); else refresh(); });
+    const backFromApp = () => {
+      let flag = S.askOnReturn; try { flag = flag || sessionStorage.getItem('nk.askReturn') === '1'; sessionStorage.removeItem('nk.askReturn'); } catch { /* ignore */ }
+      if (flag) { S.askOnReturn = false; setTimeout(maybeAskGive, 700); }
+    };
+    backFromApp(); // the page may have been reloaded on the way back
+    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') beacon(); else { refresh(); backFromApp(); } });
     window.addEventListener('pagehide', beacon);
-    window.addEventListener('pageshow', (e) => { if (e.persisted) { $('redeemBtn').classList.remove('go'); refresh(); } });
+    window.addEventListener('pageshow', (e) => { if (e.persisted) { $('redeemBtn').classList.remove('go'); refresh(); backFromApp(); } });
+    $('giveCta').addEventListener('click', openGive);
+    $('sheetX').addEventListener('click', closeGive);
+    $('sheetLater').addEventListener('click', closeGive);
+    sheet().addEventListener('click', (e) => { if (e.target === sheet()) closeGive(); }); // tap outside
+    sheet().addEventListener('close', () => { if (location.hash === '#give') history.replaceState(null, '', '#' + S.view); });
     window.addEventListener('online', () => { flush(); refresh(); });
     if ('IntersectionObserver' in window) {
       new IntersectionObserver((en) => { if (en[0].isIntersecting) { if (S.limit < available().length) { S.limit += 60; renderGrid(); } loadMore(); } }, { rootMargin: '600px' }).observe($('sentinel'));
