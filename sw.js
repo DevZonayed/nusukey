@@ -1,7 +1,7 @@
 /* NusukKey service worker: the app shell lives on the phone, so a repeat visit opens instantly (even offline).
-   Fonts are cache-first; the page, script and config are stale-while-revalidate (shown at once, refreshed in
-   the background). API calls are not touched: the page keeps its own small copy of the newest codes. */
-const V = 'nk-v11';
+   Fonts are cache-first; the page, script and config come from the network when it answers within 1.5 s
+   (so updates land at once), otherwise from the saved copy. API calls are not touched: the page keeps its own small copy of the newest codes. */
+const V = 'nk-v12';
 const SHELL = ['./', 'index.html', 'app.js', 'config.js', 'favicon.svg', 'manifest.webmanifest',
   'fonts/inter.woff2', 'fonts/geist-mono.woff2', 'fonts/purno-regular.woff2', 'fonts/purno-bold.woff2', 'fonts/ruqaa-inshallah.woff2'];
 
@@ -24,8 +24,11 @@ self.addEventListener('fetch', (e) => {
   const key = req.mode === 'navigate' ? './' : req;
   e.respondWith(caches.open(V).then(async (c) => {
     const hit = await c.match(key, { ignoreSearch: req.mode === 'navigate' });
-    const net = fetch(req).then((res) => { if (res.ok) c.put(key, res.clone()); return res; }).catch(() => hit);
-    if (hit) { e.waitUntil(net); return hit; }
-    return net;
+    const net = fetch(req).then((res) => { if (res.ok) c.put(key, res.clone()); return res; });
+    if (!hit) return net;
+    // fresh when the network answers within 1.5 s, the saved copy when it's slow or offline
+    const slow = new Promise((r) => setTimeout(() => r(hit), 1500));
+    e.waitUntil(net.catch(() => {}));
+    return Promise.race([net.catch(() => hit), slow]);
   }));
 });
