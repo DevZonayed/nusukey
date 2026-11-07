@@ -3,7 +3,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 OUT=$(mktemp -d)
-cp index.html app.js config.js sw.js manifest.webmanifest favicon.svg og.jpg admin.html admin.js "$OUT"/
+cp index.html app.js config.js sw.js manifest.webmanifest favicon.svg og.jpg share-bn.jpg share-en.jpg share-ar.jpg admin.html admin.js "$OUT"/
 cp -R fonts "$OUT"/
 cat > "$OUT/_headers" <<'H'
 /*
