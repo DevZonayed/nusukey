@@ -63,6 +63,7 @@
       redTip: 'তারপরও না হলে নুসুক অ্যাপটা পুরো বন্ধ করুন, মানে রিসেন্ট অ্যাপের তালিকা থেকে সরিয়ে দিন, তারপর আবার খুলুন।', redCopy: 'নতুন কোড কপি করুন', gotIt: 'বুঝেছি', redCopied: 'নতুন কোড কপি হয়েছে। নুসুকে পুরোনো কোড মুছে এটা পেস্ট করুন।',
       redHelpShort: 'নুসুক অ্যাপ আগের লাল কোডটা মনে রেখে দেয়। পুরোনো কোড মুছে নতুন কোড নিজে হাতে পেস্ট করলেই ঠিক হয়ে যায়।', redHelpOpen: 'কী করবেন দেখুন',
       noApp: 'নুসুক অ্যাপ নেই?', getPlay: 'Google Play থেকে নিন', getIos: 'App Store থেকে নিন', iosNote: 'বাংলাদেশের অ্যাপ স্টোরে নুসুক এখনো পাওয়া যায় না। লিংকটা না খুললে অন্য দেশের অ্যাপল আইডি দিয়ে নিতে হবে।', appTitle: 'নুসুক অ্যাপ ডাউনলোড করুন', appWhy: 'কোড রিডিম করতে ফোনে নুসুক অ্যাপ থাকতে হবে। এটা হজ ও উমরাহ মন্ত্রণালয়ের অফিসিয়াল অ্যাপ।',
+      tkBrand: 'প্রতিভান', ticker: ['<b>আপনি কি একজন শিক্ষক?</b> প্রতিভানে ১ মিনিটেই প্রশ্নপত্র বানান', 'ক্লাস, বিষয় আর অধ্যায় বেছে নিন, সেট কোড আর আপনার লোগোসহ পেপার রেডি', 'ফোনের ক্যামেরা দিয়েই OMR খাতা দেখুন, একদম ফ্রি', 'NCTB সিলেবাসের প্রশ্নব্যাংক, প্রতিটা প্রশ্নের সহজ বাংলা সমাধানসহ', 'প্রতিটা কপিতে আপনার নাম থাকে, তাই প্রশ্ন নকল করা কঠিন', '৬৪ জেলার শিক্ষকরা প্রতিভান ব্যবহার করছেন', '<b>ক্রেডিট কার্ড ছাড়াই ফ্রি শুরু করুন:</b> protibhan.com'],
       freshNote: 'প্রতিবার রিডিম বা কপি করলে নতুন কোড পাবেন। আগের কোড আর কখনো আপনার কাছে আসবে না।',
       sharePic: 'ছবি হিসেবে শেয়ার করুন', picHint: 'মেসেজটা ছবির মধ্যেই লেখা থাকে, তাই ফেসবুক আর ইনস্টাগ্রামেও পুরোটা দেখা যাবে।', picSaved: 'ছবিটা ডাউনলোড হয়েছে। ফেসবুক বা ইনস্টাগ্রামে ছবি হিসেবে পোস্ট করুন।', msgCopied: 'মেসেজ কপি হয়েছে। এখন যেকোনো জায়গায় পেস্ট করুন।',
       shareMsg: 'উমরাহ করার ইচ্ছাটা আমাদের অনেকের মনেই বহু বছর ধরে আছে। নুসুক অ্যাপের উমরাহ চ্যালেঞ্জে এখন দুইজনের জন্য ১০০টা ফ্রি উমরাহ জেতার সুযোগ আছে। 🕋\n\nএই সাইটে এক ট্যাপেই অন্যদের রেফারেল কোড পাবেন। নিজের কোডটা দিলে অন্যরাও আপনাকে সাপোর্ট করতে পারবে। সাইন-আপ লাগে না, পুরোপুরি ফ্রি।\n\nকে জানে, হয়তো এবার আল্লাহর ঘরের ডাক আপনারই আসবে। ইনশাআল্লাহ।',
@@ -111,6 +112,7 @@
       redTip: "Still not working? Close the Nusuk app completely (swipe it away from recent apps) and open it again.", redCopy: 'Copy a new code', gotIt: 'Got it', redCopied: 'New code copied. In Nusuk, delete the old code and paste this one.',
       redHelpShort: 'The Nusuk app remembers an old red code. Delete it and paste a new code yourself, and it works.', redHelpOpen: 'See what to do',
       noApp: "Don't have the Nusuk app?", getPlay: 'Get it on Google Play', getIos: 'Get it on the App Store', iosNote: "Nusuk isn't in the Bangladesh App Store yet. If the link doesn't open, you'll need an Apple ID from another country.", appTitle: 'Download the Nusuk app', appWhy: "You need the Nusuk app on your phone to redeem a code. It's the official app of the Ministry of Hajj and Umrah.",
+      tkBrand: 'Protibhan', ticker: ['<b>Are you a teacher?</b> Make an exam paper in 1 minute with Protibhan', 'Pick class, subject and chapter, with set codes and your logo', 'Check OMR sheets with your phone camera, free', 'NCTB syllabus question bank with simple explained answers', 'Every copy carries your name, so papers are hard to leak', 'Teachers in 64 districts use Protibhan', '<b>Start free, no credit card:</b> protibhan.com'],
       freshNote: 'Every redeem or copy gives you a new code. A code you took never comes back to you.',
       sharePic: 'Share as a picture', picHint: 'The message is written inside the picture, so it shows in full on Facebook and Instagram too.', picSaved: 'Picture downloaded. Post it as a photo on Facebook or Instagram.', msgCopied: 'Message copied. Paste it anywhere.',
       shareMsg: "So many of us have wanted to perform Umrah for years. Right now the Nusuk app's Umrah challenge is giving away 100 free Umrah trips for two. 🕋\n\nOn this site you can grab someone's referral code in one tap, and share yours so others can support you. No sign-up, and it's free.\n\nWho knows, maybe this time the call to Allah's House is yours. In sha Allah.",
@@ -159,6 +161,7 @@
       redTip: 'إن لم ينجح، أغلق تطبيق نسك تمامًا من قائمة التطبيقات الأخيرة ثم افتحه من جديد.', redCopy: 'انسخ رمزًا جديدًا', gotIt: 'فهمت', redCopied: 'نُسخ رمز جديد. في نسك احذف الرمز القديم والصق هذا.',
       redHelpShort: 'تطبيق نسك يحتفظ بالرمز الأحمر القديم. احذفه والصق رمزًا جديدًا بنفسك فيعمل.', redHelpOpen: 'اعرف ماذا تفعل',
       noApp: 'ليس لديك تطبيق نسك؟', getPlay: 'حمّله من Google Play', getIos: 'حمّله من App Store', iosNote: 'إن لم يفتح الرابط فقد لا يكون التطبيق متاحًا في متجر بلدك.', appTitle: 'حمّل تطبيق نسك', appWhy: 'تحتاج تطبيق نسك على جوالك لاستخدام الرمز. وهو التطبيق الرسمي لوزارة الحج والعمرة.',
+      tkBrand: 'Protibhan',
       freshNote: 'مع كل استخدام أو نسخ تحصل على رمز جديد، ولن يعود إليك رمز أخذته أبدًا.',
       sharePic: 'شارك كصورة', picHint: 'الرسالة مكتوبة داخل الصورة، فتظهر كاملة على فيسبوك وإنستغرام أيضًا.', picSaved: 'تم تنزيل الصورة. انشرها كصورة على فيسبوك أو إنستغرام.', msgCopied: 'نُسخت الرسالة. الصقها أينما شئت.',
       shareMsg: 'العمرة أمنية يحملها كثير منا منذ سنين. تحدي العمرة في تطبيق نسك يقدّم الآن 100 عمرة مجانية لشخصين. 🕋\n\nفي هذا الموقع تأخذ رمز إحالة بضغطة واحدة، وتشارك رمزك ليدعمك غيرك. بلا تسجيل ومجانًا.\n\nمن يدري، لعل الدعوة إلى بيت الله تكون لك هذه المرة. إن شاء الله.',
@@ -422,12 +425,28 @@
     const mk = document.createElement('mark'); mk.textContent = 'NG-vW7So71R'; sample.appendChild(mk);
     $('redeemBtn').hidden = !MOBILE; $('copyBtn').hidden = MOBILE; $('copyOnlyBtn').hidden = !MOBILE;
     $('hint').textContent = MOBILE ? t('hintMobile') : t('hintDesktop');
+    renderTicker();
     // the store for this device only (both on a computer); the iPhone note only on iPhone/iPad
     for (const el of document.querySelectorAll('[data-store]')) el.hidden = OS !== 'desktop' ? el.dataset.store !== OS : el.classList.contains('ios-note');
     $('offline').hidden = S.online;
     labelAdd();
   }
 
+  // Protibhan marketing bar. Items are our own fixed strings (bold via <b> only), never remote data.
+  function renderTicker() {
+    const items = (T[S.lang] && T[S.lang].ticker) || T.en.ticker;
+    const belt = $('belt'); belt.textContent = '';
+    for (let round = 0; round < 2; round++) {
+      for (const it of items) {
+        const span = document.createElement('span');
+        const m = it.match(/^<b>(.*?)<\/b>\s*(.*)$/);
+        if (m) { const b = document.createElement('b'); b.textContent = m[1]; span.append(b, document.createTextNode(' ' + m[2])); }
+        else span.textContent = it;
+        if (round) span.setAttribute('aria-hidden', 'true');
+        belt.appendChild(span);
+      }
+    }
+  }
   function renderHero() {
     const c = S.current; const x = c && S.items.get(c);
     $('heroBody').hidden = !x; $('emptyBox').hidden = !!x;
