@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS codes (
   copies INTEGER NOT NULL DEFAULT 0,
   reports INTEGER NOT NULL DEFAULT 0,
   pinned INTEGER NOT NULL DEFAULT 0, -- 0 = not pinned, otherwise pin time (newest pin first)
+  imported INTEGER NOT NULL DEFAULT 0, -- 1 = bulk-imported from a public archive
   last_copied_at INTEGER
 );
 CREATE UNIQUE INDEX IF NOT EXISTS codes_sn ON codes (sn);
