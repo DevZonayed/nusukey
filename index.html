@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="bn" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://*.workers.dev https://*.nusukey.com; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="referrer" content="no-referrer">
-<title>NusukKey — share & take Nusuk Umrah challenge codes</title>
-<meta name="description" content="Paste your Nusuk challenge message to share your code, and copy a fresh code from others. One tap. Never the same code twice.">
+<title>NusukKey · নুসুক উমরাহ চ্যালেঞ্জের কোড নিন, নিজেরটা দিন</title>
+<meta name="description" content="নুসুক অ্যাপের উমরাহ চ্যালেঞ্জের রেফারেল কোড এক ট্যাপে কপি করুন, নিজের কোডটাও শেয়ার করুন। একই কোড দুবার আসে না, সাইন-আপও লাগে না।">
 <meta name="theme-color" content="#0F766E">
-<meta property="og:title" content="NusukKey — share & take Nusuk challenge codes">
-<meta property="og:description" content="Paste your Nusuk share message, take a fresh code in one tap.">
+<meta property="og:title" content="NusukKey · নুসুক উমরাহ চ্যালেঞ্জের কোড">
+<meta property="og:description" content="এক ট্যাপে কোড নিন, নিজের কোডটাও দিন। একই কোড দুবার আসে না।">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -57,7 +57,11 @@ header.nav .wrap{display:flex;align-items:center;gap:12px;min-height:64px;paddin
 .keypill.saved i{background:#10B981}
 
 /* hero */
-.hero{padding:44px 0 26px}
+.hero{padding:44px 0 26px;display:grid;grid-template-columns:1fr;gap:32px;align-items:center}
+.hero-art{display:none;margin:0;position:relative}
+.hero-art img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:20px;box-shadow:0 18px 40px rgba(15,23,42,.14);background:var(--brand-wash)}
+.hero-art::after{content:"";position:absolute;inset:0;border-radius:20px;box-shadow:inset 0 0 0 1px rgba(15,23,42,.06);pointer-events:none}
+@media (min-width:900px){.hero{grid-template-columns:1.25fr 1fr}.hero-art{display:block}}
 .badge{display:inline-flex;align-items:center;gap:7px;background:var(--brand-wash);color:var(--brand);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:600}
 .badge svg{width:16px;height:16px}
 h1{font-size:clamp(32px,5.6vw,56px);line-height:1.08;letter-spacing:-.03em;margin:16px 0 14px;font-weight:700;color:var(--ink);max-width:18ch}
@@ -200,8 +204,8 @@ dialog .row{justify-content:flex-end}
 <body>
 <div class="banner" id="banner" hidden>
   <div class="wrap">
-    <span data-t="bannerText">Save your key so the codes you've used stay hidden on every device.</span>
-    <button class="pill" id="bannerBtn" type="button" data-t="bannerBtn">Save my key</button>
+    <span data-t="bannerText">আপনার আইডি সেভ করে রাখুন। তাহলে অন্য ফোনেও আগে নেওয়া কোডগুলো আর আসবে না।</span>
+    <button class="pill" id="bannerBtn" type="button" data-t="bannerBtn">আইডি সেভ করুন</button>
     <button class="x" id="bannerX" type="button" aria-label="Close" data-ta="close">×</button>
   </div>
 </div>
@@ -217,64 +221,72 @@ dialog .row{justify-content:flex-end}
       <button type="button" data-lang="bn" aria-pressed="false" lang="bn">বাংলা</button>
       <button type="button" data-lang="ar" aria-pressed="false" lang="ar">عربي</button>
     </div>
-    <button class="keypill" id="keyPill" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="12" r="3.4"/><path d="M11.4 12H20M17 12v3M20 12v2.4"/></svg><span class="kt" data-t="yourKey">Your key</span><i></i></button>
+    <button class="keypill" id="keyPill" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="12" r="3.4"/><path d="M11.4 12H20M17 12v3M20 12v2.4"/></svg><span class="kt" data-t="yourKey">আপনার আইডি</span><i></i></button>
   </div>
 </header>
 
 <main class="wrap">
   <section class="hero">
-    <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><span data-t="badge">Nusuk Umrah challenge · community</span></span>
-    <h1><em id="heroNum">0</em><span id="heroText"> fresh codes. Copy one, share yours.</span></h1>
-    <p class="sub" data-t="sub">Tap once to copy, paste it in the Nusuk app. We remember what you've used, so you never see the same code twice.</p>
+    <div class="hero-text">
+    <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><span data-t="badge">নুসুক উমরাহ চ্যালেঞ্জ · কমিউনিটি</span></span>
+    <h1><em id="heroNum">০</em><span id="heroText">টা কোড রেডি। একটা নিন, নিজেরটাও দিন।</span></h1>
+    <p class="sub" data-t="sub">এক ট্যাপেই কোড কপি হবে, তারপর নুসুক অ্যাপে পেস্ট করুন। কোন কোড নিয়েছেন সেটা আমরা মনে রাখি, তাই একই কোড আপনি দুবার পাবেন না।</p>
     <div class="checks">
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span data-t="chk1">No sign-up</span></span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span data-t="chk2">Never the same code twice</span></span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span data-t="chk3">Free</span></span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span data-t="chk1">সাইন-আপ লাগে না</span></span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span data-t="chk2">একই কোড দুবার আসে না</span></span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span data-t="chk3">পুরোপুরি ফ্রি</span></span>
     </div>
+    </div>
+    <figure class="hero-art">
+      <picture>
+        <source type="image/avif" srcset="img/kaaba-480.avif 480w, img/kaaba-760.avif 760w" sizes="(min-width:1120px) 420px, 38vw">
+        <img src="img/kaaba-480.webp" width="480" height="360" alt="মক্কায় কাবা শরিফ" data-talt="imgAlt" loading="lazy" decoding="async">
+      </picture>
+    </figure>
   </section>
 
   <section class="stats" aria-label="Live stats">
-    <div class="stat"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 5-6 8-6s6.5 2 8 6"/></svg></span><div><small data-t="sVisitors">Here now</small><b id="stActive">–</b><span class="s"><span class="live"></span><span data-t="sVisitorsSub">active now</span></span></div></div>
-    <div class="stat"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg></span><div><small data-t="sCopies">Copied today</small><b id="stCopies">–</b><span class="s" id="stTotal"></span></div></div>
-    <div class="stat"><span class="ico amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6 .6-4.5 4 1.3 6-5.4-3.1L6.6 19.2l1.3-6-4.5-4 6-.6z"/></svg></span><div><small data-t="sAdded">Added today</small><b id="stAdded">–</b><span class="s" data-t="sAddedSub">new codes</span></div></div>
+    <div class="stat"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 5-6 8-6s6.5 2 8 6"/></svg></span><div><small data-t="sVisitors">এখন সাইটে আছেন</small><b id="stActive">–</b><span class="s"><span class="live"></span><span data-t="sVisitorsSub">জন অনলাইনে</span></span></div></div>
+    <div class="stat"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg></span><div><small data-t="sCopies">আজ কপি হয়েছে</small><b id="stCopies">–</b><span class="s" id="stTotal"></span></div></div>
+    <div class="stat"><span class="ico amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6 .6-4.5 4 1.3 6-5.4-3.1L6.6 19.2l1.3-6-4.5-4 6-.6z"/></svg></span><div><small data-t="sAdded">আজ যোগ হয়েছে</small><b id="stAdded">–</b><span class="s" data-t="sAddedSub">নতুন কোড</span></div></div>
   </section>
-  <div id="offline" class="notice" hidden data-t="offline">Shared pool is offline — codes you add are saved on this device only.</div>
+  <div id="offline" class="notice" hidden data-t="offline">সার্ভারের সাথে এখন যোগাযোগ হচ্ছে না। আপনার দেওয়া কোড আপাতত শুধু এই ফোনে থাকবে।</div>
 
   <div class="main">
     <section class="next" aria-labelledby="nextTitle">
       <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="12" r="3.4"/><path d="M11.4 12H20M17 12v3M20 12v2.4"/></svg>
-      <div class="eyebrow"><span id="nextTitle" data-t="nextTitle">Your next code</span><span class="tag" id="nextTag" hidden></span></div>
+      <div class="eyebrow"><span id="nextTitle" data-t="nextTitle">আপনার জন্য পরের কোড</span><span class="tag" id="nextTag" hidden></span></div>
       <div class="bigcode" id="bigCode" aria-live="polite"></div>
-      <div class="empty" id="emptyNext" hidden data-t="emptyNext">You've used every code for now.</div>
+      <div class="empty" id="emptyNext" hidden data-t="emptyNext">এখনকার সব কোড আপনি নিয়ে ফেলেছেন। সারাদিনই নতুন কোড আসে, একটু পরে আবার দেখুন। চাইলে নিচে নিজের কোডটাও দিয়ে যান।</div>
       <div class="progress" aria-hidden="true"><i id="prog"></i></div>
       <div class="meta" id="meta"></div>
       <div class="actions">
-        <button class="btn-main" id="copyBtn" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span data-t="copyNext">Copy &amp; show next</span><kbd>Space</kbd></button>
-        <button class="btn-ghost" id="skipBtn" type="button" data-t="skip">Skip</button>
+        <button class="btn-main" id="copyBtn" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span data-t="copyNext">কপি করুন, পরেরটা দেখুন</span><kbd>Space</kbd></button>
+        <button class="btn-ghost" id="skipBtn" type="button" data-t="skip">বাদ দিন</button>
       </div>
-      <div class="last" id="last" hidden><span data-t="lastCopied">Last copied:</span> <code id="lastCode"></code><button class="link" id="reportBtn" type="button" data-t="report">Didn't work?</button></div>
+      <div class="last" id="last" hidden><span data-t="lastCopied">শেষ কপি করেছেন:</span> <code id="lastCode"></code><button class="link" id="reportBtn" type="button" data-t="report">কোডটা কাজ করেনি?</button></div>
     </section>
 
     <section class="give card" aria-labelledby="giveTitle">
       <div class="head">
         <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M12 15V3M7 8l5-5 5 5"/></svg></span>
-        <div><h2 id="giveTitle" data-t="giveTitle">Share your code</h2><p class="hint" data-t="giveHint">Paste the whole message from the Nusuk app — we'll find the code.</p></div>
+        <div><h2 id="giveTitle" data-t="giveTitle">আপনার কোড দিন</h2><p class="hint" data-t="giveHint">নুসুক অ্যাপ থেকে কপি করা পুরো মেসেজটাই এখানে দিন। কোডটা আমরা নিজেরাই খুঁজে নেব।</p></div>
       </div>
-      <label class="sr" for="giveText" data-t="giveLabel">Nusuk share message</label>
-      <textarea id="giveText" data-tp="givePh" placeholder="Paste the Nusuk message here…" spellcheck="false" autocomplete="off"></textarea>
+      <label class="sr" for="giveText" data-t="giveLabel">নুসুকের শেয়ার মেসেজ</label>
+      <textarea id="giveText" data-tp="givePh" placeholder="নুসুকের মেসেজটা এখানে পেস্ট করুন…" spellcheck="false" autocomplete="off"></textarea>
       <div class="chips" id="chips" aria-live="polite"></div>
       <div class="msg" id="giveMsg" role="status"></div>
       <div class="row">
-        <button class="btn-line" id="pasteBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4h6v3H9z"/></svg><span data-t="paste">Paste</span></button>
-        <button class="btn-brand" id="addBtn" type="button" disabled data-t="addNone">Add code</button>
+        <button class="btn-line" id="pasteBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4h6v3H9z"/></svg><span data-t="paste">পেস্ট করুন</span></button>
+        <button class="btn-brand" id="addBtn" type="button" disabled data-t="addNone">কোড যোগ করুন</button>
       </div>
       <details class="how">
-        <summary data-t="howTitle">How do I get my code?</summary>
+        <summary data-t="howTitle">নিজের কোড কোথায় পাবেন?</summary>
         <ol>
-          <li data-t="how1">Open the Nusuk app.</li>
-          <li data-t="how2">Go to the Umrah challenge.</li>
-          <li data-t="how3">Tap the Share button.</li>
-          <li data-t="how4">Choose Copy, then come back and paste it here.</li>
+          <li data-t="how1">নুসুক অ্যাপ খুলুন।</li>
+          <li data-t="how2">উমরাহ চ্যালেঞ্জের পেজে যান।</li>
+          <li data-t="how3">শেয়ার বাটনে চাপুন।</li>
+          <li data-t="how4">Copy চাপুন, তারপর এখানে এসে পেস্ট করুন।</li>
         </ol>
         <span class="sample" id="sample"></span>
       </details>
@@ -282,49 +294,49 @@ dialog .row{justify-content:flex-end}
   </div>
 
   <section class="steps" aria-label="How it works">
-    <div class="step card"><span class="ico">1</span><div><b data-t="st1">Copy a code</b><span data-t="st1d">Use the big button or tap any code below.</span></div></div>
-    <div class="step card"><span class="ico">2</span><div><b data-t="st2">Paste in Nusuk</b><span data-t="st2d">Umrah challenge → enter code → paste.</span></div></div>
-    <div class="step card"><span class="ico amber">3</span><div><b data-t="st3">Give one back</b><span data-t="st3d">Paste your own share message so others can support you.</span></div></div>
+    <div class="step card"><span class="ico" data-num="1">১</span><div><b data-t="st1">একটা কোড কপি করুন</b><span data-t="st1d">বড় বাটনে চাপুন, অথবা নিচের লিস্টের যেকোনো কোডে ট্যাপ করুন।</span></div></div>
+    <div class="step card"><span class="ico" data-num="2">২</span><div><b data-t="st2">নুসুকে পেস্ট করুন</b><span data-t="st2d">উমরাহ চ্যালেঞ্জে গিয়ে কোডের ঘরে পেস্ট করুন।</span></div></div>
+    <div class="step card"><span class="ico amber" data-num="3">৩</span><div><b data-t="st3">নিজের কোডটাও দিন</b><span data-t="st3d">আপনার মেসেজ পেস্ট করলে অন্যরাও আপনাকে সাপোর্ট করতে পারবে।</span></div></div>
   </section>
 
   <section aria-labelledby="listTitle">
-    <div class="list-head"><h2 id="listTitle" data-t="listTitle">All codes</h2></div>
+    <div class="list-head"><h2 id="listTitle" data-t="listTitle">সব কোড</h2></div>
     <div class="tools">
       <div class="search-box">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-        <label class="sr" for="search" data-t="searchLabel">Search codes</label>
-        <input class="search" id="search" type="search" data-tp="searchPh" placeholder="Search codes…" autocomplete="off" spellcheck="false">
+        <label class="sr" for="search" data-t="searchLabel">কোড খুঁজুন</label>
+        <input class="search" id="search" type="search" data-tp="searchPh" placeholder="কোড খুঁজুন…" autocomplete="off" spellcheck="false">
       </div>
       <div class="tabs" role="tablist" id="tabs">
-        <button role="tab" type="button" data-tab="remaining" aria-selected="true"><span data-t="tRemaining">Remaining</span><small></small></button>
-        <button role="tab" type="button" data-tab="new" aria-selected="false"><span data-t="tNew">New</span><small></small></button>
-        <button role="tab" type="button" data-tab="used" aria-selected="false"><span data-t="tUsed">Used</span><small></small></button>
-        <button role="tab" type="button" data-tab="mine" aria-selected="false"><span data-t="tMine">Mine</span><small></small></button>
-        <button role="tab" type="button" data-tab="all" aria-selected="false"><span data-t="tAll">All</span><small></small></button>
+        <button role="tab" type="button" data-tab="remaining" aria-selected="true"><span data-t="tRemaining">বাকি</span><small></small></button>
+        <button role="tab" type="button" data-tab="new" aria-selected="false"><span data-t="tNew">নতুন</span><small></small></button>
+        <button role="tab" type="button" data-tab="used" aria-selected="false"><span data-t="tUsed">নেওয়া হয়েছে</span><small></small></button>
+        <button role="tab" type="button" data-tab="mine" aria-selected="false"><span data-t="tMine">আমার</span><small></small></button>
+        <button role="tab" type="button" data-tab="all" aria-selected="false"><span data-t="tAll">সব</span><small></small></button>
       </div>
     </div>
     <div class="count" id="count"></div>
     <div class="grid" id="grid"></div>
-    <button class="more" id="moreBtn" type="button" hidden data-t="more">Show more</button>
+    <button class="more" id="moreBtn" type="button" hidden data-t="more">আরও দেখুন</button>
   </section>
 
   <footer>
-    <p data-t="foot1">Unofficial community tool. Not affiliated with Nusuk or the Ministry of Hajj and Umrah.</p>
-    <p data-t="foot2">Codes are shared by visitors. Only share your own referral code.</p>
+    <p data-t="foot1">এটা কমিউনিটির বানানো একটা ফ্রি টুল। নুসুক অ্যাপ বা হজ ও উমরাহ মন্ত্রণালয়ের সাথে এর কোনো সম্পর্ক নেই।</p>
+    <p data-t="foot2">কোডগুলো ভিজিটররাই শেয়ার করেন। শুধু নিজের রেফারেল কোড দিন।</p>
   </footer>
 </main>
 
 <template id="tplItem"><button class="item" type="button"><span><span class="pre">NG-</span><span class="rest"></span></span><span class="b" hidden></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg></button></template>
 
 <dialog id="keyDlg" aria-labelledby="keyDlgTitle">
-  <h3 id="keyDlgTitle" data-t="keyTitle">Your key</h3>
-  <p data-t="keyHelp">This key remembers which codes you've used.</p>
+  <h3 id="keyDlgTitle" data-t="keyTitle">আপনার আইডি</h3>
+  <p data-t="keyHelp">এই আইডি দিয়ে আমরা মনে রাখি আপনি কোন কোডগুলো নিয়েছেন। কপি করে কোথাও রেখে দিন, যেমন ফোনের নোটে বা নিজের হোয়াটসঅ্যাপে। অন্য ফোনে এই আইডি দিলে আগের হিস্ট্রি সেখানেও চলে আসবে।</p>
   <div class="keybox" id="keyBox"></div>
-  <div class="row" style="justify-content:flex-start;margin:0 0 18px"><button class="btn-brand" style="flex:0 1 auto" id="copyKey" type="button" data-t="copyKey">Copy my key</button></div>
-  <label for="keyIn" style="font-weight:600;font-size:14px" data-t="useKey">Use a key from another device</label>
+  <div class="row" style="justify-content:flex-start;margin:0 0 18px"><button class="btn-brand" style="flex:0 1 auto" id="copyKey" type="button" data-t="copyKey">আইডি কপি করুন</button></div>
+  <label for="keyIn" style="font-weight:600;font-size:14px" data-t="useKey">অন্য ফোনের আইডি আছে?</label>
   <input id="keyIn" placeholder="NK-XXXXX-XXXXX-XXXXX-XXXXX" autocomplete="off" spellcheck="false">
   <div class="msg" id="keyMsg" role="status"></div>
-  <div class="row"><button class="btn-line" id="keyClose" type="button" data-t="close">Close</button><button class="btn-brand" style="flex:0 1 auto" id="keyApply" type="button" data-t="apply">Use this key</button></div>
+  <div class="row"><button class="btn-line" id="keyClose" type="button" data-t="close">বন্ধ করুন</button><button class="btn-brand" style="flex:0 1 auto" id="keyApply" type="button" data-t="apply">এই আইডি ব্যবহার করুন</button></div>
 </dialog>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>

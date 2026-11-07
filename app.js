@@ -1,4 +1,4 @@
-/* NusukKey — vanilla JS, no deps. All user/remote data is rendered with textContent. */
+/* NusukKey: vanilla JS, no deps. All user/remote data is rendered with textContent. */
 (() => {
   'use strict';
 
@@ -15,90 +15,104 @@
 
   /* ---------- strings ---------- */
   const T = {
-    en: {
-      badge: 'Nusuk Umrah challenge · community', chk1: 'No sign-up', chk2: 'Never the same code twice', chk3: 'Free',
-      bannerText: "Save your key so the codes you've used stay hidden on every device.", bannerBtn: 'Save my key', close: 'Close',
-      yourKey: 'Your key', keySaved: 'Key saved',
-      hero: ' fresh codes. Copy one, share yours.', hero1: ' fresh code. Copy it, share yours.',
-      sub: "Tap once to copy, paste it in the Nusuk app. We remember what you've used, so you never see the same code twice.",
-      sVisitors: 'Here now', sVisitorsSub: 'active now', sCopies: 'Copied today', sAdded: 'Added today', sAddedSub: 'new codes', sTotal: '{n} copies all time',
-      offline: 'Shared pool is offline — codes you add are saved on this device only.',
-      nextTitle: 'Your next code', copyNext: 'Copy & show next', skip: 'Skip', lastCopied: 'Last copied:', report: "Didn't work?",
-      emptyNext: "You've used every code for now. New ones arrive all day — check back soon, and share yours below.",
-      emptyPool: 'No codes yet. Be the first — paste your Nusuk message in “Share your code”.',
-      meta: 'You copied {c} · Remaining {r}', copiedTimes: 'copied {n}×', fresh: 'fresh',
-      giveTitle: 'Share your code', giveHint: "Paste the whole message from the Nusuk app — we'll find the code.", giveLabel: 'Nusuk share message',
-      givePh: 'Paste the Nusuk message here…', paste: 'Paste', addNone: 'Add code', addN: 'Add {n} code', addNs: 'Add {n} codes',
-      found: 'Found {n}', notFound: 'No code found. It looks like NG- followed by 8 letters/numbers.', added: 'Thanks! {n} added — others can use it now.',
-      already: 'Already in the list — thanks!', pasteFail: "Your browser blocked paste. Long-press the box and choose Paste.", sending: 'Adding…', addFail: "Couldn't add right now. Try again in a minute.",
-      howTitle: 'How do I get my code?', how1: 'Open the Nusuk app.', how2: 'Go to the Umrah challenge.', how3: 'Tap the Share button.', how4: 'Choose Copy, then come back and paste it here.',
-      st1: 'Copy a code', st1d: 'Use the big button or tap any code below.', st2: 'Paste in Nusuk', st2d: 'Umrah challenge → enter code → paste.', st3: 'Give one back', st3d: 'Paste your own share message so others can support you.',
-      listTitle: 'All codes', searchLabel: 'Search codes', searchPh: 'Search codes…', tRemaining: 'Remaining', tNew: 'New', tUsed: 'Used', tMine: 'Mine', tAll: 'All',
-      shown: 'Showing {s} of {t}', none: 'Nothing here yet.', more: 'Show more', bNew: 'new', bMine: 'yours',
-      copied: 'Copied — paste it in Nusuk', copiedMine: 'Your code copied — share it anywhere', copyFail: "Couldn't copy. Long-press the code to copy it.",
-      reported: "Thanks — we won't show that one again.",
-      keyTitle: 'Your key', keyHelp: "This key remembers which codes you've used. Copy it and keep it somewhere safe (notes, or WhatsApp it to yourself). Enter it on another phone to carry your history over.",
-      copyKey: 'Copy my key', useKey: 'Use a key from another device', apply: 'Use this key', keyBad: 'That key looks wrong. It starts with NK- and has 4 groups of 5.', keyOk: 'Key switched. Your history is loading.', keyCopied: 'Key copied — keep it safe',
-      foot1: 'Unofficial community tool. Not affiliated with Nusuk or the Ministry of Hajj and Umrah.', foot2: 'Codes are shared by visitors. Only share your own referral code.',
-    },
     bn: {
-      badge: 'নুসুক উমরাহ চ্যালেঞ্জ · কমিউনিটি', chk1: 'সাইন-আপ লাগে না', chk2: 'একই কোড দুবার আসে না', chk3: 'ফ্রি',
-      bannerText: 'আপনার কী সেভ করে রাখুন, তাহলে ব্যবহার করা কোড কোনো ডিভাইসেই আর আসবে না।', bannerBtn: 'কী সেভ করুন', close: 'বন্ধ করুন',
-      yourKey: 'আপনার কী', keySaved: 'কী সেভ হয়েছে',
-      hero: 'টা নতুন কোড। একটা কপি করুন, নিজেরটাও দিন।', hero1: 'টা নতুন কোড। কপি করুন, নিজেরটাও দিন।',
-      sub: 'একবার ট্যাপ করলেই কপি, তারপর নুসুক অ্যাপে পেস্ট করুন। কোন কোড নিয়েছেন আমরা মনে রাখি, তাই একই কোড আর দেখবেন না।',
-      sVisitors: 'এখন আছেন', sVisitorsSub: 'জন অনলাইনে', sCopies: 'আজ কপি', sAdded: 'আজ যোগ হয়েছে', sAddedSub: 'নতুন কোড', sTotal: 'মোট {n} বার কপি',
-      offline: 'শেয়ার্ড লিস্ট এখন অফলাইন — আপনার দেওয়া কোড শুধু এই ডিভাইসে সেভ থাকবে।',
-      nextTitle: 'আপনার পরের কোড', copyNext: 'কপি করে পরেরটা দেখুন', skip: 'বাদ দিন', lastCopied: 'শেষ কপি:', report: 'কাজ করেনি?',
-      emptyNext: 'এখনকার সব কোড আপনি নিয়ে ফেলেছেন। সারাদিন নতুন কোড আসে — একটু পরে আবার দেখুন, আর নিচে নিজের কোডটা দিয়ে যান।',
-      emptyPool: 'এখনো কোনো কোড নেই। প্রথম কোডটা আপনিই দিন — “আপনার কোড দিন” বক্সে নুসুকের মেসেজ পেস্ট করুন।',
-      meta: 'আপনি কপি করেছেন {c} · বাকি {r}', copiedTimes: '{n} বার কপি', fresh: 'একদম নতুন',
-      giveTitle: 'আপনার কোড দিন', giveHint: 'নুসুক অ্যাপের পুরো মেসেজটাই পেস্ট করুন — কোড আমরা বের করে নেব।', giveLabel: 'নুসুকের শেয়ার মেসেজ',
-      givePh: 'নুসুকের মেসেজ এখানে পেস্ট করুন…', paste: 'পেস্ট', addNone: 'কোড যোগ করুন', addN: '{n}টা কোড যোগ করুন', addNs: '{n}টা কোড যোগ করুন',
-      found: '{n}টা পাওয়া গেছে', notFound: 'কোনো কোড পাওয়া যায়নি। কোড দেখতে NG- এর পরে ৮টা অক্ষর/সংখ্যা।', added: 'ধন্যবাদ! {n}টা যোগ হয়েছে — এখন অন্যরা ব্যবহার করতে পারবে।',
-      already: 'এটা আগেই লিস্টে আছে — ধন্যবাদ!', pasteFail: 'ব্রাউজার পেস্ট করতে দিচ্ছে না। বক্সে চেপে ধরে Paste চাপুন।', sending: 'যোগ হচ্ছে…', addFail: 'এখন যোগ করা গেল না। এক মিনিট পরে আবার চেষ্টা করুন।',
-      howTitle: 'আমার কোড কোথায় পাব?', how1: 'নুসুক অ্যাপ খুলুন।', how2: 'উমরাহ চ্যালেঞ্জে যান।', how3: 'Share বাটনে চাপুন।', how4: 'Copy চাপুন, তারপর এখানে এসে পেস্ট করুন।',
-      st1: 'একটা কোড কপি করুন', st1d: 'বড় বাটনে চাপুন বা নিচের যেকোনো কোডে ট্যাপ করুন।', st2: 'নুসুকে পেস্ট করুন', st2d: 'উমরাহ চ্যালেঞ্জ → কোড দিন → পেস্ট।', st3: 'নিজেরটাও দিন', st3d: 'আপনার শেয়ার মেসেজ পেস্ট করুন, যাতে অন্যরা আপনাকে সাপোর্ট করতে পারে।',
-      listTitle: 'সব কোড', searchLabel: 'কোড খুঁজুন', searchPh: 'কোড খুঁজুন…', tRemaining: 'বাকি', tNew: 'নতুন', tUsed: 'ব্যবহার করা', tMine: 'আমার', tAll: 'সব',
-      shown: '{t}টার মধ্যে {s}টা দেখাচ্ছে', none: 'এখানে এখনো কিছু নেই।', more: 'আরও দেখুন', bNew: 'নতুন', bMine: 'আপনার',
-      copied: 'কপি হয়েছে — নুসুকে পেস্ট করুন', copiedMine: 'আপনার কোড কপি হয়েছে — যেখানে খুশি শেয়ার করুন', copyFail: 'কপি হয়নি। কোডটা চেপে ধরে কপি করুন।',
-      reported: 'ধন্যবাদ — এই কোড আর দেখাব না।',
-      keyTitle: 'আপনার কী', keyHelp: 'এই কী মনে রাখে আপনি কোন কোডগুলো নিয়েছেন। কপি করে নিরাপদ জায়গায় রাখুন (নোটে, বা নিজেকে হোয়াটসঅ্যাপে পাঠিয়ে)। অন্য ফোনে এটা দিলে আগের সব হিস্ট্রি চলে আসবে।',
-      copyKey: 'কী কপি করুন', useKey: 'অন্য ডিভাইসের কী ব্যবহার করুন', apply: 'এই কী ব্যবহার করুন', keyBad: 'কী-টা ঠিক মনে হচ্ছে না। এটা NK- দিয়ে শুরু, আর ৫ অক্ষরের ৪টা ভাগ থাকে।', keyOk: 'কী বদলানো হয়েছে। হিস্ট্রি লোড হচ্ছে।', keyCopied: 'কী কপি হয়েছে — যত্নে রাখুন',
-      foot1: 'এটা কমিউনিটির বানানো আনঅফিশিয়াল টুল। নুসুক বা হজ ও উমরাহ মন্ত্রণালয়ের সাথে কোনো সম্পর্ক নেই।', foot2: 'কোডগুলো ভিজিটররাই শেয়ার করেন। শুধু নিজের রেফারেল কোড দিন।',
+      bannerText: 'আপনার আইডি সেভ করে রাখুন। তাহলে অন্য ফোনেও আগে নেওয়া কোডগুলো আর আসবে না।', bannerBtn: 'আইডি সেভ করুন', close: 'বন্ধ করুন',
+      yourKey: 'আপনার আইডি', keySaved: 'আইডি সেভ আছে',
+      badge: 'নুসুক উমরাহ চ্যালেঞ্জ · কমিউনিটি', chk1: 'সাইন-আপ লাগে না', chk2: 'একই কোড দুবার আসে না', chk3: 'পুরোপুরি ফ্রি',
+      hero: 'টা কোড রেডি। একটা নিন, নিজেরটাও দিন।', hero1: 'টা কোড রেডি। এটা নিন, নিজেরটাও দিন।',
+      sub: 'এক ট্যাপেই কোড কপি হবে, তারপর নুসুক অ্যাপে পেস্ট করুন। কোন কোড নিয়েছেন সেটা আমরা মনে রাখি, তাই একই কোড আপনি দুবার পাবেন না।',
+      sVisitors: 'এখন সাইটে আছেন', sVisitorsSub: 'জন অনলাইনে', sCopies: 'আজ কপি হয়েছে', sAdded: 'আজ যোগ হয়েছে', sAddedSub: 'নতুন কোড', sTotal: 'মোট {n} বার',
+      offline: 'সার্ভারের সাথে এখন যোগাযোগ হচ্ছে না। আপনার দেওয়া কোড আপাতত শুধু এই ফোনে থাকবে।',
+      nextTitle: 'আপনার জন্য পরের কোড', copyNext: 'কপি করুন, পরেরটা দেখুন', skip: 'বাদ দিন', lastCopied: 'শেষ কপি করেছেন:', report: 'কোডটা কাজ করেনি?',
+      emptyNext: 'এখনকার সব কোড আপনি নিয়ে ফেলেছেন। সারাদিনই নতুন কোড আসে, একটু পরে আবার দেখুন। চাইলে নিচে নিজের কোডটাও দিয়ে যান।',
+      emptyPool: 'এখনো কেউ কোড দেয়নি। প্রথম কোডটা আপনিই দিন, “আপনার কোড দিন” বক্সে নুসুকের মেসেজটা পেস্ট করুন।',
+      meta: 'আপনি নিয়েছেন {c}টা · বাকি আছে {r}টা', copiedTimes: '{n} বার কপি হয়েছে', fresh: 'একদম নতুন',
+      giveTitle: 'আপনার কোড দিন', giveHint: 'নুসুক অ্যাপ থেকে কপি করা পুরো মেসেজটাই এখানে দিন। কোডটা আমরা নিজেরাই খুঁজে নেব।', giveLabel: 'নুসুকের শেয়ার মেসেজ',
+      givePh: 'নুসুকের মেসেজটা এখানে পেস্ট করুন…', paste: 'পেস্ট করুন', addNone: 'কোড যোগ করুন', addN: '{n}টা কোড যোগ করুন', addNs: '{n}টা কোড যোগ করুন',
+      found: '{n}টা কোড পাওয়া গেছে', notFound: 'এখানে কোনো কোড পাইনি। নুসুকের কোড দেখতে এমন: NG-vW7So71R',
+      added: 'ধন্যবাদ! {n}টা কোড যোগ হয়েছে। এখন অন্যরা এটা দিয়ে আপনাকে সাপোর্ট করতে পারবে।', already: 'এই কোডটা আগেই লিস্টে আছে। ধন্যবাদ!',
+      pasteFail: 'ব্রাউজার নিজে থেকে পেস্ট করতে দিচ্ছে না। বক্সে আঙুল চেপে ধরে Paste চাপুন।', sending: 'যোগ হচ্ছে…',
+      addFail: 'এই মুহূর্তে যোগ করা গেল না। এক মিনিট পরে আবার চেষ্টা করুন।', tooMany: 'আজ অনেকগুলো কোড দিয়েছেন। কাল আবার দিতে পারবেন।',
+      howTitle: 'নিজের কোড কোথায় পাবেন?', how1: 'নুসুক অ্যাপ খুলুন।', how2: 'উমরাহ চ্যালেঞ্জের পেজে যান।', how3: 'শেয়ার বাটনে চাপুন।', how4: 'Copy চাপুন, তারপর এখানে এসে পেস্ট করুন।',
+      st1: 'একটা কোড কপি করুন', st1d: 'বড় বাটনে চাপুন, অথবা নিচের লিস্টের যেকোনো কোডে ট্যাপ করুন।',
+      st2: 'নুসুকে পেস্ট করুন', st2d: 'উমরাহ চ্যালেঞ্জে গিয়ে কোডের ঘরে পেস্ট করুন।',
+      st3: 'নিজের কোডটাও দিন', st3d: 'আপনার মেসেজ পেস্ট করলে অন্যরাও আপনাকে সাপোর্ট করতে পারবে।',
+      listTitle: 'সব কোড', searchLabel: 'কোড খুঁজুন', searchPh: 'কোড খুঁজুন…', tRemaining: 'বাকি', tNew: 'নতুন', tUsed: 'নেওয়া হয়েছে', tMine: 'আমার', tAll: 'সব',
+      shown: '{t}টার মধ্যে {s}টা দেখানো হচ্ছে', none: 'এখানে এখনো কিছু নেই।', more: 'আরও দেখুন', bNew: 'নতুন', bMine: 'আপনার',
+      copied: 'কপি হয়েছে। এবার নুসুকে পেস্ট করুন।', copiedMine: 'আপনার কোড কপি হয়েছে। বন্ধুদের পাঠাতে পারেন।', copyFail: 'কপি হয়নি। কোডটার ওপর আঙুল চেপে ধরে কপি করুন।',
+      reported: 'জানানোর জন্য ধন্যবাদ। এই কোড আপনাকে আর দেখাব না।',
+      keyTitle: 'আপনার আইডি', keyHelp: 'এই আইডি দিয়ে আমরা মনে রাখি আপনি কোন কোডগুলো নিয়েছেন। কপি করে কোথাও রেখে দিন, যেমন ফোনের নোটে বা নিজের হোয়াটসঅ্যাপে। অন্য ফোনে এই আইডি দিলে আগের হিস্ট্রি সেখানেও চলে আসবে।',
+      copyKey: 'আইডি কপি করুন', useKey: 'অন্য ফোনের আইডি আছে?', apply: 'এই আইডি ব্যবহার করুন',
+      keyBad: 'আইডিটা মিলছে না। এটা NK- দিয়ে শুরু হয়, তারপর ৫ অক্ষরের ৪টা ভাগ থাকে।', keyOk: 'আইডি বদলানো হয়েছে, আগের হিস্ট্রি আনা হচ্ছে।', keyCopied: 'আইডি কপি হয়েছে। যত্ন করে রেখে দিন।',
+      foot1: 'এটা কমিউনিটির বানানো একটা ফ্রি টুল। নুসুক অ্যাপ বা হজ ও উমরাহ মন্ত্রণালয়ের সাথে এর কোনো সম্পর্ক নেই।', foot2: 'কোডগুলো ভিজিটররাই শেয়ার করেন। শুধু নিজের রেফারেল কোড দিন।',
+      imgAlt: 'মক্কায় কাবা শরিফ',
+    },
+    en: {
+      bannerText: "Save your key, and the codes you've taken stay hidden on every phone.", bannerBtn: 'Save my key', close: 'Close',
+      yourKey: 'Your key', keySaved: 'Key saved',
+      badge: 'Nusuk Umrah challenge · community', chk1: 'No sign-up', chk2: 'Never the same code twice', chk3: 'Free',
+      hero: ' codes ready to use. Take one, share yours.', hero1: ' code ready to use. Take it, share yours.',
+      sub: "Tap once to copy, then paste it in the Nusuk app. We remember what you've taken, so you won't get the same code twice.",
+      sVisitors: 'On the site now', sVisitorsSub: 'online', sCopies: 'Copied today', sAdded: 'Added today', sAddedSub: 'new codes', sTotal: '{n} in total',
+      offline: "Can't reach the server right now. Codes you add are saved on this phone for now.",
+      nextTitle: 'Your next code', copyNext: 'Copy & show next', skip: 'Skip', lastCopied: 'Last copied:', report: "Didn't work?",
+      emptyNext: "You've taken every code for now. New ones come in all day, so check back a bit later. And share your own below.",
+      emptyPool: 'No codes yet. Be the first and paste your Nusuk message in "Share your code".',
+      meta: "You've taken {c} · {r} left", copiedTimes: 'copied {n} times', fresh: 'brand new',
+      giveTitle: 'Share your code', giveHint: "Paste the whole message from the Nusuk app. We'll find the code in it.", giveLabel: 'Nusuk share message',
+      givePh: 'Paste the Nusuk message here…', paste: 'Paste', addNone: 'Add code', addN: 'Add {n} code', addNs: 'Add {n} codes',
+      found: 'Found {n}', notFound: 'No code found. A Nusuk code looks like NG-vW7So71R.', added: 'Thanks! {n} added. Others can use it now.',
+      already: "That code's already on the list. Thanks!", pasteFail: "Your browser won't paste for us. Press and hold the box, then tap Paste.", sending: 'Adding…',
+      addFail: "Couldn't add it right now. Try again in a minute.", tooMany: "You've added a lot today. You can add more tomorrow.",
+      howTitle: 'Where do I find my code?', how1: 'Open the Nusuk app.', how2: 'Go to the Umrah challenge.', how3: 'Tap the Share button.', how4: 'Tap Copy, then come back and paste it here.',
+      st1: 'Copy a code', st1d: 'Tap the big button, or any code in the list below.', st2: 'Paste it in Nusuk', st2d: 'Open the Umrah challenge and paste it in the code box.',
+      st3: 'Share yours too', st3d: 'Paste your own message so others can support you.',
+      listTitle: 'All codes', searchLabel: 'Search codes', searchPh: 'Search codes…', tRemaining: 'Left', tNew: 'New', tUsed: 'Taken', tMine: 'Mine', tAll: 'All',
+      shown: 'Showing {s} of {t}', none: 'Nothing here yet.', more: 'Show more', bNew: 'new', bMine: 'yours',
+      copied: 'Copied. Now paste it in Nusuk.', copiedMine: 'Your code is copied. Send it to friends.', copyFail: "Couldn't copy. Press and hold the code to copy it.",
+      reported: "Thanks for telling us. We won't show you that one again.",
+      keyTitle: 'Your key', keyHelp: "Your key remembers which codes you've taken. Copy it and keep it somewhere safe, like your notes or a WhatsApp message to yourself. Enter it on another phone to bring your history along.",
+      copyKey: 'Copy my key', useKey: 'Have a key from another phone?', apply: 'Use this key',
+      keyBad: "That key doesn't look right. It starts with NK- and has 4 groups of 5.", keyOk: 'Key switched. Loading your history.', keyCopied: 'Key copied. Keep it somewhere safe.',
+      foot1: 'A free community tool. Not connected to the Nusuk app or the Ministry of Hajj and Umrah.', foot2: 'Visitors share these codes. Only share your own referral code.',
+      imgAlt: 'The Kaaba in Makkah',
     },
     ar: {
-      badge: 'تحدي العمرة في نسك · مجتمعي', chk1: 'بدون تسجيل', chk2: 'لن ترى الرمز نفسه مرتين', chk3: 'مجاني',
-      bannerText: 'احفظ مفتاحك حتى تبقى الرموز التي استخدمتها مخفية على كل أجهزتك.', bannerBtn: 'احفظ مفتاحي', close: 'إغلاق',
-      yourKey: 'مفتاحك', keySaved: 'تم حفظ المفتاح',
-      hero: ' رمزًا جديدًا. انسخ واحدًا وشارك رمزك.', hero1: ' رمز جديد. انسخه وشارك رمزك.',
-      sub: 'اضغط مرة للنسخ ثم الصقه في تطبيق نسك. نتذكر ما استخدمته، فلن ترى الرمز نفسه مرتين.',
-      sVisitors: 'الموجودون الآن', sVisitorsSub: 'نشط الآن', sCopies: 'نُسخ اليوم', sAdded: 'أُضيف اليوم', sAddedSub: 'رموز جديدة', sTotal: '{n} نسخة إجمالًا',
-      offline: 'القائمة المشتركة غير متصلة — الرموز التي تضيفها تُحفظ على هذا الجهاز فقط.',
+      bannerText: 'احفظ مفتاحك، وستبقى الرموز التي أخذتها مخفية على كل أجهزتك.', bannerBtn: 'احفظ مفتاحي', close: 'إغلاق',
+      yourKey: 'مفتاحك', keySaved: 'المفتاح محفوظ',
+      badge: 'تحدي العمرة في نسك · مجتمعي', chk1: 'بدون تسجيل', chk2: 'لن يتكرر الرمز نفسه', chk3: 'مجاني',
+      hero: ' رمزًا متاحًا الآن. خذ واحدًا وشارك رمزك.', hero1: ' رمز متاح الآن. خذه وشارك رمزك.',
+      sub: 'اضغط مرة للنسخ ثم الصقه في تطبيق نسك. نتذكر ما أخذته، فلن يصلك الرمز نفسه مرتين.',
+      sVisitors: 'في الموقع الآن', sVisitorsSub: 'متصل', sCopies: 'نُسخ اليوم', sAdded: 'أُضيف اليوم', sAddedSub: 'رموز جديدة', sTotal: '{n} إجمالًا',
+      offline: 'تعذّر الاتصال بالخادم الآن. الرموز التي تضيفها تُحفظ على هذا الجهاز مؤقتًا.',
       nextTitle: 'رمزك التالي', copyNext: 'انسخ واعرض التالي', skip: 'تخطَّ', lastCopied: 'آخر نسخ:', report: 'لم يعمل؟',
-      emptyNext: 'استخدمت كل الرموز المتاحة الآن. تصل رموز جديدة طوال اليوم — عُد لاحقًا وشارك رمزك بالأسفل.',
-      emptyPool: 'لا توجد رموز بعد. كن أول من يشارك — الصق رسالة نسك في «شارك رمزك».',
-      meta: 'نسخت {c} · المتبقي {r}', copiedTimes: 'نُسخ {n}×', fresh: 'جديد',
-      giveTitle: 'شارك رمزك', giveHint: 'الصق رسالة تطبيق نسك كاملة — وسنستخرج الرمز.', giveLabel: 'رسالة المشاركة من نسك',
+      emptyNext: 'أخذت كل الرموز المتاحة الآن. تصل رموز جديدة طوال اليوم، فعُد بعد قليل وشارك رمزك بالأسفل.',
+      emptyPool: 'لا توجد رموز بعد. كن أول من يشارك والصق رسالة نسك في «شارك رمزك».',
+      meta: 'أخذت {c} · المتبقي {r}', copiedTimes: 'نُسخ {n} مرة', fresh: 'جديد',
+      giveTitle: 'شارك رمزك', giveHint: 'الصق رسالة تطبيق نسك كاملة، وسنستخرج الرمز منها.', giveLabel: 'رسالة المشاركة من نسك',
       givePh: 'الصق رسالة نسك هنا…', paste: 'لصق', addNone: 'أضف الرمز', addN: 'أضف {n} رمز', addNs: 'أضف {n} رموز',
-      found: 'وُجد {n}', notFound: 'لم نجد رمزًا. الرمز يبدأ بـ NG- ثم 8 أحرف أو أرقام.', added: 'شكرًا! أُضيف {n} — يمكن للآخرين استخدامه الآن.',
-      already: 'موجود في القائمة بالفعل — شكرًا!', pasteFail: 'المتصفح منع اللصق. اضغط مطولًا على المربع واختر لصق.', sending: 'جارٍ الإضافة…', addFail: 'تعذّرت الإضافة الآن. حاول بعد دقيقة.',
-      howTitle: 'كيف أحصل على رمزي؟', how1: 'افتح تطبيق نسك.', how2: 'اذهب إلى تحدي العمرة.', how3: 'اضغط زر المشاركة.', how4: 'اختر نسخ، ثم عُد والصقه هنا.',
-      st1: 'انسخ رمزًا', st1d: 'استخدم الزر الكبير أو اضغط أي رمز بالأسفل.', st2: 'الصقه في نسك', st2d: 'تحدي العمرة ← أدخل الرمز ← الصق.', st3: 'شارك رمزك', st3d: 'الصق رسالتك ليدعمك الآخرون.',
-      listTitle: 'كل الرموز', searchLabel: 'ابحث عن رمز', searchPh: 'ابحث عن رمز…', tRemaining: 'المتبقي', tNew: 'جديد', tUsed: 'المستخدم', tMine: 'رموزي', tAll: 'الكل',
+      found: 'وُجد {n}', notFound: 'لم نجد رمزًا. رمز نسك يشبه NG-vW7So71R', added: 'شكرًا! أُضيف {n}، ويمكن للآخرين استخدامه الآن.',
+      already: 'هذا الرمز موجود في القائمة. شكرًا!', pasteFail: 'المتصفح منع اللصق. اضغط مطولًا على المربع واختر لصق.', sending: 'جارٍ الإضافة…',
+      addFail: 'تعذّرت الإضافة الآن. حاول بعد دقيقة.', tooMany: 'أضفت رموزًا كثيرة اليوم. يمكنك الإضافة غدًا.',
+      howTitle: 'أين أجد رمزي؟', how1: 'افتح تطبيق نسك.', how2: 'اذهب إلى تحدي العمرة.', how3: 'اضغط زر المشاركة.', how4: 'اختر نسخ، ثم عُد والصقه هنا.',
+      st1: 'انسخ رمزًا', st1d: 'اضغط الزر الكبير أو أي رمز في القائمة.', st2: 'الصقه في نسك', st2d: 'افتح تحدي العمرة والصق الرمز في خانة الرمز.',
+      st3: 'شارك رمزك أيضًا', st3d: 'الصق رسالتك ليدعمك الآخرون.',
+      listTitle: 'كل الرموز', searchLabel: 'ابحث عن رمز', searchPh: 'ابحث عن رمز…', tRemaining: 'المتبقي', tNew: 'جديد', tUsed: 'أخذته', tMine: 'رموزي', tAll: 'الكل',
       shown: 'عرض {s} من {t}', none: 'لا شيء هنا بعد.', more: 'عرض المزيد', bNew: 'جديد', bMine: 'لك',
-      copied: 'تم النسخ — الصقه في نسك', copiedMine: 'نُسخ رمزك — شاركه أينما شئت', copyFail: 'تعذّر النسخ. اضغط مطولًا على الرمز لنسخه.',
-      reported: 'شكرًا — لن نعرض هذا الرمز مجددًا.',
-      keyTitle: 'مفتاحك', keyHelp: 'هذا المفتاح يتذكر الرموز التي استخدمتها. انسخه واحفظه في مكان آمن. أدخله على جهاز آخر لنقل سجلك.',
-      copyKey: 'انسخ مفتاحي', useKey: 'استخدم مفتاحًا من جهاز آخر', apply: 'استخدم هذا المفتاح', keyBad: 'المفتاح غير صحيح. يبدأ بـ NK- ثم 4 مجموعات من 5.', keyOk: 'تم تبديل المفتاح. جارٍ تحميل السجل.', keyCopied: 'نُسخ المفتاح — احتفظ به بأمان',
-      foot1: 'أداة مجتمعية غير رسمية. لا ترتبط بتطبيق نسك ولا بوزارة الحج والعمرة.', foot2: 'الرموز يشاركها الزوار. شارك رمز الإحالة الخاص بك فقط.',
+      copied: 'تم النسخ. الصقه الآن في نسك.', copiedMine: 'نُسخ رمزك. أرسله لأصدقائك.', copyFail: 'تعذّر النسخ. اضغط مطولًا على الرمز لنسخه.',
+      reported: 'شكرًا لإخبارنا. لن نعرض لك هذا الرمز مجددًا.',
+      keyTitle: 'مفتاحك', keyHelp: 'هذا المفتاح يتذكر الرموز التي أخذتها. انسخه واحفظه في مكان آمن، ثم أدخله على جهاز آخر لنقل سجلك.',
+      copyKey: 'انسخ مفتاحي', useKey: 'لديك مفتاح من جهاز آخر؟', apply: 'استخدم هذا المفتاح',
+      keyBad: 'المفتاح غير صحيح. يبدأ بـ NK- ثم 4 مجموعات من 5.', keyOk: 'تم تبديل المفتاح، جارٍ تحميل سجلك.', keyCopied: 'نُسخ المفتاح. احتفظ به في مكان آمن.',
+      foot1: 'أداة مجتمعية مجانية. لا ترتبط بتطبيق نسك ولا بوزارة الحج والعمرة.', foot2: 'الزوار يشاركون هذه الرموز. شارك رمز الإحالة الخاص بك فقط.',
+      imgAlt: 'الكعبة المشرفة في مكة',
     },
   };
   const LOCALE = { en: 'en-US', bn: 'bn-BD', ar: 'ar-EG' };
-  const SAMPLE = 'Your chance to win one of 100 free Umrah for two in the Nusuk challenge 🕋!\n…\nhttps://services.nusuk.sa/app?p=27&id=';
+  const SAMPLE = 'Your chance to win one of 100 free Umrah for two in the Nusuk challenge 🕋!\n...\nhttps://services.nusuk.sa/app?p=27&id=';
 
   /* ---------- state ---------- */
-  const guessLang = () => { const l = (navigator.language || 'en').slice(0, 2); return T[l] ? l : 'en'; };
+  const guessLang = () => 'bn'; // Bangla first; the choice is remembered
   const S = {
     lang: T[store.get('lang')] ? store.get('lang') : guessLang(),
     key: store.get('key', null),
@@ -277,7 +291,7 @@
     let added = codes;
     if (API) {
       try { const r = await api('/api/codes', { text: codes.join(' ') }); added = r.added || []; S.online = true; }
-      catch { setMsg(t('addFail'), 'bad'); labelAdd(); return; }
+      catch (e) { setMsg(t(e.status === 429 ? 'tooMany' : 'addFail'), 'bad'); labelAdd(); return; }
     }
     const now = Date.now();
     for (const c of codes) { S.mine.add(c); if (!S.pool.has(c)) S.pool.set(c, { c, a: now, n: 0 }); }
@@ -310,6 +324,8 @@
     for (const el of document.querySelectorAll('[data-t]')) el.textContent = t(el.dataset.t);
     for (const el of document.querySelectorAll('[data-tp]')) el.placeholder = t(el.dataset.tp);
     for (const el of document.querySelectorAll('[data-ta]')) el.setAttribute('aria-label', t(el.dataset.ta));
+    for (const el of document.querySelectorAll('[data-talt]')) el.alt = t(el.dataset.talt);
+    for (const el of document.querySelectorAll('[data-num]')) el.textContent = num(+el.dataset.num);
     for (const b of document.querySelectorAll('[data-lang]')) b.setAttribute('aria-pressed', String(b.dataset.lang === S.lang));
     const sample = $('sample'); sample.textContent = SAMPLE;
     const mk = document.createElement('mark'); mk.textContent = 'NG-vW7So71R'; sample.appendChild(mk);
@@ -493,8 +509,8 @@
     if (!S.current || !S.pool.has(S.current) || !available(S.pool.get(S.current))) pickNext();
     renderAll();
     flush();
-    setInterval(() => { if (document.visibilityState === 'visible') refresh(); }, 30000);
-    setInterval(() => { if (document.visibilityState === 'visible') loadMe(); }, 120000);
+    setInterval(() => { if (document.visibilityState === 'visible') refresh(); }, 60000);
+    setInterval(() => { if (document.visibilityState === 'visible') loadMe(); }, 300000);
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
