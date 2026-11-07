@@ -55,6 +55,10 @@
       ctaTitle: 'আপনার কোডটাও দিন', ctaSub: 'অন্যরা আপনার কোড ব্যবহার করলে আপনার কী বাড়তে থাকবে',
       sheetTitle: 'আপনার কোডটাও দিন', sheetMsg: 'যত বেশি মানুষ কোডটা ব্যবহার করবে, নুসুকে আপনার কী তত বাড়তে থাকবে। শুধু অ্যাপের শেয়ার মেসেজটা এখানে পেস্ট করুন।',
       later: 'পরে দেব', plusOne: '+১', close: 'বন্ধ করুন',
+      navShare: 'শেয়ার', shareTitle: 'সুযোগটা প্রিয়জনদেরও দিন', shareSub: 'আপনার একটা শেয়ারে হয়তো কারও উমরাহর পথ খুলে যাবে। ভালো কাজের পথ দেখানোও সওয়াবের কাজ।',
+      shareNow: 'শেয়ার করুন', copyMsg: 'মেসেজ কপি করুন', igHint: 'ইনস্টাগ্রামে পোস্ট করতে মেসেজটা কপি করে নিন।', msgCopied: 'মেসেজ কপি হয়েছে। এখন যেকোনো জায়গায় পেস্ট করুন।',
+      shareMsg: 'উমরাহ করার ইচ্ছাটা আমাদের অনেকের মনেই বহু বছর ধরে আছে। নুসুক অ্যাপের উমরাহ চ্যালেঞ্জে এখন দুইজনের জন্য ১০০টা ফ্রি উমরাহ জেতার সুযোগ আছে। 🕋\n\nএই সাইটে এক ট্যাপেই অন্যদের রেফারেল কোড পাবেন। নিজের কোডটা দিলে অন্যরাও আপনাকে সাপোর্ট করতে পারবে। সাইন-আপ লাগে না, পুরোপুরি ফ্রি।\n\nকে জানে, হয়তো এবার আল্লাহর ঘরের ডাক আপনারই আসবে। ইনশাআল্লাহ।',
+      shareShort: 'নুসুক উমরাহ চ্যালেঞ্জে দুইজনের জন্য ১০০টা ফ্রি উমরাহ জেতার সুযোগ। এক ট্যাপে রেফারেল কোড নিন, নিজেরটাও দিন। 🕋 ইনশাআল্লাহ।',
       giveSub: 'নুসুক অ্যাপ থেকে কপি করা পুরো মেসেজটাই এখানে পেস্ট করুন। কোডটা আমরা নিজেরাই খুঁজে নেব।',
       givePh: 'নুসুকের মেসেজটা এখানে পেস্ট করুন…', paste: 'পেস্ট করুন', addNone: 'কোড যোগ করুন', addN: '{n}টা কোড যোগ করুন',
       found: '{n}টা কোড পাওয়া গেছে', notFound: 'এখানে কোনো কোড পাইনি। নুসুকের কোড দেখতে এমন: NG-vW7So71R',
@@ -92,6 +96,10 @@
       ctaTitle: 'Share your code too', ctaSub: 'Every time someone uses it, your keys go up',
       sheetTitle: 'Share your code too', sheetMsg: "The more people use your code, the more keys you collect in Nusuk. Just paste the app's share message here.",
       later: 'Maybe later', plusOne: '+1', close: 'Close',
+      navShare: 'Share', shareTitle: 'Pass the chance on to your loved ones', shareSub: 'One share might open the way to Umrah for someone. Showing someone the way to good is a good deed too.',
+      shareNow: 'Share', copyMsg: 'Copy message', igHint: 'For Instagram, copy the message and paste it in your post.', msgCopied: 'Message copied. Paste it anywhere.',
+      shareMsg: "So many of us have wanted to perform Umrah for years. Right now the Nusuk app's Umrah challenge is giving away 100 free Umrah trips for two. 🕋\n\nOn this site you can grab someone's referral code in one tap, and share yours so others can support you. No sign-up, and it's free.\n\nWho knows, maybe this time the call to Allah's House is yours. In sha Allah.",
+      shareShort: "The Nusuk Umrah challenge is giving away 100 free Umrah trips for two. Grab a referral code in one tap and share yours. 🕋 In sha Allah.",
       giveSub: "Paste the whole message from the Nusuk app. We'll find the code in it.",
       givePh: 'Paste the Nusuk message here…', paste: 'Paste', addNone: 'Add code', addN: 'Add {n} code(s)',
       found: 'Found {n}', notFound: 'No code found. A Nusuk code looks like NG-vW7So71R.',
@@ -129,6 +137,10 @@
       ctaTitle: 'شارك رمزك أيضًا', ctaSub: 'كلما استخدمه أحد زادت مفاتيحك',
       sheetTitle: 'شارك رمزك أيضًا', sheetMsg: 'كلما استخدم الناس رمزك زادت مفاتيحك في نسك. فقط الصق رسالة المشاركة من التطبيق هنا.',
       later: 'لاحقًا', plusOne: '+١', close: 'إغلاق',
+      navShare: 'مشاركة', shareTitle: 'شارك الفرصة مع أحبابك', shareSub: 'مشاركة واحدة قد تفتح لأحدهم طريق العمرة. والدال على الخير كفاعله.',
+      shareNow: 'مشاركة', copyMsg: 'نسخ الرسالة', igHint: 'لإنستغرام انسخ الرسالة والصقها في منشورك.', msgCopied: 'نُسخت الرسالة. الصقها أينما شئت.',
+      shareMsg: 'العمرة أمنية يحملها كثير منا منذ سنين. تحدي العمرة في تطبيق نسك يقدّم الآن 100 عمرة مجانية لشخصين. 🕋\n\nفي هذا الموقع تأخذ رمز إحالة بضغطة واحدة، وتشارك رمزك ليدعمك غيرك. بلا تسجيل ومجانًا.\n\nمن يدري، لعل الدعوة إلى بيت الله تكون لك هذه المرة. إن شاء الله.',
+      shareShort: 'تحدي العمرة في نسك يقدّم 100 عمرة مجانية لشخصين. خذ رمز إحالة بضغطة وشارك رمزك. 🕋 إن شاء الله.',
       giveSub: 'الصق رسالة تطبيق نسك كاملة، وسنستخرج الرمز منها.',
       givePh: 'الصق رسالة نسك هنا…', paste: 'لصق', addNone: 'أضف الرمز', addN: 'أضف {n}',
       found: 'وُجد {n}', notFound: 'لم نجد رمزًا. رمز نسك يشبه NG-vW7So71R',
@@ -471,6 +483,24 @@
     renderHero0(); renderStats(); renderGrid(); if (S.view === 'mine') renderMine();
   }
 
+  /* ---------- share: the phone's own share menu, or direct links ---------- */
+  const SHARE_URL = 'https://nusukey.pages.dev/';
+  function openShare() {
+    const msg = t('shareMsg'); const e = encodeURIComponent;
+    $('shareMsg').textContent = msg + '\n\n' + SHARE_URL;
+    $('chWa').href = 'https://wa.me/?text=' + e(msg + '\n\n' + SHARE_URL);
+    $('chFb').href = 'https://www.facebook.com/sharer/sharer.php?u=' + e(SHARE_URL);
+    $('chX').href = 'https://twitter.com/intent/tweet?text=' + e(t('shareShort')) + '&url=' + e(SHARE_URL);
+    $('chTg').href = 'https://t.me/share/url?url=' + e(SHARE_URL) + '&text=' + e(msg);
+    $('chMs').href = 'fb-messenger://share/?link=' + e(SHARE_URL); $('chMs').hidden = !MOBILE;
+    $('shareNow').hidden = !navigator.share;
+    const d = $('shareSheet'); if (!d.open) { if (d.showModal) d.showModal(); else d.setAttribute('open', ''); }
+  }
+  function closeShare() { const d = $('shareSheet'); if (d.open) { if (d.close) d.close(); else d.removeAttribute('open'); } }
+  async function nativeShare() {
+    try { await navigator.share({ title: 'NusukKey', text: t('shareMsg'), url: SHARE_URL }); closeShare(); }
+    catch (err) { if (!err || err.name !== 'AbortError') toast(t('copyFail')); }
+  }
   const sheet = () => $('giveSheet');
   function openGive() {
     const d = sheet(); if (d.open) return;
@@ -541,6 +571,11 @@
     window.addEventListener('pagehide', beacon);
     window.addEventListener('pageshow', (e) => { if (e.persisted) { $('redeemBtn').classList.remove('go'); refresh(); backFromApp(); } });
     $('giveCta').addEventListener('click', openGive);
+    $('shareBtn').addEventListener('click', openShare);
+    $('shareX').addEventListener('click', closeShare);
+    $('shareNow').addEventListener('click', nativeShare);
+    $('shareSheet').addEventListener('click', (e) => { if (e.target === $('shareSheet')) closeShare(); });
+    $('chCopy').addEventListener('click', async () => { toast((await copyText(t('shareMsg') + '\n\n' + SHARE_URL)) ? t('msgCopied') : t('copyFail')); });
     $('sheetX').addEventListener('click', closeGive);
     $('sheetLater').addEventListener('click', closeGive);
     sheet().addEventListener('click', (e) => { if (e.target === sheet()) closeGive(); }); // tap outside
