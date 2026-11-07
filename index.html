@@ -143,6 +143,19 @@ details.how summary::-webkit-details-marker{display:none}
 .pic-btn{margin-top:10px;width:100%;min-height:52px;border-radius:14px;background:linear-gradient(135deg,#FFF1D6,#FCE3B4);color:var(--brown);font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:var(--sh)}
 .pic-btn svg{width:22px;height:22px}
 .pic-hint{margin:6px 4px 0;font-size:12.5px;color:var(--muted);text-align:center}
+.red-link{display:inline-flex;align-items:center;gap:6px;margin-top:4px;min-height:40px;padding:0 12px;border-radius:999px;font-size:14px;font-weight:600;color:#B54708}
+.red-link svg{width:17px;height:17px}
+.why{background:#FFF4E5;border-radius:18px;padding:14px 16px;margin-bottom:12px}
+.why b{display:block;color:#93370D;margin-bottom:4px}
+.why p{margin:0;font-size:14.5px;line-height:1.6;color:#4A2B0B}
+.red-x{display:inline-block;color:#C4320A;font-weight:700}
+.fix-tip{font-size:13px;color:var(--muted);margin:10px 4px 0}
+.ki.warn{color:#C4320A}
+.get-app{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;margin-top:10px}
+.get-app>span{font-size:14px;color:var(--muted)}
+.store{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:12px;background:#fff;border:1px solid var(--line);font-weight:700;font-size:14px;color:var(--ink);box-shadow:var(--sh)}
+.store svg{width:20px;height:20px}
+.ios-note{flex-basis:100%;margin:2px 8px 0;font-size:12.5px;color:var(--muted);text-align:center}
 .minor{display:flex;justify-content:center;gap:2px;margin-top:2px;flex-wrap:wrap}
 .minor button{min-height:44px;padding:0 14px;border-radius:12px;font-size:15px;font-weight:600;color:var(--body)}
 .minor button:active{background:var(--bg)}
@@ -303,6 +316,8 @@ nav.tabs .fab i svg{width:26px;height:26px}
         <button class="btn-redeem" id="copyBtn" type="button" hidden><svg class="kaaba" aria-hidden="true"><use href="#kaaba"/></svg><span data-t="copyMain">কপি করুন</span><kbd>Space</kbd></button>
         <p class="hint" id="hint"></p>
         <p class="fresh-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.7-4.4L4 8"/><path d="M4 3v5h5"/><path d="M4 13a8 8 0 0 0 14.7 4.4L20 16"/><path d="M20 21v-5h-5"/></svg><span data-t="freshNote">প্রতিবার রিডিম বা কপি করলে নতুন কোড পাবেন। আগের কোড আর কখনো আপনার কাছে আসবে না।</span></p>
+        <div class="get-app" id="getApp"><span data-t="noApp">নুসুক অ্যাপ নেই?</span><a class="store" data-store="android" href="https://play.google.com/store/apps/details?id=com.moh.nusukapp" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.8l10.4 9.2L4 21.2c-.4-.2-.6-.6-.6-1.1V3.9c0-.5.2-.9.6-1.1z" fill="#34A853"/><path d="M14.4 12l3.2 2.9-11.8 6.8L14.4 12z" fill="#EA4335"/><path d="M14.4 12L5.8 2.3l11.8 6.8L14.4 12z" fill="#4285F4"/><path d="M17.6 9.1l3.1 1.8c.8.5.8 1.7 0 2.2l-3.1 1.8-3.2-2.9 3.2-2.9z" fill="#FBBC04"/></svg><span data-t="getPlay">Google Play থেকে নিন</span></a><a class="store" data-store="ios" href="https://apps.apple.com/sa/app/id6469515422" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#111" d="M16.4 12.6c0-2.4 2-3.5 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8c1.3 0 2.1-1.2 2.9-2.4.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.4-.9-2.4-4.1zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg><span data-t="getIos">App Store থেকে নিন</span></a><p class="ios-note" data-store="ios" data-t="iosNote">বাংলাদেশের অ্যাপ স্টোরে নুসুক এখনো পাওয়া যায় না। লিংকটা না খুললে অন্য দেশের অ্যাপল আইডি দিয়ে নিতে হবে।</p></div>
+        <button class="red-link" id="redHelpBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><span data-t="redQ">কোড লাল দেখাচ্ছে?</span></button>
         <div class="minor">
           <button type="button" id="copyOnlyBtn" data-t="copyOnly" hidden>শুধু কপি</button>
           <button type="button" id="skipBtn" data-t="skip">অন্যটা দেখুন</button>
@@ -347,6 +362,10 @@ nav.tabs .fab i svg{width:26px;height:26px}
       <h3 data-t="h1">কোড নিন</h3><p data-t="h1d"></p>
       <h3 data-t="h2">কোড দিন</h3><p data-t="h2d"></p>
       <h3 data-t="h3">কাজ না করলে জানান</h3><p data-t="h3d"></p>
+      <h3 data-t="redQ">কোড লাল দেখাচ্ছে?</h3><p data-t="redHelpShort"></p>
+      <button class="btn-line" id="redHelpBtn2" type="button" data-t="redHelpOpen">কী করবেন দেখুন</button>
+      <h3 data-t="appTitle">নুসুক অ্যাপ ডাউনলোড করুন</h3><p data-t="appWhy">কোড রিডিম করতে ফোনে নুসুক অ্যাপ থাকতে হবে। এটা হজ ও উমরাহ মন্ত্রণালয়ের অফিসিয়াল অ্যাপ।</p>
+      <div class="get-app" style="justify-content:flex-start;margin-bottom:6px"><a class="store" data-store="android" href="https://play.google.com/store/apps/details?id=com.moh.nusukapp" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.8l10.4 9.2L4 21.2c-.4-.2-.6-.6-.6-1.1V3.9c0-.5.2-.9.6-1.1z" fill="#34A853"/><path d="M14.4 12l3.2 2.9-11.8 6.8L14.4 12z" fill="#EA4335"/><path d="M14.4 12L5.8 2.3l11.8 6.8L14.4 12z" fill="#4285F4"/><path d="M17.6 9.1l3.1 1.8c.8.5.8 1.7 0 2.2l-3.1 1.8-3.2-2.9 3.2-2.9z" fill="#FBBC04"/></svg><span data-t="getPlay">Google Play থেকে নিন</span></a><a class="store" data-store="ios" href="https://apps.apple.com/sa/app/id6469515422" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#111" d="M16.4 12.6c0-2.4 2-3.5 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8c1.3 0 2.1-1.2 2.9-2.4.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.4-.9-2.4-4.1zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg><span data-t="getIos">App Store থেকে নিন</span></a><p class="ios-note" data-store="ios" data-t="iosNote" style="text-align:start;margin-inline-start:0">বাংলাদেশের অ্যাপ স্টোরে নুসুক এখনো পাওয়া যায় না। লিংকটা না খুললে অন্য দেশের অ্যাপল আইডি দিয়ে নিতে হবে।</p></div>
       <h3 data-t="langTitle">ভাষা</h3>
       <div class="langs" role="group" aria-label="Language">
         <button type="button" data-lang="bn" aria-pressed="true" lang="bn">বাংলা</button>
@@ -421,6 +440,32 @@ nav.tabs .fab i svg{width:26px;height:26px}
         <a id="fbGo" target="_blank" rel="noopener noreferrer"></a>
       </div>
       <p class="ig-hint" data-t="igHint">ফেসবুক আর ইনস্টাগ্রামে লেখা নিজে থেকে বসে না। তাই চাপ দিলেই মেসেজটা কপি হয়ে যাবে, পোস্টের ঘরে শুধু পেস্ট করুন।</p>
+    </div>
+  </dialog>
+
+  <!-- RED CODE HELP (bottom sheet) -->
+  <dialog class="sheet" id="redSheet" aria-labelledby="redTitle">
+    <div class="sheet-in">
+      <div class="grab" aria-hidden="true"></div>
+      <button class="sheet-x" id="redX" type="button" aria-label="close" data-ta="close">×</button>
+      <div class="sheet-hero">
+        <span class="ki warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg></span>
+        <h2 id="redTitle" data-t="redQ">কোড লাল দেখাচ্ছে?</h2>
+      </div>
+      <div class="why"><b data-t="redWhyT">কেন এমন হয়</b><p data-t="redWhy">রেফারেল লিংকে ঢোকার পর কোনো কোড একবার লাল (Invalid) দেখালে নুসুক অ্যাপ সেই কোডটা মনে রেখে দেয়। তাই পরে নতুন লিংকে ঢুকলেও পুরোনো লাল কোডটাই বসে থাকে, আর কোনো কোডই কাজ করে না।</p></div>
+      <div class="sec" style="margin-top:4px"><h2 data-t="redFixT">যেভাবে ঠিক করবেন</h2></div>
+      <div class="card give">
+        <ol class="steps">
+          <li><div><b data-t="red1">এখান থেকে একটা নতুন কোড কপি করুন</b><span data-t="red1d">নিচের বাটনে চাপ দিলেই নতুন কোড কপি হয়ে যাবে।</span></div></li>
+          <li><div><b data-t="red2">পুরোনো লাল কোডটা মুছে ফেলুন</b><span data-t="red2d">নুসুক অ্যাপে কোডের ঘরে গিয়ে ব্যাকস্পেস চেপে পুরো কোডটা মুছুন।</span></div></li>
+          <li><div><b data-t="red3">নতুন কোডটা পেস্ট করুন</b><span data-t="red3d">নিজে হাতে পেস্ট করলে অ্যাপ কোডটা সাথে সাথে নিয়ে নেয়।</span></div></li>
+        </ol>
+      </div>
+      <p class="fix-tip" data-t="redTip">তারপরও না হলে নুসুক অ্যাপটা পুরো বন্ধ করুন, মানে রিসেন্ট অ্যাপের তালিকা থেকে সরিয়ে দিন, তারপর আবার খুলুন।</p>
+      <div class="row" style="margin-top:14px">
+        <button class="btn-green" id="redCopy" type="button" data-t="redCopy">নতুন কোড কপি করুন</button>
+        <button class="btn-line" id="redOk" type="button" data-t="gotIt">বুঝেছি</button>
+      </div>
     </div>
   </dialog>
 
