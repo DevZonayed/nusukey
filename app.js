@@ -48,7 +48,7 @@
       emptyNext: 'এখনকার সব কোড আপনি নিয়ে ফেলেছেন। সারাদিনই নতুন কোড আসে, একটু পরে আবার দেখুন।',
       emptyPool: 'এখনো কেউ কোড দেয়নি। প্রথম কোডটা আপনিই দিন।', loadingFirst: 'কোড আনা হচ্ছে…',
       stCopies: 'আজ কপি', stAdded: 'আজ নতুন', stActive: 'এখন সক্রিয়',
-      moreTitle: 'আরও কোড', moreCount: '{n}টা লোড হয়েছে', loading: 'আরও কোড আনা হচ্ছে…', endList: 'এখন পর্যন্ত এই কয়টাই। নতুন কোড এলে এখানেই দেখাবে।',
+      moreTitle: 'আরও কোড', totalCodes: 'মোট {n}টা কোড', loading: 'আরও কোড আনা হচ্ছে…', endList: 'এখন পর্যন্ত এই কয়টাই। নতুন কোড এলে এখানেই দেখাবে।',
       tapRedeem: 'রিডিম', tapCopy: 'কপি',
       navTake: 'কোড নিন', navGive: 'কোড দিন', navMine: 'আমার', navHelp: 'সাহায্য',
       eyebrowGive: 'অন্যকে সাপোর্ট করুন', giveTitle: 'আপনার কোড দিন',
@@ -82,7 +82,7 @@
       emptyNext: "You've taken every code for now. New ones come in all day, so check back a bit later.",
       emptyPool: 'No codes yet. Be the first to share yours.', loadingFirst: 'Loading codes…',
       stCopies: 'copied today', stAdded: 'new today', stActive: 'active now',
-      moreTitle: 'More codes', moreCount: '{n} loaded', loading: 'Loading more codes…', endList: "That's all for now. New codes show up here as they come in.",
+      moreTitle: 'More codes', totalCodes: '{n} codes in total', loading: 'Loading more codes…', endList: "That's all for now. New codes show up here as they come in.",
       tapRedeem: 'Redeem', tapCopy: 'Copy',
       navTake: 'Get code', navGive: 'Give code', navMine: 'Mine', navHelp: 'Help',
       eyebrowGive: 'Support others', giveTitle: 'Share your code',
@@ -116,7 +116,7 @@
       emptyNext: 'أخذت كل الرموز المتاحة الآن. تصل رموز جديدة طوال اليوم، فعُد بعد قليل.',
       emptyPool: 'لا توجد رموز بعد. كن أول من يشارك رمزه.', loadingFirst: 'جارٍ تحميل الرموز…',
       stCopies: 'نُسخ اليوم', stAdded: 'جديد اليوم', stActive: 'نشط الآن',
-      moreTitle: 'رموز أخرى', moreCount: 'تم تحميل {n}', loading: 'جارٍ تحميل المزيد…', endList: 'هذا كل شيء الآن. تظهر الرموز الجديدة هنا فور وصولها.',
+      moreTitle: 'رموز أخرى', totalCodes: 'إجمالي {n} رمز', loading: 'جارٍ تحميل المزيد…', endList: 'هذا كل شيء الآن. تظهر الرموز الجديدة هنا فور وصولها.',
       tapRedeem: 'استخدم', tapCopy: 'نسخ',
       navTake: 'خذ رمزًا', navGive: 'شارك رمزك', navMine: 'رموزي', navHelp: 'مساعدة',
       eyebrowGive: 'ادعم غيرك', giveTitle: 'شارك رمزك',
@@ -425,7 +425,7 @@
       frag.appendChild(el);
     }
     grid.textContent = ''; grid.appendChild(frag);
-    $('moreCount').textContent = list.length ? t('moreCount', { n: num(list.length) }) : '';
+    $('moreCount').textContent = S.stats && S.stats.total ? t('totalCodes', { n: num(S.stats.total) }) : '';
     document.querySelector('.sec').hidden = !list.length;
     renderMoreState();
   }

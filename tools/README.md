@@ -7,3 +7,7 @@ One-off import of codes from a public archive straight into D1 (bypasses the Wor
 3. Load: `cd worker && npx wrangler d1 execute nusukey --remote --yes --file ../import.sql` (existing codes are skipped, so re-running only adds new ones).
 
 Each imported code costs ~4 D1 row writes (row + indexes); the free plan has 100,000 writes per day.
+
+## muse.ai archive (Meta AI app)
+
+The app keeps its whole list in `window.ALL` inside its page. `node tools/pull_muse.mjs` (Playwright + Chrome) opens the share link and saves that array; then build SQL as above. 2026-11-07: 74,416 codes, 67,843 new; imported in batches because the free D1 plan allows 100,000 row writes a day (3 writes per imported code).
