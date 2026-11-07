@@ -11,7 +11,7 @@ const STATS_TTL = 30e3;
 const PAGE_TTL = 10 * 60e3;
 const MAX_BODY = 6000;
 const MAX_ADDS_PER_IP_DAY = 300; // generous: many mobile users in Bangladesh share one carrier IP
-const MAX_EVENTS = 30;
+const MAX_EVENTS = 15; // Workers Free allows ~50 D1 queries per request; 15 events stay well under
 const HIDE = 3; // reports from 3 different people hide a code (pinned codes never hide)
 
 const SEC = {
@@ -69,6 +69,7 @@ const bumpAll = (env, metric, n = 1) =>
   env.DB.prepare("INSERT INTO daily (day, metric, n) VALUES ('all', ?1, ?2) ON CONFLICT(day, metric) DO UPDATE SET n = n + ?2").bind(metric, n);
 const invalidate = () => { mem.ver = -1; mem.p0At = 0; mem.pages.clear(); };
 const row = (r) => [r.sn, r.code.slice(3), r.a];
+const A = 'CASE WHEN imported = 1 THEN 0 ELSE added_at / 1000 END AS a'; // archive imports carry no fake 'added' time
 const insertCode = (env, code, t, owner) =>
   env.DB.prepare('INSERT OR IGNORE INTO codes (code, sn, added_at, owner_hash) VALUES (?1, (SELECT COALESCE(MAX(sn), 0) + 1 FROM codes), ?2, ?3) RETURNING sn, code').bind(code, t, owner);
 
@@ -91,8 +92,8 @@ async function page0(env) {
   const ver = (await env.DB.prepare("SELECT n FROM daily WHERE day = 'all' AND metric = 'ver'").first('n')) || 0;
   if (ver !== mem.ver || !mem.list) {
     const [pins, latest] = await env.DB.batch([
-      env.DB.prepare('SELECT sn, code, added_at / 1000 AS a FROM codes WHERE pinned > 0 ORDER BY pinned DESC LIMIT 50'),
-      env.DB.prepare(`SELECT sn, code, added_at / 1000 AS a FROM codes WHERE reports < ${HIDE} AND pinned = 0 ORDER BY sn DESC LIMIT ${PAGE}`),
+      env.DB.prepare(`SELECT sn, code, ${A} FROM codes WHERE pinned > 0 ORDER BY pinned DESC LIMIT 50`),
+      env.DB.prepare(`SELECT sn, code, ${A} FROM codes WHERE reports < ${HIDE} AND pinned = 0 ORDER BY sn DESC LIMIT ${PAGE}`),
     ]);
     mem.list = { pins: pins.results.map(row), c: latest.results.map(row) };
     mem.pages.clear();
@@ -117,7 +118,7 @@ async function pageBefore(env, before) {
   const t = now();
   const hit = mem.pages.get(before);
   if (hit && t - hit.at < PAGE_TTL) return hit.body;
-  const r = await env.DB.prepare(`SELECT sn, code, added_at / 1000 AS a FROM codes WHERE sn < ?1 AND reports < ${HIDE} AND pinned = 0 ORDER BY sn DESC LIMIT ${PAGE}`).bind(before).all();
+  const r = await env.DB.prepare(`SELECT sn, code, ${A} FROM codes WHERE sn < ?1 AND reports < ${HIDE} AND pinned = 0 ORDER BY sn DESC LIMIT ${PAGE}`).bind(before).all();
   const body = JSON.stringify({ c: r.results.map(row), more: r.results.length === PAGE });
   if (mem.pages.size > 300) mem.pages.clear();
   mem.pages.set(before, { body, at: t });
@@ -145,7 +146,8 @@ async function addCodes(env, kh, body) {
     await env.DB.batch([bumpDay(env, 'added', added.length), bumpAll(env, 'codes_total', added.length), bumpAll(env, 'ver')]);
     invalidate();
   }
-  return json({ added, existing });
+  // Duplicates are silent: new or already listed, the visitor just hears "your code is listed".
+  return json({ listed: added.concat(existing) });
 }
 
 async function events(env, kh, body) {
@@ -187,7 +189,7 @@ async function admin(env, body) {
     return r.results.map((x) => ({ sn: x.sn, code: x.code, pinnedAt: x.pinned, copies: x.copies }));
   };
   if (body.a === 'list') return json({ pins: await list() });
-  const codes = [...new Set(String(body.text || '').slice(0, MAX_BODY).match(CODE_G) || [])].slice(0, 50);
+  const codes = [...new Set(String(body.text || '').slice(0, MAX_BODY).match(CODE_G) || [])].slice(0, 10);
   if (!codes.length) return json({ error: 'no_code' }, 400);
   const t = now();
   if (body.a === 'pin') {

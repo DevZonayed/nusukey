@@ -1,7 +1,7 @@
 /* NusukKey service worker: the app shell lives on the phone, so a repeat visit opens instantly (even offline).
    Fonts are cache-first; the page, script and config are stale-while-revalidate (shown at once, refreshed in
    the background). API calls are not touched: the page keeps its own small copy of the newest codes. */
-const V = 'nk-v4';
+const V = 'nk-v5';
 const SHELL = ['./', 'index.html', 'app.js', 'config.js', 'favicon.svg', 'manifest.webmanifest',
   'fonts/inter.woff2', 'fonts/geist-mono.woff2', 'fonts/purno-regular.woff2', 'fonts/purno-bold.woff2'];
 

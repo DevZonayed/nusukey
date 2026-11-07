@@ -55,7 +55,7 @@
       giveSub: 'নুসুক অ্যাপ থেকে কপি করা পুরো মেসেজটাই এখানে পেস্ট করুন। কোডটা আমরা নিজেরাই খুঁজে নেব।',
       givePh: 'নুসুকের মেসেজটা এখানে পেস্ট করুন…', paste: 'পেস্ট করুন', addNone: 'কোড যোগ করুন', addN: '{n}টা কোড যোগ করুন',
       found: '{n}টা কোড পাওয়া গেছে', notFound: 'এখানে কোনো কোড পাইনি। নুসুকের কোড দেখতে এমন: NG-vW7So71R',
-      added: 'ধন্যবাদ! {n}টা কোড যোগ হয়েছে, এখন সবাই দেখতে পাবে।', already: 'এই কোডটা আগেই লিস্টে আছে। ধন্যবাদ!',
+      listed: 'ধন্যবাদ! আপনার কোডটা লিস্টে আছে, এখন সবাই দেখতে পাবে।', archived: 'কমিউনিটি আর্কাইভ থেকে',
       pasteFail: 'ব্রাউজার নিজে থেকে পেস্ট করতে দিচ্ছে না। বক্সে আঙুল চেপে ধরে Paste চাপুন।', sending: 'যোগ হচ্ছে…',
       addFail: 'এই মুহূর্তে যোগ করা গেল না। এক মিনিট পরে আবার চেষ্টা করুন।', tooMany: 'আজ এই নেটওয়ার্ক থেকে অনেক কোড এসেছে। কাল আবার দিন।',
       howTitle: 'নিজের কোড কোথায় পাবেন', how1: 'নুসুক অ্যাপ খুলুন', how1d: 'নিচের Play থেকে উমরাহ চ্যালেঞ্জে যান।',
@@ -89,7 +89,7 @@
       giveSub: "Paste the whole message from the Nusuk app. We'll find the code in it.",
       givePh: 'Paste the Nusuk message here…', paste: 'Paste', addNone: 'Add code', addN: 'Add {n} code(s)',
       found: 'Found {n}', notFound: 'No code found. A Nusuk code looks like NG-vW7So71R.',
-      added: 'Thanks! {n} added. Everyone can see it now.', already: "That code's already on the list. Thanks!",
+      listed: "Thanks! Your code is on the list. Everyone can see it now.", archived: 'from the community archive',
       pasteFail: "Your browser won't paste for us. Press and hold the box, then tap Paste.", sending: 'Adding…',
       addFail: "Couldn't add it right now. Try again in a minute.", tooMany: 'Lots of codes came from this network today. Try again tomorrow.',
       howTitle: 'Where to find your code', how1: 'Open the Nusuk app', how1d: 'Go to the Umrah challenge from Play.',
@@ -123,7 +123,7 @@
       giveSub: 'الصق رسالة تطبيق نسك كاملة، وسنستخرج الرمز منها.',
       givePh: 'الصق رسالة نسك هنا…', paste: 'لصق', addNone: 'أضف الرمز', addN: 'أضف {n}',
       found: 'وُجد {n}', notFound: 'لم نجد رمزًا. رمز نسك يشبه NG-vW7So71R',
-      added: 'شكرًا! أُضيف {n}، ويراه الجميع الآن.', already: 'هذا الرمز موجود في القائمة. شكرًا!',
+      listed: 'شكرًا! رمزك في القائمة الآن ويراه الجميع.', archived: 'من أرشيف المجتمع',
       pasteFail: 'المتصفح منع اللصق. اضغط مطولًا على المربع واختر لصق.', sending: 'جارٍ الإضافة…',
       addFail: 'تعذّرت الإضافة الآن. حاول بعد دقيقة.', tooMany: 'وصلت رموز كثيرة من هذه الشبكة اليوم. حاول غدًا.',
       howTitle: 'أين تجد رمزك', how1: 'افتح تطبيق نسك', how1d: 'ادخل تحدي العمرة من Play.',
@@ -244,11 +244,11 @@
     if (S.queue.length > 200) S.queue.splice(0, S.queue.length - 200);
     store.set('queue', S.queue);
     clearTimeout(flushTimer);
-    flushTimer = setTimeout(flush, S.queue.length >= 10 ? 0 : 6000);
+    flushTimer = setTimeout(flush, S.queue.length >= 15 ? 0 : 6000);
   }
   async function flush() {
     if (!API || !S.queue.length) return;
-    const batch = S.queue.slice(0, 30);
+    const batch = S.queue.slice(0, 15);
     try {
       const r = await fetch(API + '/api/events', { method: 'POST', body: JSON.stringify({ e: batch }), headers: { 'Content-Type': 'text/plain' }, keepalive: true });
       if (r.ok || (r.status >= 400 && r.status < 500 && r.status !== 429)) { S.queue.splice(0, batch.length); store.set('queue', S.queue); if (S.queue.length) flush(); }
@@ -256,7 +256,7 @@
   }
   function beacon() {
     if (!API || !S.queue.length || !navigator.sendBeacon) return;
-    const batch = S.queue.slice(0, 30);
+    const batch = S.queue.slice(0, 15);
     if (navigator.sendBeacon(API + '/api/events', new Blob([JSON.stringify({ e: batch })], { type: 'text/plain' }))) {
       S.queue.splice(0, batch.length); store.set('queue', S.queue);
     }
@@ -323,14 +323,14 @@
       const d = await r.json().catch(() => ({}));
       if (!r.ok) { setMsg(t(r.status === 429 ? 'tooMany' : 'addFail'), 'bad'); labelAdd(); return; }
       const nowSec = Date.now() / 1000;
-      for (const [sn, c] of (d.added || []).concat(d.existing || [])) {
+      for (const [sn, c] of d.listed || []) {
         if (!S.mine.some((x) => x[1] === c)) S.mine.unshift([sn, c]);
         if (!S.items.has(c)) S.items.set(c, { sn, c, a: nowSec * 1000, pin: 0 });
       }
       saveMine();
-      if (S.stats) { S.stats.addedToday += (d.added || []).length; S.stats.total += (d.added || []).length; }
+
       $('giveText').value = ''; found = []; $('found').textContent = ''; labelAdd();
-      setMsg((d.added || []).length ? t('added', { n: num(d.added.length) }) : t('already'), 'ok');
+      setMsg(t('listed'), 'ok');
       if (S.current && mineSet().has(S.current)) pickNext();
       renderAll(false);
     } catch { setMsg(t('addFail'), 'bad'); labelAdd(); }
@@ -345,6 +345,7 @@
   let toastTimer;
   function toast(s) { const el = $('toast'); el.textContent = s; el.classList.add('on'); clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('on'), 2400); }
   function ago(ms) {
+    if (!ms) return t('archived');
     const m = Math.max(0, Math.round((Date.now() - ms) / 60000));
     if (m < 2) return t('justNow');
     if (m < 60) return t('minsAgo', { n: num(m) });
@@ -386,7 +387,7 @@
     const pre = document.createElement('span'); pre.className = 'pre'; pre.textContent = 'NG-';
     code.append(pre, document.createTextNode(c));
     $('age').textContent = ago(x.a);
-    const tag = $('tag'); tag.hidden = !x.pin && Date.now() - x.a > 864e5;
+    const tag = $('tag'); tag.hidden = !x.pin && (!x.a || Date.now() - x.a > 864e5);
     tag.className = 'tag' + (x.pin ? ' pin' : ''); tag.textContent = x.pin ? t('pinned') : t('fresh');
     const rb = $('redeemBtn'); rb.href = LINK(c); rb.classList.remove('go');
     $('reportBtn').hidden = !S.last;
