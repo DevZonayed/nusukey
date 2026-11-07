@@ -8,6 +8,7 @@
   const LINK = (c) => 'https://services.nusuk.sa/app?p=27&id=NG-' + c;
   const UA = navigator.userAgent || '';
   const MOBILE = /Android|iPhone|iPad|iPod|Mobile/i.test(UA) || (navigator.maxTouchPoints > 1 && /Macintosh/.test(UA));
+  const OS = /Android/i.test(UA) ? 'android' : (/iPhone|iPad|iPod/i.test(UA) || (navigator.maxTouchPoints > 1 && /Macintosh/.test(UA))) ? 'ios' : 'desktop';
   const DOOR_COLORS = ['#00663A', '#2A5070', '#B08255', '#7A4F0A'];
   const $ = (id) => document.getElementById(id);
 
@@ -57,6 +58,11 @@
       later: 'পরে দেব', plusOne: '+১', close: 'বন্ধ করুন',
       navShare: 'শেয়ার', shareTitle: 'সুযোগটা প্রিয়জনদেরও দিন', shareSub: 'আপনার একটা শেয়ারে হয়তো কারও উমরাহর পথ খুলে যাবে। ভালো কাজের পথ দেখানোও সওয়াবের কাজ।',
       shareNow: 'শেয়ার করুন', copyMsg: 'মেসেজ কপি করুন', igHint: 'ফেসবুক আর ইনস্টাগ্রামে লেখা নিজে থেকে বসে না। তাই চাপ দিলেই মেসেজটা কপি হয়ে যাবে, পোস্টের ঘরে শুধু পেস্ট করুন।', pasteInFb: 'মেসেজ কপি হয়েছে। ফেসবুকে পোস্টের ঘরে চেপে ধরে পেস্ট করুন।', fbCopied: 'মেসেজ কপি হয়েছে', fbHow: 'ফেসবুক নিজে থেকে লেখা বসাতে দেয় না। ফেসবুক খুলে লেখার ঘরে চেপে ধরে পেস্ট করুন। কম্পিউটারে Ctrl+V চাপুন।', fbOpen: 'ফেসবুক খুলুন', msOpen: 'মেসেঞ্জার খুলুন',
+      redQ: 'কোড লাল দেখাচ্ছে?', redWhyT: 'কেন এমন হয়', redWhy: 'রেফারেল লিংকে ঢোকার পর কোনো কোড একবার লাল (Invalid) দেখালে নুসুক অ্যাপ সেই কোডটা মনে রেখে দেয়। তাই পরে নতুন লিংকে ঢুকলেও পুরোনো লাল কোডটাই বসে থাকে, আর কোনো কোডই কাজ করে না।',
+      redFixT: 'যেভাবে ঠিক করবেন', red1: 'এখান থেকে একটা নতুন কোড কপি করুন', red1d: 'নিচের বাটনে চাপ দিলেই নতুন কোড কপি হয়ে যাবে।', red2: 'পুরোনো লাল কোডটা মুছে ফেলুন', red2d: 'নুসুক অ্যাপে কোডের ঘরে গিয়ে ব্যাকস্পেস চেপে পুরো কোডটা মুছুন।', red3: 'নতুন কোডটা পেস্ট করুন', red3d: 'নিজে হাতে পেস্ট করলে অ্যাপ কোডটা সাথে সাথে নিয়ে নেয়।',
+      redTip: 'তারপরও না হলে নুসুক অ্যাপটা পুরো বন্ধ করুন, মানে রিসেন্ট অ্যাপের তালিকা থেকে সরিয়ে দিন, তারপর আবার খুলুন।', redCopy: 'নতুন কোড কপি করুন', gotIt: 'বুঝেছি', redCopied: 'নতুন কোড কপি হয়েছে। নুসুকে পুরোনো কোড মুছে এটা পেস্ট করুন।',
+      redHelpShort: 'নুসুক অ্যাপ আগের লাল কোডটা মনে রেখে দেয়। পুরোনো কোড মুছে নতুন কোড নিজে হাতে পেস্ট করলেই ঠিক হয়ে যায়।', redHelpOpen: 'কী করবেন দেখুন',
+      noApp: 'নুসুক অ্যাপ নেই?', getPlay: 'Google Play থেকে নিন', getIos: 'App Store থেকে নিন', iosNote: 'বাংলাদেশের অ্যাপ স্টোরে নুসুক এখনো পাওয়া যায় না। লিংকটা না খুললে অন্য দেশের অ্যাপল আইডি দিয়ে নিতে হবে।', appTitle: 'নুসুক অ্যাপ ডাউনলোড করুন', appWhy: 'কোড রিডিম করতে ফোনে নুসুক অ্যাপ থাকতে হবে। এটা হজ ও উমরাহ মন্ত্রণালয়ের অফিসিয়াল অ্যাপ।',
       freshNote: 'প্রতিবার রিডিম বা কপি করলে নতুন কোড পাবেন। আগের কোড আর কখনো আপনার কাছে আসবে না।',
       sharePic: 'ছবি হিসেবে শেয়ার করুন', picHint: 'মেসেজটা ছবির মধ্যেই লেখা থাকে, তাই ফেসবুক আর ইনস্টাগ্রামেও পুরোটা দেখা যাবে।', picSaved: 'ছবিটা ডাউনলোড হয়েছে। ফেসবুক বা ইনস্টাগ্রামে ছবি হিসেবে পোস্ট করুন।', msgCopied: 'মেসেজ কপি হয়েছে। এখন যেকোনো জায়গায় পেস্ট করুন।',
       shareMsg: 'উমরাহ করার ইচ্ছাটা আমাদের অনেকের মনেই বহু বছর ধরে আছে। নুসুক অ্যাপের উমরাহ চ্যালেঞ্জে এখন দুইজনের জন্য ১০০টা ফ্রি উমরাহ জেতার সুযোগ আছে। 🕋\n\nএই সাইটে এক ট্যাপেই অন্যদের রেফারেল কোড পাবেন। নিজের কোডটা দিলে অন্যরাও আপনাকে সাপোর্ট করতে পারবে। সাইন-আপ লাগে না, পুরোপুরি ফ্রি।\n\nকে জানে, হয়তো এবার আল্লাহর ঘরের ডাক আপনারই আসবে। ইনশাআল্লাহ।',
@@ -100,6 +106,11 @@
       later: 'Maybe later', plusOne: '+1', close: 'Close',
       navShare: 'Share', shareTitle: 'Pass the chance on to your loved ones', shareSub: 'One share might open the way to Umrah for someone. Showing someone the way to good is a good deed too.',
       shareNow: 'Share', copyMsg: 'Copy message', igHint: "Facebook and Instagram don't let sites fill in your post, so tapping copies the message for you. Just paste it in the post box.", pasteInFb: 'Message copied. Paste it in the Facebook post box.', fbCopied: 'Message copied', fbHow: "Facebook won't let sites fill in your post. Open Facebook, then press and hold the post box and paste (Ctrl+V on a computer).", fbOpen: 'Open Facebook', msOpen: 'Open Messenger',
+      redQ: 'Code showing red?', redWhyT: 'Why it happens', redWhy: "Once a code shows red (Invalid) after opening a referral link, the Nusuk app remembers it. So even when you open a new link later, the old red code stays filled in and no code works.",
+      redFixT: 'How to fix it', red1: 'Copy a new code from here', red1d: 'Tap the button below and a new code is copied.', red2: 'Delete the old red code', red2d: 'In the Nusuk app, go to the code box and backspace the whole code away.', red3: 'Paste the new code', red3d: 'When you paste it yourself, the app takes it right away.',
+      redTip: "Still not working? Close the Nusuk app completely (swipe it away from recent apps) and open it again.", redCopy: 'Copy a new code', gotIt: 'Got it', redCopied: 'New code copied. In Nusuk, delete the old code and paste this one.',
+      redHelpShort: 'The Nusuk app remembers an old red code. Delete it and paste a new code yourself, and it works.', redHelpOpen: 'See what to do',
+      noApp: "Don't have the Nusuk app?", getPlay: 'Get it on Google Play', getIos: 'Get it on the App Store', iosNote: "Nusuk isn't in the Bangladesh App Store yet. If the link doesn't open, you'll need an Apple ID from another country.", appTitle: 'Download the Nusuk app', appWhy: "You need the Nusuk app on your phone to redeem a code. It's the official app of the Ministry of Hajj and Umrah.",
       freshNote: 'Every redeem or copy gives you a new code. A code you took never comes back to you.',
       sharePic: 'Share as a picture', picHint: 'The message is written inside the picture, so it shows in full on Facebook and Instagram too.', picSaved: 'Picture downloaded. Post it as a photo on Facebook or Instagram.', msgCopied: 'Message copied. Paste it anywhere.',
       shareMsg: "So many of us have wanted to perform Umrah for years. Right now the Nusuk app's Umrah challenge is giving away 100 free Umrah trips for two. 🕋\n\nOn this site you can grab someone's referral code in one tap, and share yours so others can support you. No sign-up, and it's free.\n\nWho knows, maybe this time the call to Allah's House is yours. In sha Allah.",
@@ -143,6 +154,11 @@
       later: 'لاحقًا', plusOne: '+١', close: 'إغلاق',
       navShare: 'مشاركة', shareTitle: 'شارك الفرصة مع أحبابك', shareSub: 'مشاركة واحدة قد تفتح لأحدهم طريق العمرة. والدال على الخير كفاعله.',
       shareNow: 'مشاركة', copyMsg: 'نسخ الرسالة', igHint: 'فيسبوك وإنستغرام لا يسمحان بكتابة المنشور تلقائيًا، لذلك ننسخ الرسالة لك عند الضغط. الصقها في خانة المنشور فقط.', pasteInFb: 'نُسخت الرسالة. الصقها في خانة المنشور على فيسبوك.', fbCopied: 'نُسخت الرسالة', fbHow: 'فيسبوك لا يسمح بكتابة المنشور تلقائيًا. افتح فيسبوك ثم اضغط مطولًا على خانة المنشور والصق (Ctrl+V على الكمبيوتر).', fbOpen: 'افتح فيسبوك', msOpen: 'افتح ماسنجر',
+      redQ: 'الرمز يظهر باللون الأحمر؟', redWhyT: 'لماذا يحدث هذا', redWhy: 'إذا ظهر رمز باللون الأحمر (غير صالح) بعد فتح رابط إحالة، يحتفظ تطبيق نسك به. فحتى لو فتحت رابطًا جديدًا لاحقًا يبقى الرمز الأحمر القديم مكتوبًا ولا يعمل أي رمز.',
+      redFixT: 'طريقة الحل', red1: 'انسخ رمزًا جديدًا من هنا', red1d: 'اضغط الزر بالأسفل فيُنسخ رمز جديد.', red2: 'احذف الرمز الأحمر القديم', red2d: 'في تطبيق نسك اذهب إلى خانة الرمز واحذفه كاملًا بزر الحذف.', red3: 'الصق الرمز الجديد', red3d: 'عندما تلصقه بنفسك يقبله التطبيق فورًا.',
+      redTip: 'إن لم ينجح، أغلق تطبيق نسك تمامًا من قائمة التطبيقات الأخيرة ثم افتحه من جديد.', redCopy: 'انسخ رمزًا جديدًا', gotIt: 'فهمت', redCopied: 'نُسخ رمز جديد. في نسك احذف الرمز القديم والصق هذا.',
+      redHelpShort: 'تطبيق نسك يحتفظ بالرمز الأحمر القديم. احذفه والصق رمزًا جديدًا بنفسك فيعمل.', redHelpOpen: 'اعرف ماذا تفعل',
+      noApp: 'ليس لديك تطبيق نسك؟', getPlay: 'حمّله من Google Play', getIos: 'حمّله من App Store', iosNote: 'إن لم يفتح الرابط فقد لا يكون التطبيق متاحًا في متجر بلدك.', appTitle: 'حمّل تطبيق نسك', appWhy: 'تحتاج تطبيق نسك على جوالك لاستخدام الرمز. وهو التطبيق الرسمي لوزارة الحج والعمرة.',
       freshNote: 'مع كل استخدام أو نسخ تحصل على رمز جديد، ولن يعود إليك رمز أخذته أبدًا.',
       sharePic: 'شارك كصورة', picHint: 'الرسالة مكتوبة داخل الصورة، فتظهر كاملة على فيسبوك وإنستغرام أيضًا.', picSaved: 'تم تنزيل الصورة. انشرها كصورة على فيسبوك أو إنستغرام.', msgCopied: 'نُسخت الرسالة. الصقها أينما شئت.',
       shareMsg: 'العمرة أمنية يحملها كثير منا منذ سنين. تحدي العمرة في تطبيق نسك يقدّم الآن 100 عمرة مجانية لشخصين. 🕋\n\nفي هذا الموقع تأخذ رمز إحالة بضغطة واحدة، وتشارك رمزك ليدعمك غيرك. بلا تسجيل ومجانًا.\n\nمن يدري، لعل الدعوة إلى بيت الله تكون لك هذه المرة. إن شاء الله.',
@@ -406,6 +422,8 @@
     const mk = document.createElement('mark'); mk.textContent = 'NG-vW7So71R'; sample.appendChild(mk);
     $('redeemBtn').hidden = !MOBILE; $('copyBtn').hidden = MOBILE; $('copyOnlyBtn').hidden = !MOBILE;
     $('hint').textContent = MOBILE ? t('hintMobile') : t('hintDesktop');
+    // the store for this device only (both on a computer); the iPhone note only on iPhone/iPad
+    for (const el of document.querySelectorAll('[data-store]')) el.hidden = OS !== 'desktop' ? el.dataset.store !== OS : el.classList.contains('ios-note');
     $('offline').hidden = S.online;
     labelAdd();
   }
@@ -529,6 +547,17 @@
     document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
     toast(t('picSaved'));
   }
+  const redSheet = () => $('redSheet');
+  function openRed() { const d = redSheet(); if (!d.open) { if (d.showModal) d.showModal(); else d.setAttribute('open', ''); } }
+  function closeRed() { const d = redSheet(); if (d.open) { if (d.close) d.close(); else d.removeAttribute('open'); } }
+  async function redCopy() {
+    if (!S.current) { closeRed(); return; }
+    S.asked = true; // don't stack the "share your code" popup on top of this
+    const c = S.current;
+    if (!(await copyText('NG-' + c))) { toast(t('copyFail')); return; }
+    markTaken(c); pickNext(); renderAll(false); ensureBuffer();
+    closeRed(); toast(t('redCopied'));
+  }
   function closeShare() { const d = $('shareSheet'); if (d.open) { if (d.close) d.close(); else d.removeAttribute('open'); } }
   async function nativeShare() {
     copyText(t('shareMsg') + '\n\n' + SHARE_URL); // Facebook/Instagram drop shared text, so keep it on the clipboard
@@ -609,6 +638,12 @@
     $('shareX').addEventListener('click', closeShare);
     $('shareNow').addEventListener('click', nativeShare);
     $('sharePic').addEventListener('click', sharePicture);
+    $('redHelpBtn').addEventListener('click', openRed);
+    $('redHelpBtn2').addEventListener('click', openRed);
+    $('redX').addEventListener('click', closeRed);
+    $('redOk').addEventListener('click', closeRed);
+    $('redCopy').addEventListener('click', redCopy);
+    redSheet().addEventListener('click', (e) => { if (e.target === redSheet()) closeRed(); });
     $('shareSheet').addEventListener('click', (e) => { if (e.target === $('shareSheet')) closeShare(); });
     // Facebook and Messenger only accept a link: copy the message on the same tap, then let the link open
     // Facebook never accepts prefilled post text. Step 1 (this tap): copy the message and say so.
