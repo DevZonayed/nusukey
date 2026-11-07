@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://*.workers.dev https://*.nusukey.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>NusukKey — share & take Nusuk Umrah challenge codes</title>
+<meta name="description" content="Paste your Nusuk challenge message to share your code, and copy a fresh code from others. One tap. Never the same code twice.">
+<meta name="theme-color" content="#0f3b2e">
+<meta property="og:title" content="NusukKey — share & take Nusuk challenge codes">
+<meta property="og:description" content="Paste your Nusuk share message, take a fresh code in one tap.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+:root{--ink:#0c1f19;--green:#0f3b2e;--green2:#154a3a;--green3:#1d5a47;--gold:#d9a441;--gold2:#f1c56c;--gold3:#b9852a;--sand:#f4ead7;--paper:#fbf8f1;--card:#fffdf8;--line:#e8dcc4;--muted:#6d6a5e;--text:#1d1c17;--ok:#2f8f63;--bad:#b4472f;--r:18px;
+--mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans Bengali","Noto Sans Arabic","Helvetica Neue",Arial,sans-serif;
+--serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--text);font:16px/1.5 var(--sans);overflow-x:hidden}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none;padding:0}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:10px}
+.wrap{max-width:1060px;margin:0 auto;padding:0 16px}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* banner */
+.banner{background:var(--ink);color:#efe6d2;font-size:14px}
+.banner .wrap{display:flex;gap:12px;align-items:center;justify-content:center;padding:8px 16px;flex-wrap:wrap;text-align:center}
+.banner button.pill{background:var(--gold);color:var(--ink);font-weight:700;border-radius:999px;padding:6px 14px;min-height:36px}
+.banner .x{color:#cbbfa6;font-size:20px;line-height:1;width:36px;height:36px;border-radius:50%}
+
+/* header */
+.top{position:relative;background-color:var(--sand);background-image:linear-gradient(180deg,rgba(244,234,215,0) 55%,var(--paper)),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84'%3E%3Cg fill='none' stroke='%23c4923a' stroke-opacity='.32' stroke-width='1.2'%3E%3Crect x='24' y='24' width='36' height='36'/%3E%3Crect x='24' y='24' width='36' height='36' transform='rotate(45 42 42)'/%3E%3Ccircle cx='42' cy='42' r='8'/%3E%3Cpath d='M0 0l17 17M84 0L67 17M0 84l17-17M84 84L67 67'/%3E%3C/g%3E%3C/svg%3E");overflow:hidden}
+.lantern{position:absolute;top:0;width:58px;color:var(--gold3);pointer-events:none;transform-origin:50% 0;animation:sway 6s ease-in-out infinite}
+.lantern.l1{left:4%}.lantern.l2{left:12%;width:42px;animation-delay:-2s}.lantern.r1{right:4%;animation-delay:-3s}.lantern.r2{right:12%;width:42px;animation-delay:-1s}
+@keyframes sway{50%{transform:rotate(2.5deg)}}
+@media (max-width:1180px){.lantern{display:none}}
+nav.bar{display:flex;align-items:center;gap:12px;padding:18px 0 8px;position:relative}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:-.01em;margin-inline-end:auto;color:var(--ink);text-decoration:none}
+.brand svg{width:40px;height:40px;border-radius:12px;box-shadow:0 4px 14px rgba(15,59,46,.25)}
+.langs{display:flex;background:rgba(255,253,248,.75);border:1px solid var(--line);border-radius:999px;padding:3px}
+.langs button{min-width:44px;height:36px;padding:0 10px;border-radius:999px;font-size:14px;color:var(--muted)}
+.langs button[aria-pressed=true]{background:var(--card);color:var(--ink);font-weight:700;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.keypill{display:flex;align-items:center;gap:8px;height:42px;padding:0 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);font:600 13px var(--mono)}
+.keypill i{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.keypill.saved i{background:var(--ok)}
+.hero{padding:22px 0 26px;position:relative}
+h1{font-size:clamp(30px,5.4vw,54px);line-height:1.05;letter-spacing:-.025em;margin:0 0 12px;font-weight:800;color:var(--ink);max-width:16ch}
+h1 em{font-family:var(--serif);font-weight:400;color:var(--gold3);letter-spacing:-.03em}
+.sub{margin:0;color:#4b4a41;font-size:17px;max-width:54ch}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);background:var(--green);color:#e9dfc9;border-radius:var(--r);overflow:hidden;box-shadow:0 10px 30px rgba(15,59,46,.18)}
+.stat{display:flex;gap:12px;align-items:center;padding:13px 18px}
+.stat+.stat{border-inline-start:1px solid rgba(255,255,255,.08)}
+.stat svg{flex:none;width:34px;height:34px;padding:7px;border-radius:50%;border:1px solid rgba(241,197,108,.4);color:var(--gold2)}
+.stat small{display:block;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:#bfb49c}
+.stat b{font:700 20px var(--mono);color:var(--gold2)}
+.stat span.s{font-size:13px;margin-inline-start:6px;color:#d8ceb8}
+.live{display:inline-block;width:7px;height:7px;border-radius:50%;background:#42d392;margin-inline-end:6px;vertical-align:middle;box-shadow:0 0 0 3px rgba(66,211,146,.2)}
+@media (max-width:560px){nav.bar{flex-wrap:wrap;row-gap:10px}.brand{flex:1 0 100%}.langs{margin-inline-end:auto}.keypill{padding:0 12px}.btn-gold{font-size:16px}.btn-gold kbd{display:none}}
+@media (max-width:640px){.stats{grid-template-columns:1fr 1fr 1fr}.stat{flex-direction:column;align-items:flex-start;gap:4px;padding:10px 12px}.stat svg{display:none}.stat span.s{display:block;margin:0;font-size:12px}}
+
+/* main grid */
+.main{display:grid;grid-template-columns:1.35fr 1fr;gap:18px;margin-top:18px}
+@media (max-width:860px){.main{grid-template-columns:1fr}}
+.next{position:relative;background:radial-gradient(120% 140% at 100% 0,var(--green3),var(--green) 45%,var(--ink));color:#f3ead6;border-radius:22px;padding:24px;overflow:hidden;box-shadow:0 18px 40px rgba(12,31,25,.28)}
+.next::before{content:"";position:absolute;inset:0 0 auto;height:6px;background:repeating-linear-gradient(90deg,var(--gold) 0 14px,transparent 14px 22px);opacity:.9}
+.next .star{position:absolute;inset-inline-end:-30px;bottom:-40px;width:230px;color:var(--gold);opacity:.13;pointer-events:none}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold2);display:flex;justify-content:space-between;gap:8px;align-items:center}
+.eyebrow .tag{font:600 11px var(--mono);letter-spacing:0;text-transform:none;border:1px solid rgba(241,197,108,.45);border-radius:999px;padding:3px 9px;color:var(--gold2)}
+.bigcode{direction:ltr;text-align:left;font:700 clamp(34px,7vw,62px)/1.1 var(--mono);letter-spacing:.02em;margin:18px 0 6px;word-break:break-all;min-height:1.1em;transition:opacity .15s}
+.bigcode .pre{color:var(--gold)}
+.bigcode.swap{opacity:0}
+.empty{font-size:18px;color:#d8ceb8;margin:22px 0}
+.progress{height:4px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden;margin:14px 0 10px}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold3),var(--gold2));transition:width .4s}
+.meta{font-size:14px;color:#cfc5ae}
+.meta b{color:#fff}
+.actions{display:flex;gap:10px;margin-top:16px}
+.btn-gold{flex:1;display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;border-radius:14px;background:linear-gradient(180deg,var(--gold2),var(--gold));color:var(--ink);font-weight:800;font-size:18px;box-shadow:0 6px 18px rgba(217,164,65,.35),inset 0 1px 0 rgba(255,255,255,.5);transition:transform .1s}
+.btn-gold:active{transform:scale(.985)}
+.btn-gold kbd{font:600 11px var(--mono);background:rgba(12,31,25,.12);border-radius:6px;padding:2px 6px}
+@media (hover:none){.btn-gold kbd{display:none}}
+.btn-dark{min-height:56px;padding:0 20px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);color:#f3ead6;font-weight:700}
+.btn-gold:disabled,.btn-dark:disabled{opacity:.45;cursor:not-allowed}
+.last{margin-top:14px;font-size:14px;color:#cfc5ae;display:flex;gap:8px;align-items:center;flex-wrap:wrap;min-height:36px}
+.last code{font-family:var(--mono);color:#fff;direction:ltr}
+.link{color:var(--gold2);text-decoration:underline;text-underline-offset:3px;min-height:36px;padding:0 4px}
+
+/* give */
+.give{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 8px 24px rgba(60,45,10,.06);display:flex;flex-direction:column}
+.give h2{margin:0 0 4px;font-size:21px;letter-spacing:-.01em;color:var(--ink)}
+.give p.hint{margin:0 0 12px;color:var(--muted);font-size:14px}
+.give textarea{width:100%;min-height:118px;resize:vertical;border:1.5px dashed #d8c7a3;border-radius:14px;background:#fffaf0;padding:12px 14px;font-size:15px;line-height:1.45}
+.give textarea:focus{outline:none;border-style:solid;border-color:var(--gold)}
+.row{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.btn-line{min-height:46px;padding:0 16px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);font-weight:700;display:inline-flex;align-items:center;gap:8px}
+.btn-green{flex:1;min-height:46px;padding:0 16px;border-radius:12px;background:var(--green);color:#fff;font-weight:700}
+.btn-green:disabled{opacity:.4;cursor:not-allowed}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;min-height:0}
+.chip{direction:ltr;font:600 13px var(--mono);background:#eaf4ee;color:#185c41;border:1px solid #bfe0cd;border-radius:999px;padding:4px 10px}
+.msg{font-size:14px;margin-top:8px;min-height:21px;color:var(--muted)}
+.msg.bad{color:var(--bad)}.msg.ok{color:var(--ok)}
+details.how{margin-top:auto;padding-top:12px;font-size:14px;color:#4b4a41}
+details.how summary{cursor:pointer;font-weight:700;color:var(--green);min-height:36px;display:flex;align-items:center}
+details.how ol{margin:6px 0 0;padding-inline-start:20px}
+details.how li{margin:3px 0}
+.sample{direction:ltr;text-align:left;display:block;margin-top:8px;background:#f6f0e3;border-radius:10px;padding:8px 10px;font:12px/1.45 var(--mono);color:#5b584c;white-space:pre-wrap;word-break:break-word}
+.sample mark{background:#ffe6a8;color:var(--ink);border-radius:4px;padding:0 2px}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 26px}
+.step{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.step i{flex:none;font-style:normal;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:#fbeed2;color:var(--gold3);font-weight:800;font-size:14px}
+.step b{display:block;color:var(--ink)}
+.step span{font-size:14px;color:var(--muted)}
+@media (max-width:760px){.steps{grid-template-columns:1fr}}
+
+/* list */
+.tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.search{flex:1 1 260px;min-height:50px;border:1px solid var(--line);border-radius:14px;background:var(--card);padding:0 16px;font-family:var(--mono);font-size:15px}
+.search:focus{outline:none;border-color:var(--gold)}
+.tabs{display:flex;gap:2px;background:#f1e8d6;border-radius:14px;padding:4px;overflow-x:auto;max-width:100%;scrollbar-width:none}
+.tabs button{white-space:nowrap;min-height:42px;padding:0 12px;border-radius:10px;font-size:14px;color:#5b584c}
+.tabs button[aria-selected=true]{background:var(--card);color:var(--ink);font-weight:700;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.tabs button small{font:600 11px var(--mono);color:var(--muted);margin-inline-start:4px}
+.count{font-size:13px;color:var(--muted);margin:12px 2px 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.item>span:first-child{white-space:nowrap}
+.item{direction:ltr;display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:48px;padding:0 12px 0 14px;border-radius:12px;background:var(--card);border:1px solid var(--line);font:600 15px var(--mono);text-align:left;transition:border-color .15s,background .15s,opacity .3s}
+.item:hover{border-color:var(--gold)}
+.item .pre{color:#a39c88;font-weight:500}
+.item svg{width:18px;height:18px;color:#a39c88;flex:none}
+.item .b{font:600 10px var(--sans);text-transform:uppercase;letter-spacing:.06em;border-radius:6px;padding:2px 6px;margin-inline-start:auto;margin-inline-end:4px}
+.item .b.new{background:#fbeed2;color:var(--gold3)}
+.item .b.mine{background:#e4f1ea;color:#185c41}
+.item.used{background:#f5f1e8;color:#9a9483}
+.item.used .rest{text-decoration:line-through;text-decoration-color:rgba(0,0,0,.25)}
+.item.done{background:#e7f4ec;border-color:#9fd2b5;opacity:.5}
+.more{display:block;margin:16px auto 0;min-height:46px;padding:0 22px;border-radius:12px;border:1px solid var(--line);background:var(--card);font-weight:700}
+.none{grid-column:1/-1;text-align:center;color:var(--muted);padding:30px 10px;border:1px dashed var(--line);border-radius:14px}
+
+footer{margin:48px 0 0;padding:22px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+footer p{margin:4px 0}
+.notice{margin-top:10px;font-size:13px;color:#8a5a12;background:#fff3d6;border:1px solid #f0d699;border-radius:10px;padding:8px 12px}
+
+/* toast + dialog */
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translate(-50%,30px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:.2s;z-index:50;max-width:calc(100% - 32px);text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+dialog{border:0;border-radius:20px;padding:22px;width:min(440px,calc(100% - 32px));background:var(--card);color:var(--text);box-shadow:0 30px 80px rgba(0,0,0,.3)}
+dialog::backdrop{background:rgba(12,31,25,.5)}
+dialog h3{margin:0 0 6px;font-size:20px}
+dialog p{margin:0 0 12px;color:var(--muted);font-size:14px}
+.keybox{direction:ltr;font:700 17px var(--mono);background:#f6f0e3;border-radius:12px;padding:12px 14px;word-break:break-all;margin-bottom:10px}
+dialog input{width:100%;min-height:46px;border:1px solid var(--line);border-radius:12px;padding:0 12px;font-family:var(--mono);text-transform:uppercase}
+dialog .row{justify-content:flex-end}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+[dir=rtl] .btn-gold svg{transform:scaleX(-1)}
+</style>
+<script src="config.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<div class="banner" id="banner" hidden>
+  <div class="wrap">
+    <span data-t="bannerText">Save your key so the codes you've used stay hidden on every device.</span>
+    <button class="pill" id="bannerBtn" type="button" data-t="bannerBtn">Save my key</button>
+    <button class="x" id="bannerX" type="button" aria-label="Close" data-ta="close">×</button>
+  </div>
+</div>
+
+<header class="top">
+  <svg class="lantern l1" viewBox="0 0 60 190" aria-hidden="true"><path d="M30 0v52" stroke="currentColor" stroke-dasharray="3 4"/><path d="M18 60h24l-4-8H22z" fill="#0f3b2e"/><path d="M14 66q16-10 32 0l-4 70q-12 8-24 0z" fill="#f6dfa6" stroke="currentColor" stroke-width="2"/><ellipse cx="30" cy="104" rx="9" ry="14" fill="#f8c95e" opacity=".75"/><path d="M18 140h24l-6 10H24z" fill="#0f3b2e"/><path d="M30 150v14" stroke="currentColor"/></svg>
+  <svg class="lantern l2" viewBox="0 0 60 190" aria-hidden="true"><path d="M30 0v70" stroke="currentColor" stroke-dasharray="3 4"/><path d="M30 72l14 24-14 50-14-50z" fill="#f6dfa6" stroke="currentColor" stroke-width="2"/><circle cx="30" cy="100" r="7" fill="#f8c95e" opacity=".8"/></svg>
+  <svg class="lantern r2" viewBox="0 0 60 190" aria-hidden="true"><path d="M30 0v70" stroke="currentColor" stroke-dasharray="3 4"/><path d="M30 72l14 24-14 50-14-50z" fill="#f6dfa6" stroke="currentColor" stroke-width="2"/><circle cx="30" cy="100" r="7" fill="#f8c95e" opacity=".8"/></svg>
+  <svg class="lantern r1" viewBox="0 0 60 190" aria-hidden="true"><path d="M30 0v52" stroke="currentColor" stroke-dasharray="3 4"/><path d="M18 60h24l-4-8H22z" fill="#0f3b2e"/><path d="M14 66q16-10 32 0l-4 70q-12 8-24 0z" fill="#f6dfa6" stroke="currentColor" stroke-width="2"/><ellipse cx="30" cy="104" rx="9" ry="14" fill="#f8c95e" opacity=".75"/><path d="M18 140h24l-6 10H24z" fill="#0f3b2e"/><path d="M30 150v14" stroke="currentColor"/></svg>
+  <div class="wrap">
+    <nav class="bar">
+      <a class="brand" href="./" aria-label="NusukKey home">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0f3b2e"/><g fill="none" stroke="#e2b04f" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"><rect x="13" y="13" width="18" height="18"/><rect x="13" y="13" width="18" height="18" transform="rotate(45 22 22)"/><circle cx="22" cy="22" r="3.6"/><path d="M31 31L51 51M44 44l-4.5 4.5M50 50l-4.5 4.5"/></g></svg>
+        <span>Nusuk<span style="color:var(--gold3)">Key</span></span>
+      </a>
+      <div class="langs" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="bn" aria-pressed="false" lang="bn">বাংলা</button>
+        <button type="button" data-lang="ar" aria-pressed="false" lang="ar">عربي</button>
+      </div>
+      <button class="keypill" id="keyPill" type="button"><i></i><span data-t="yourKey">Your key</span></button>
+    </nav>
+    <div class="hero">
+      <h1><em id="heroNum">0</em><span id="heroText">fresh codes. Copy one, share yours.</span></h1>
+      <p class="sub" data-t="sub">Tap once to copy, paste it in the Nusuk app. We remember what you've used, so you never see the same code twice.</p>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="stats" aria-label="Live stats">
+    <div class="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 5-6 8-6s6.5 2 8 6"/></svg><div><small data-t="sVisitors">Here now</small><b id="stActive">–</b><span class="s"><span class="live"></span><span data-t="sVisitorsSub">active now</span></span></div></div>
+    <div class="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><div><small data-t="sCopies">Copied today</small><b id="stCopies">–</b><span class="s" id="stTotal"></span></div></div>
+    <div class="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l2.6 5.6 6 .6-4.5 4 1.3 6-5.4-3.1L6.6 19.2l1.3-6-4.5-4 6-.6z"/></svg><div><small data-t="sAdded">Added today</small><b id="stAdded">–</b><span class="s" data-t="sAddedSub">new codes</span></div></div>
+  </section>
+  <div id="offline" class="notice" hidden data-t="offline">Shared pool is offline — codes you add are saved on this device only.</div>
+
+  <div class="main">
+    <section class="next" aria-labelledby="nextTitle">
+      <svg class="star" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="20" y="20" width="60" height="60"/><rect x="20" y="20" width="60" height="60" transform="rotate(45 50 50)"/><circle cx="50" cy="50" r="18"/><circle cx="50" cy="50" r="30"/></g></svg>
+      <div class="eyebrow"><span id="nextTitle">✦ <span data-t="nextTitle">Your next code</span></span><span class="tag" id="nextTag" hidden></span></div>
+      <div class="bigcode" id="bigCode" aria-live="polite"></div>
+      <div class="empty" id="emptyNext" hidden data-t="emptyNext">You've used every code for now. New ones arrive all day — check back soon, and share yours below.</div>
+      <div class="progress" aria-hidden="true"><i id="prog"></i></div>
+      <div class="meta" id="meta"></div>
+      <div class="actions">
+        <button class="btn-gold" id="copyBtn" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span data-t="copyNext">Copy &amp; show next</span><kbd>Space</kbd></button>
+        <button class="btn-dark" id="skipBtn" type="button" data-t="skip">Skip</button>
+      </div>
+      <div class="last" id="last" hidden><span data-t="lastCopied">Last copied:</span> <code id="lastCode"></code><button class="link" id="reportBtn" type="button" data-t="report">Didn't work?</button></div>
+    </section>
+
+    <section class="give" aria-labelledby="giveTitle">
+      <h2 id="giveTitle" data-t="giveTitle">Share your code</h2>
+      <p class="hint" data-t="giveHint">Paste the whole message from the Nusuk app — we'll find the code.</p>
+      <label class="sr" for="giveText" data-t="giveLabel">Nusuk share message</label>
+      <textarea id="giveText" data-tp="givePh" placeholder="Paste the Nusuk message here…" spellcheck="false" autocomplete="off"></textarea>
+      <div class="chips" id="chips" aria-live="polite"></div>
+      <div class="msg" id="giveMsg" role="status"></div>
+      <div class="row">
+        <button class="btn-line" id="pasteBtn" type="button"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4h6v3H9z"/></svg><span data-t="paste">Paste</span></button>
+        <button class="btn-green" id="addBtn" type="button" disabled data-t="addNone">Add code</button>
+      </div>
+      <details class="how">
+        <summary data-t="howTitle">How do I get my code?</summary>
+        <ol>
+          <li data-t="how1">Open the Nusuk app.</li>
+          <li data-t="how2">Go to the Umrah challenge.</li>
+          <li data-t="how3">Tap the Share button.</li>
+          <li data-t="how4">Choose Copy, then come back and paste it here.</li>
+        </ol>
+        <span class="sample" id="sample"></span>
+      </details>
+    </section>
+  </div>
+
+  <section class="steps" aria-label="How it works">
+    <div class="step"><i>1</i><div><b data-t="st1">Copy a code</b><span data-t="st1d">Use the big button or tap any code below.</span></div></div>
+    <div class="step"><i>2</i><div><b data-t="st2">Paste in Nusuk</b><span data-t="st2d">Umrah challenge → enter code → paste.</span></div></div>
+    <div class="step"><i>3</i><div><b data-t="st3">Give one back</b><span data-t="st3d">Paste your own share message so others can support you.</span></div></div>
+  </section>
+
+  <section aria-labelledby="listTitle">
+    <h2 class="sr" id="listTitle" data-t="listTitle">All codes</h2>
+    <div class="tools">
+      <label class="sr" for="search" data-t="searchLabel">Search codes</label>
+      <input class="search" id="search" type="search" data-tp="searchPh" placeholder="Search codes…" autocomplete="off" spellcheck="false">
+      <div class="tabs" role="tablist" id="tabs">
+        <button role="tab" type="button" data-tab="remaining" aria-selected="true"><span data-t="tRemaining">Remaining</span><small></small></button>
+        <button role="tab" type="button" data-tab="new" aria-selected="false"><span data-t="tNew">New</span><small></small></button>
+        <button role="tab" type="button" data-tab="used" aria-selected="false"><span data-t="tUsed">Used</span><small></small></button>
+        <button role="tab" type="button" data-tab="mine" aria-selected="false"><span data-t="tMine">Mine</span><small></small></button>
+        <button role="tab" type="button" data-tab="all" aria-selected="false"><span data-t="tAll">All</span><small></small></button>
+      </div>
+    </div>
+    <div class="count" id="count"></div>
+    <div class="grid" id="grid"></div>
+    <button class="more" id="moreBtn" type="button" hidden data-t="more">Show more</button>
+  </section>
+
+  <footer>
+    <p data-t="foot1">Unofficial community tool. Not affiliated with Nusuk or the Ministry of Hajj and Umrah.</p>
+    <p data-t="foot2">Codes are shared by visitors. Only share your own referral code.</p>
+  </footer>
+</main>
+
+<template id="tplItem"><button class="item" type="button"><span><span class="pre">NG-</span><span class="rest"></span></span><span class="b" hidden></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg></button></template>
+
+<dialog id="keyDlg" aria-labelledby="keyDlgTitle">
+  <h3 id="keyDlgTitle" data-t="keyTitle">Your key</h3>
+  <p data-t="keyHelp">This key remembers which codes you've used. Copy it and keep it somewhere safe (notes, WhatsApp to yourself). Enter it on another phone to carry your history over.</p>
+  <div class="keybox" id="keyBox"></div>
+  <div class="row" style="justify-content:flex-start;margin:0 0 16px"><button class="btn-green" id="copyKey" type="button" data-t="copyKey">Copy my key</button></div>
+  <label for="keyIn" style="font-weight:700;font-size:14px" data-t="useKey">Use a key from another device</label>
+  <input id="keyIn" placeholder="NK-XXXXX-XXXXX-XXXXX-XXXXX" autocomplete="off" spellcheck="false">
+  <div class="msg" id="keyMsg" role="status"></div>
+  <div class="row"><button class="btn-line" id="keyClose" type="button" data-t="close">Close</button><button class="btn-green" style="flex:0 1 auto" id="keyApply" type="button" data-t="apply">Use this key</button></div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
