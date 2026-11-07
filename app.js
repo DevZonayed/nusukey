@@ -24,6 +24,7 @@
       offline: 'Shared pool is offline — codes you add are saved on this device only.',
       nextTitle: 'Your next code', copyNext: 'Copy & show next', skip: 'Skip', lastCopied: 'Last copied:', report: "Didn't work?",
       emptyNext: "You've used every code for now. New ones arrive all day — check back soon, and share yours below.",
+      emptyPool: 'No codes yet. Be the first — paste your Nusuk message in “Share your code”.',
       meta: 'You copied {c} · Remaining {r}', copiedTimes: 'copied {n}×', fresh: 'fresh',
       giveTitle: 'Share your code', giveHint: "Paste the whole message from the Nusuk app — we'll find the code.", giveLabel: 'Nusuk share message',
       givePh: 'Paste the Nusuk message here…', paste: 'Paste', addNone: 'Add code', addN: 'Add {n} code', addNs: 'Add {n} codes',
@@ -48,6 +49,7 @@
       offline: 'শেয়ার্ড লিস্ট এখন অফলাইন — আপনার দেওয়া কোড শুধু এই ডিভাইসে সেভ থাকবে।',
       nextTitle: 'আপনার পরের কোড', copyNext: 'কপি করে পরেরটা দেখুন', skip: 'বাদ দিন', lastCopied: 'শেষ কপি:', report: 'কাজ করেনি?',
       emptyNext: 'এখনকার সব কোড আপনি নিয়ে ফেলেছেন। সারাদিন নতুন কোড আসে — একটু পরে আবার দেখুন, আর নিচে নিজের কোডটা দিয়ে যান।',
+      emptyPool: 'এখনো কোনো কোড নেই। প্রথম কোডটা আপনিই দিন — “আপনার কোড দিন” বক্সে নুসুকের মেসেজ পেস্ট করুন।',
       meta: 'আপনি কপি করেছেন {c} · বাকি {r}', copiedTimes: '{n} বার কপি', fresh: 'একদম নতুন',
       giveTitle: 'আপনার কোড দিন', giveHint: 'নুসুক অ্যাপের পুরো মেসেজটাই পেস্ট করুন — কোড আমরা বের করে নেব।', giveLabel: 'নুসুকের শেয়ার মেসেজ',
       givePh: 'নুসুকের মেসেজ এখানে পেস্ট করুন…', paste: 'পেস্ট', addNone: 'কোড যোগ করুন', addN: '{n}টা কোড যোগ করুন', addNs: '{n}টা কোড যোগ করুন',
@@ -72,6 +74,7 @@
       offline: 'القائمة المشتركة غير متصلة — الرموز التي تضيفها تُحفظ على هذا الجهاز فقط.',
       nextTitle: 'رمزك التالي', copyNext: 'انسخ واعرض التالي', skip: 'تخطَّ', lastCopied: 'آخر نسخ:', report: 'لم يعمل؟',
       emptyNext: 'استخدمت كل الرموز المتاحة الآن. تصل رموز جديدة طوال اليوم — عُد لاحقًا وشارك رمزك بالأسفل.',
+      emptyPool: 'لا توجد رموز بعد. كن أول من يشارك — الصق رسالة نسك في «شارك رمزك».',
       meta: 'نسخت {c} · المتبقي {r}', copiedTimes: 'نُسخ {n}×', fresh: 'جديد',
       giveTitle: 'شارك رمزك', giveHint: 'الصق رسالة تطبيق نسك كاملة — وسنستخرج الرمز.', giveLabel: 'رسالة المشاركة من نسك',
       givePh: 'الصق رسالة نسك هنا…', paste: 'لصق', addNone: 'أضف الرمز', addN: 'أضف {n} رمز', addNs: 'أضف {n} رموز',
@@ -347,6 +350,7 @@
     };
     if (animate && !matchMedia('(prefers-reduced-motion: reduce)').matches) { big.classList.add('swap'); setTimeout(paint, 120); } else paint();
     $('emptyNext').hidden = !!code; big.hidden = !code;
+    if (!code) $('emptyNext').textContent = t(S.seen.size ? 'emptyNext' : 'emptyPool');
     $('copyBtn').disabled = !code; $('skipBtn').disabled = !code;
     const tag = $('nextTag'); const p = code && S.pool.get(code);
     tag.hidden = !p; if (p) tag.textContent = p.n ? t('copiedTimes', { n: num(p.n) }) : t('fresh');
