@@ -16,6 +16,7 @@
   /* ---------- strings ---------- */
   const T = {
     en: {
+      badge: 'Nusuk Umrah challenge · community', chk1: 'No sign-up', chk2: 'Never the same code twice', chk3: 'Free',
       bannerText: "Save your key so the codes you've used stay hidden on every device.", bannerBtn: 'Save my key', close: 'Close',
       yourKey: 'Your key', keySaved: 'Key saved',
       hero: ' fresh codes. Copy one, share yours.', hero1: ' fresh code. Copy it, share yours.',
@@ -41,6 +42,7 @@
       foot1: 'Unofficial community tool. Not affiliated with Nusuk or the Ministry of Hajj and Umrah.', foot2: 'Codes are shared by visitors. Only share your own referral code.',
     },
     bn: {
+      badge: 'নুসুক উমরাহ চ্যালেঞ্জ · কমিউনিটি', chk1: 'সাইন-আপ লাগে না', chk2: 'একই কোড দুবার আসে না', chk3: 'ফ্রি',
       bannerText: 'আপনার কী সেভ করে রাখুন, তাহলে ব্যবহার করা কোড কোনো ডিভাইসেই আর আসবে না।', bannerBtn: 'কী সেভ করুন', close: 'বন্ধ করুন',
       yourKey: 'আপনার কী', keySaved: 'কী সেভ হয়েছে',
       hero: 'টা নতুন কোড। একটা কপি করুন, নিজেরটাও দিন।', hero1: 'টা নতুন কোড। কপি করুন, নিজেরটাও দিন।',
@@ -66,6 +68,7 @@
       foot1: 'এটা কমিউনিটির বানানো আনঅফিশিয়াল টুল। নুসুক বা হজ ও উমরাহ মন্ত্রণালয়ের সাথে কোনো সম্পর্ক নেই।', foot2: 'কোডগুলো ভিজিটররাই শেয়ার করেন। শুধু নিজের রেফারেল কোড দিন।',
     },
     ar: {
+      badge: 'تحدي العمرة في نسك · مجتمعي', chk1: 'بدون تسجيل', chk2: 'لن ترى الرمز نفسه مرتين', chk3: 'مجاني',
       bannerText: 'احفظ مفتاحك حتى تبقى الرموز التي استخدمتها مخفية على كل أجهزتك.', bannerBtn: 'احفظ مفتاحي', close: 'إغلاق',
       yourKey: 'مفتاحك', keySaved: 'تم حفظ المفتاح',
       hero: ' رمزًا جديدًا. انسخ واحدًا وشارك رمزك.', hero1: ' رمز جديد. انسخه وشارك رمزك.',
@@ -311,7 +314,7 @@
     const sample = $('sample'); sample.textContent = SAMPLE;
     const mk = document.createElement('mark'); mk.textContent = 'NG-vW7So71R'; sample.appendChild(mk);
     $('keyPill').classList.toggle('saved', !!store.get('keySaved'));
-    $('keyPill').querySelector('span').textContent = store.get('keySaved') ? t('keySaved') : t('yourKey');
+    $('keyPill').querySelector('.kt').textContent = store.get('keySaved') ? t('keySaved') : t('yourKey');
     $('banner').hidden = !!store.get('bannerOff');
     $('offline').hidden = !API ? false : S.online;
     labelAdd();
