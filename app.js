@@ -425,6 +425,7 @@
     }
     grid.textContent = ''; grid.appendChild(frag);
     $('moreCount').textContent = list.length ? t('moreCount', { n: num(list.length) }) : '';
+    document.querySelector('.sec').hidden = !list.length;
     renderMoreState();
   }
 
