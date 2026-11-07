@@ -56,7 +56,9 @@
       sheetTitle: 'আপনার কোডটাও দিন', sheetMsg: 'যত বেশি মানুষ কোডটা ব্যবহার করবে, নুসুকে আপনার কী তত বাড়তে থাকবে। শুধু অ্যাপের শেয়ার মেসেজটা এখানে পেস্ট করুন।',
       later: 'পরে দেব', plusOne: '+১', close: 'বন্ধ করুন',
       navShare: 'শেয়ার', shareTitle: 'সুযোগটা প্রিয়জনদেরও দিন', shareSub: 'আপনার একটা শেয়ারে হয়তো কারও উমরাহর পথ খুলে যাবে। ভালো কাজের পথ দেখানোও সওয়াবের কাজ।',
-      shareNow: 'শেয়ার করুন', copyMsg: 'মেসেজ কপি করুন', igHint: 'ফেসবুক আর ইনস্টাগ্রামে লেখা নিজে থেকে বসে না। তাই চাপ দিলেই মেসেজটা কপি হয়ে যাবে, পোস্টের ঘরে শুধু পেস্ট করুন।', pasteInFb: 'মেসেজ কপি হয়েছে। ফেসবুকে পোস্টের ঘরে চেপে ধরে পেস্ট করুন।', fbCopied: 'মেসেজ কপি হয়েছে', fbHow: 'ফেসবুক নিজে থেকে লেখা বসাতে দেয় না। ফেসবুক খুলে লেখার ঘরে চেপে ধরে পেস্ট করুন। কম্পিউটারে Ctrl+V চাপুন।', fbOpen: 'ফেসবুক খুলুন', msOpen: 'মেসেঞ্জার খুলুন', msgCopied: 'মেসেজ কপি হয়েছে। এখন যেকোনো জায়গায় পেস্ট করুন।',
+      shareNow: 'শেয়ার করুন', copyMsg: 'মেসেজ কপি করুন', igHint: 'ফেসবুক আর ইনস্টাগ্রামে লেখা নিজে থেকে বসে না। তাই চাপ দিলেই মেসেজটা কপি হয়ে যাবে, পোস্টের ঘরে শুধু পেস্ট করুন।', pasteInFb: 'মেসেজ কপি হয়েছে। ফেসবুকে পোস্টের ঘরে চেপে ধরে পেস্ট করুন।', fbCopied: 'মেসেজ কপি হয়েছে', fbHow: 'ফেসবুক নিজে থেকে লেখা বসাতে দেয় না। ফেসবুক খুলে লেখার ঘরে চেপে ধরে পেস্ট করুন। কম্পিউটারে Ctrl+V চাপুন।', fbOpen: 'ফেসবুক খুলুন', msOpen: 'মেসেঞ্জার খুলুন',
+      freshNote: 'প্রতিবার রিডিম বা কপি করলে নতুন কোড পাবেন। আগের কোড আর কখনো আপনার কাছে আসবে না।',
+      sharePic: 'ছবি হিসেবে শেয়ার করুন', picHint: 'মেসেজটা ছবির মধ্যেই লেখা থাকে, তাই ফেসবুক আর ইনস্টাগ্রামেও পুরোটা দেখা যাবে।', picSaved: 'ছবিটা ডাউনলোড হয়েছে। ফেসবুক বা ইনস্টাগ্রামে ছবি হিসেবে পোস্ট করুন।', msgCopied: 'মেসেজ কপি হয়েছে। এখন যেকোনো জায়গায় পেস্ট করুন।',
       shareMsg: 'উমরাহ করার ইচ্ছাটা আমাদের অনেকের মনেই বহু বছর ধরে আছে। নুসুক অ্যাপের উমরাহ চ্যালেঞ্জে এখন দুইজনের জন্য ১০০টা ফ্রি উমরাহ জেতার সুযোগ আছে। 🕋\n\nএই সাইটে এক ট্যাপেই অন্যদের রেফারেল কোড পাবেন। নিজের কোডটা দিলে অন্যরাও আপনাকে সাপোর্ট করতে পারবে। সাইন-আপ লাগে না, পুরোপুরি ফ্রি।\n\nকে জানে, হয়তো এবার আল্লাহর ঘরের ডাক আপনারই আসবে। ইনশাআল্লাহ।',
       shareShort: 'নুসুক উমরাহ চ্যালেঞ্জে দুইজনের জন্য ১০০টা ফ্রি উমরাহ জেতার সুযোগ। এক ট্যাপে রেফারেল কোড নিন, নিজেরটাও দিন। 🕋 ইনশাআল্লাহ।',
       giveSub: 'নুসুক অ্যাপ থেকে কপি করা পুরো মেসেজটাই এখানে পেস্ট করুন। কোডটা আমরা নিজেরাই খুঁজে নেব।',
@@ -97,7 +99,9 @@
       sheetTitle: 'Share your code too', sheetMsg: "The more people use your code, the more keys you collect in Nusuk. Just paste the app's share message here.",
       later: 'Maybe later', plusOne: '+1', close: 'Close',
       navShare: 'Share', shareTitle: 'Pass the chance on to your loved ones', shareSub: 'One share might open the way to Umrah for someone. Showing someone the way to good is a good deed too.',
-      shareNow: 'Share', copyMsg: 'Copy message', igHint: "Facebook and Instagram don't let sites fill in your post, so tapping copies the message for you. Just paste it in the post box.", pasteInFb: 'Message copied. Paste it in the Facebook post box.', fbCopied: 'Message copied', fbHow: "Facebook won't let sites fill in your post. Open Facebook, then press and hold the post box and paste (Ctrl+V on a computer).", fbOpen: 'Open Facebook', msOpen: 'Open Messenger', msgCopied: 'Message copied. Paste it anywhere.',
+      shareNow: 'Share', copyMsg: 'Copy message', igHint: "Facebook and Instagram don't let sites fill in your post, so tapping copies the message for you. Just paste it in the post box.", pasteInFb: 'Message copied. Paste it in the Facebook post box.', fbCopied: 'Message copied', fbHow: "Facebook won't let sites fill in your post. Open Facebook, then press and hold the post box and paste (Ctrl+V on a computer).", fbOpen: 'Open Facebook', msOpen: 'Open Messenger',
+      freshNote: 'Every redeem or copy gives you a new code. A code you took never comes back to you.',
+      sharePic: 'Share as a picture', picHint: 'The message is written inside the picture, so it shows in full on Facebook and Instagram too.', picSaved: 'Picture downloaded. Post it as a photo on Facebook or Instagram.', msgCopied: 'Message copied. Paste it anywhere.',
       shareMsg: "So many of us have wanted to perform Umrah for years. Right now the Nusuk app's Umrah challenge is giving away 100 free Umrah trips for two. 🕋\n\nOn this site you can grab someone's referral code in one tap, and share yours so others can support you. No sign-up, and it's free.\n\nWho knows, maybe this time the call to Allah's House is yours. In sha Allah.",
       shareShort: "The Nusuk Umrah challenge is giving away 100 free Umrah trips for two. Grab a referral code in one tap and share yours. 🕋 In sha Allah.",
       giveSub: "Paste the whole message from the Nusuk app. We'll find the code in it.",
@@ -138,7 +142,9 @@
       sheetTitle: 'شارك رمزك أيضًا', sheetMsg: 'كلما استخدم الناس رمزك زادت مفاتيحك في نسك. فقط الصق رسالة المشاركة من التطبيق هنا.',
       later: 'لاحقًا', plusOne: '+١', close: 'إغلاق',
       navShare: 'مشاركة', shareTitle: 'شارك الفرصة مع أحبابك', shareSub: 'مشاركة واحدة قد تفتح لأحدهم طريق العمرة. والدال على الخير كفاعله.',
-      shareNow: 'مشاركة', copyMsg: 'نسخ الرسالة', igHint: 'فيسبوك وإنستغرام لا يسمحان بكتابة المنشور تلقائيًا، لذلك ننسخ الرسالة لك عند الضغط. الصقها في خانة المنشور فقط.', pasteInFb: 'نُسخت الرسالة. الصقها في خانة المنشور على فيسبوك.', fbCopied: 'نُسخت الرسالة', fbHow: 'فيسبوك لا يسمح بكتابة المنشور تلقائيًا. افتح فيسبوك ثم اضغط مطولًا على خانة المنشور والصق (Ctrl+V على الكمبيوتر).', fbOpen: 'افتح فيسبوك', msOpen: 'افتح ماسنجر', msgCopied: 'نُسخت الرسالة. الصقها أينما شئت.',
+      shareNow: 'مشاركة', copyMsg: 'نسخ الرسالة', igHint: 'فيسبوك وإنستغرام لا يسمحان بكتابة المنشور تلقائيًا، لذلك ننسخ الرسالة لك عند الضغط. الصقها في خانة المنشور فقط.', pasteInFb: 'نُسخت الرسالة. الصقها في خانة المنشور على فيسبوك.', fbCopied: 'نُسخت الرسالة', fbHow: 'فيسبوك لا يسمح بكتابة المنشور تلقائيًا. افتح فيسبوك ثم اضغط مطولًا على خانة المنشور والصق (Ctrl+V على الكمبيوتر).', fbOpen: 'افتح فيسبوك', msOpen: 'افتح ماسنجر',
+      freshNote: 'مع كل استخدام أو نسخ تحصل على رمز جديد، ولن يعود إليك رمز أخذته أبدًا.',
+      sharePic: 'شارك كصورة', picHint: 'الرسالة مكتوبة داخل الصورة، فتظهر كاملة على فيسبوك وإنستغرام أيضًا.', picSaved: 'تم تنزيل الصورة. انشرها كصورة على فيسبوك أو إنستغرام.', msgCopied: 'نُسخت الرسالة. الصقها أينما شئت.',
       shareMsg: 'العمرة أمنية يحملها كثير منا منذ سنين. تحدي العمرة في تطبيق نسك يقدّم الآن 100 عمرة مجانية لشخصين. 🕋\n\nفي هذا الموقع تأخذ رمز إحالة بضغطة واحدة، وتشارك رمزك ليدعمك غيرك. بلا تسجيل ومجانًا.\n\nمن يدري، لعل الدعوة إلى بيت الله تكون لك هذه المرة. إن شاء الله.',
       shareShort: 'تحدي العمرة في نسك يقدّم 100 عمرة مجانية لشخصين. خذ رمز إحالة بضغطة وشارك رمزك. 🕋 إن شاء الله.',
       giveSub: 'الصق رسالة تطبيق نسك كاملة، وسنستخرج الرمز منها.',
@@ -500,7 +506,28 @@
     $('chMs').href = 'fb-messenger://share/?link=' + e(SHARE_URL); $('chMs').hidden = !MOBILE;
     $('shareNow').hidden = !navigator.share;
     $('fbStep').hidden = true;
+    prefetchPic();
     const d = $('shareSheet'); if (!d.open) { if (d.showModal) d.showModal(); else d.setAttribute('open', ''); }
+  }
+  // share as a picture: the message is printed on the image, so it survives Facebook/Instagram
+  let picBlob = null; let picLang = '';
+  function prefetchPic() {
+    if (picBlob && picLang === S.lang) return;
+    picLang = S.lang; picBlob = null;
+    fetch('share-' + S.lang + '.jpg').then((r) => (r.ok ? r.blob() : null)).then((b) => { if (picLang === S.lang) picBlob = b; }).catch(() => {});
+  }
+  async function sharePicture() {
+    const blob = picBlob || await fetch('share-' + S.lang + '.jpg').then((r) => r.blob()).catch(() => null);
+    if (!blob) { toast(t('addFail')); return; }
+    const file = new File([blob], 'nusukey-umrah.jpg', { type: 'image/jpeg' });
+    copyText(t('shareMsg') + '\n\n' + SHARE_URL); // caption ready for apps that allow one
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      try { await navigator.share({ files: [file], text: t('shareMsg') + '\n\n' + SHARE_URL }); closeShare(); return; }
+      catch (err) { if (err && err.name === 'AbortError') return; }
+    }
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'nusukey-umrah.jpg';
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    toast(t('picSaved'));
   }
   function closeShare() { const d = $('shareSheet'); if (d.open) { if (d.close) d.close(); else d.removeAttribute('open'); } }
   async function nativeShare() {
@@ -581,6 +608,7 @@
     $('shareBtn').addEventListener('click', openShare);
     $('shareX').addEventListener('click', closeShare);
     $('shareNow').addEventListener('click', nativeShare);
+    $('sharePic').addEventListener('click', sharePicture);
     $('shareSheet').addEventListener('click', (e) => { if (e.target === $('shareSheet')) closeShare(); });
     // Facebook and Messenger only accept a link: copy the message on the same tap, then let the link open
     // Facebook never accepts prefilled post text. Step 1 (this tap): copy the message and say so.
