@@ -251,11 +251,16 @@
     if (!S.stats) return loaded;
     return Math.max(loaded, (S.stats.total || 0) - S.seen.size - S.mine.length);
   }
+  // A random code the visitor hasn't taken (pinned ones first), so every reload and every
+  // visitor gets a different one and no single code gets hammered.
+  const rand = (n) => crypto.getRandomValues(new Uint32Array(1))[0] % n;
   function pickNext() {
-    const list = available();
-    let next = list.find((x) => x.c !== S.current && !S.skipped.has(x.c));
-    if (!next) { S.skipped.clear(); next = list.find((x) => x.c !== S.current) || (list.length ? list[0] : null); }
-    S.current = next ? next.c : null;
+    const all = available();
+    let pool = all.filter((x) => x.c !== S.current && !S.skipped.has(x.c));
+    if (!pool.length) { S.skipped.clear(); pool = all.filter((x) => x.c !== S.current); }
+    if (!pool.length) { S.current = all.length ? all[0].c : null; return; }
+    const pins = pool.filter((x) => x.pin);
+    S.current = (pins.length ? pins[0] : pool[rand(pool.length)]).c;
   }
 
   /* ---------- events: batched, no preflight, survive page exit ---------- */
