@@ -1,0 +1,11 @@
+{
+  "name": "NusukKey · উমরাহ আপনার অপেক্ষায়",
+  "short_name": "NusukKey",
+  "lang": "bn",
+  "start_url": "./#take",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F7F6F3",
+  "theme_color": "#FCE7C2",
+  "icons": [{ "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}

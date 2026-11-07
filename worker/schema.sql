@@ -1,12 +1,16 @@
+-- NusukKey D1 schema. Safe to re-run (IF NOT EXISTS everywhere).
 CREATE TABLE IF NOT EXISTS codes (
-  code TEXT PRIMARY KEY,
+  code TEXT PRIMARY KEY,            -- full code, e.g. NG-vW7So71R
+  sn INTEGER NOT NULL,              -- serial number, newest = highest (browsers store seen serials as ranges)
   added_at INTEGER NOT NULL,
   owner_hash TEXT,
   copies INTEGER NOT NULL DEFAULT 0,
   reports INTEGER NOT NULL DEFAULT 0,
+  pinned INTEGER NOT NULL DEFAULT 0, -- 0 = not pinned, otherwise pin time (newest pin first)
   last_copied_at INTEGER
 );
-CREATE INDEX IF NOT EXISTS codes_pick ON codes (reports, copies, added_at DESC);
+CREATE UNIQUE INDEX IF NOT EXISTS codes_sn ON codes (sn);
+CREATE INDEX IF NOT EXISTS codes_pinned ON codes (pinned) WHERE pinned > 0;
 CREATE INDEX IF NOT EXISTS codes_owner ON codes (owner_hash, added_at);
 
 CREATE TABLE IF NOT EXISTS events (
@@ -16,24 +20,11 @@ CREATE TABLE IF NOT EXISTS events (
   at INTEGER NOT NULL,
   PRIMARY KEY (key_hash, code, kind)
 );
+CREATE INDEX IF NOT EXISTS events_at ON events (at);
 
 CREATE TABLE IF NOT EXISTS daily (
-  day TEXT NOT NULL,
+  day TEXT NOT NULL,      -- YYYY-MM-DD, or 'all' for running totals (copies_total, codes_total, ver)
   metric TEXT NOT NULL,
   n INTEGER NOT NULL DEFAULT 0,
   PRIMARY KEY (day, metric)
-);
-
-CREATE TABLE IF NOT EXISTS presence (
-  key_hash TEXT PRIMARY KEY,
-  seen_at INTEGER NOT NULL
-);
-CREATE INDEX IF NOT EXISTS presence_seen ON presence (seen_at);
-
-CREATE INDEX IF NOT EXISTS codes_added ON codes (added_at);
-
-CREATE TABLE IF NOT EXISTS snapshot (
-  id INTEGER PRIMARY KEY CHECK (id = 1),
-  body TEXT NOT NULL,
-  built_at INTEGER NOT NULL
 );
