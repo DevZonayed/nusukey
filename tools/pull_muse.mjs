@@ -1,0 +1,11 @@
+import { chromium } from 'playwright';
+import fs from 'fs';
+const b = await chromium.launch({ channel: 'chrome' });
+const p = await (await b.newContext()).newPage();
+await p.goto('https://muse.ai/s/nusuk-codes-vxs6xmxcxfxdtxq4xv/_N0y1n026PMQ81xqvvBkFsGkWl2aUhE5RoWD6MJQ8OM', { waitUntil: 'networkidle', timeout: 60000 });
+await p.waitForTimeout(2000);
+const f = p.frames().find((x) => x.url().includes('metaaiusercontent'));
+const all = await f.evaluate(() => window.ALL.map(String));
+fs.writeFileSync('../src-muse/all.json', JSON.stringify(all));
+console.log('got', all.length);
+await b.close();

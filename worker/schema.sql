@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS codes (
 );
 CREATE UNIQUE INDEX IF NOT EXISTS codes_sn ON codes (sn);
 CREATE INDEX IF NOT EXISTS codes_pinned ON codes (pinned) WHERE pinned > 0;
-CREATE INDEX IF NOT EXISTS codes_owner ON codes (owner_hash, added_at);
+CREATE INDEX IF NOT EXISTS codes_owner ON codes (owner_hash, added_at) WHERE owner_hash IS NOT NULL; -- archive imports skip this index
 
 CREATE TABLE IF NOT EXISTS events (
   key_hash TEXT NOT NULL,
