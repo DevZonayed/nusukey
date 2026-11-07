@@ -19,6 +19,7 @@
 <style>
 @font-face{font-family:Inter;font-weight:100 900;font-display:swap;src:url(fonts/inter.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:"Geist Mono";font-weight:100 900;font-display:swap;src:url(fonts/geist-mono.woff2) format("woff2")}
+@font-face{font-family:Ruqaa;font-weight:700;font-display:swap;src:url(fonts/ruqaa-inshallah.woff2) format("woff2")} /* Aref Ruqaa (SIL OFL), subset to one phrase */
 @font-face{font-family:Purno;font-weight:400;font-display:swap;src:url(fonts/purno-regular.woff2) format("woff2");unicode-range:U+0964-0965,U+0980-09FF,U+200C-200D,U+25CC;size-adjust:110%}
 @font-face{font-family:Purno;font-weight:700;font-display:swap;src:url(fonts/purno-bold.woff2) format("woff2");unicode-range:U+0964-0965,U+0980-09FF,U+200C-200D,U+25CC;size-adjust:110%}
 :root{
@@ -52,6 +53,11 @@ svg{flex:none}
 
 .head{padding:8px 2px 12px}
 .eyebrow{margin:0;font-size:16px;color:var(--body)}
+.dua{margin:2px 0 0;font:700 clamp(38px,11vw,54px)/1.25 Ruqaa,"Noto Naskh Arabic",serif;direction:rtl;text-align:start;width:max-content;max-width:100%;
+  background:linear-gradient(100deg,#9A6A12 0%,#D4A63A 35%,#FFE7A3 50%,#D4A63A 65%,#9A6A12 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:ink 1.6s cubic-bezier(.3,.7,.2,1) .2s both,gild 5s ease-in-out 2s infinite}
+@keyframes ink{from{clip-path:inset(0 0 0 100%);opacity:.3}to{clip-path:inset(0 0 0 0);opacity:1}}
+@keyframes gild{0%,100%{background-position:100% 0}50%{background-position:0 0}}
 h1{margin:2px 0 0;font-size:clamp(26px,7vw,38px);line-height:1.15;font-weight:500;letter-spacing:-.02em;color:var(--ink)}
 .lead{margin:8px 0 0;font-size:15px;color:var(--muted)}
 
@@ -72,7 +78,7 @@ h1{margin:2px 0 0;font-size:clamp(26px,7vw,38px);line-height:1.15;font-weight:50
 .empty .btn-green{margin-top:14px}
 
 /* the redeem button: green, Kaaba icon, a soft pulse and a little nudge every few seconds */
-.btn-redeem{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:58px;margin-top:12px;border-radius:18px;background:linear-gradient(180deg,#0B7A48,var(--green));color:#fff;font-weight:700;font-size:20px;box-shadow:0 10px 22px rgba(0,102,58,.28),inset 0 1px 0 rgba(255,255,255,.18);transition:transform .12s;animation:nudge 4.5s ease-in-out 1.5s infinite}
+.btn-redeem{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:58px;margin-top:12px;border-radius:18px;background:linear-gradient(180deg,#0B7A48,var(--green));color:#fff;font-weight:700;font-size:20px;box-shadow:0 10px 22px rgba(0,102,58,.28),inset 0 1px 0 rgba(255,255,255,.18);transition:transform .12s;animation:invite 3.6s ease-in-out 1.2s infinite}
 .btn-redeem::before{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:0 0 0 0 rgba(0,102,58,.45);animation:ring 2.2s ease-out infinite}
 .btn-redeem::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.28) 50%,transparent 65%);background-size:250% 100%;animation:shine 3.2s ease-in-out infinite;pointer-events:none}
 .btn-redeem:active{transform:scale(.98)}
@@ -80,7 +86,48 @@ h1{margin:2px 0 0;font-size:clamp(26px,7vw,38px);line-height:1.15;font-weight:50
 .btn-redeem kbd{font:600 11px var(--mono);background:rgba(255,255,255,.18);border-radius:6px;padding:2px 6px}
 @keyframes ring{0%{box-shadow:0 0 0 0 rgba(0,102,58,.45)}80%,100%{box-shadow:0 0 0 14px rgba(0,102,58,0)}}
 @keyframes shine{0%{background-position:150% 0}60%,100%{background-position:-50% 0}}
-@keyframes nudge{0%,84%,100%{transform:none}87%{transform:translateX(-4px) rotate(-1deg)}90%{transform:translateX(4px) rotate(1deg)}93%{transform:translateX(-3px)}96%{transform:translateX(2px)}}
+/* a soft "come on" hop and a forward arrow: inviting, never a head-shake */
+@keyframes invite{0%,64%,100%{transform:translateY(0) scale(1)}72%{transform:translateY(-4px) scale(1.025)}80%{transform:translateY(0) scale(.995)}87%{transform:translateY(-1.5px) scale(1.01)}93%{transform:translateY(0) scale(1)}}
+.btn-redeem .go{width:22px;height:22px;animation:go 1.6s ease-in-out infinite}
+[dir=rtl] .btn-redeem .go{transform:scaleX(-1);animation-name:go-rtl}
+@keyframes go{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+@keyframes go-rtl{0%,100%{transform:scaleX(-1) translateX(0)}50%{transform:scaleX(-1) translateX(5px)}}
+.btn-redeem .kaaba{animation:glowk 3.6s ease-in-out 1.2s infinite}
+@keyframes glowk{0%,64%,100%{box-shadow:0 0 0 0 rgba(212,166,58,0)}74%{box-shadow:0 0 0 4px rgba(212,166,58,.45)}}
+
+/* big "give your code" card on home */
+.give-cta{display:flex;align-items:center;gap:14px;width:100%;margin-top:12px;padding:16px;border-radius:var(--r);background:linear-gradient(135deg,#FFF1D6,#FCE3B4);box-shadow:var(--sh);text-align:start;color:var(--ink);transition:transform .12s}
+.give-cta:active{transform:scale(.985)}
+.give-cta .ki{position:relative;flex:none;display:grid;place-items:center;width:58px;height:58px;border-radius:18px;background:#fff;color:var(--brown);box-shadow:0 4px 12px rgba(122,79,10,.15)}
+.give-cta .ki svg{width:30px;height:30px}
+.plus{position:absolute;top:-4px;inset-inline-end:-6px;font-size:12px;font-weight:800;color:#fff;background:var(--orange);border-radius:999px;padding:1px 6px;opacity:0;animation:rise 3s ease-out infinite}
+.plus.p2{inset-inline-end:auto;inset-inline-start:-6px;animation-delay:1.5s;background:var(--green)}
+@keyframes rise{0%{opacity:0;transform:translateY(8px) scale(.8)}15%{opacity:1;transform:translateY(0) scale(1)}70%{opacity:1}100%{opacity:0;transform:translateY(-16px)}}
+.give-cta b{display:block;font-size:18px;font-weight:700}
+.give-cta span.s{display:block;font-size:13.5px;color:var(--body);line-height:1.4}
+.give-cta .chev{margin-inline-start:auto;width:22px;height:22px;color:var(--brown)}
+[dir=rtl] .give-cta .chev{transform:scaleX(-1)}
+
+/* bottom sheet popup */
+dialog.sheet{border:0;padding:0;margin:auto auto 0;width:100%;max-width:560px;max-height:92dvh;border-radius:26px 26px 0 0;background:var(--bg);color:var(--ink);box-shadow:0 -10px 40px rgba(0,0,0,.18);overflow:auto;overscroll-behavior:contain}
+dialog.sheet[open]{animation:sheetup .28s cubic-bezier(.2,.8,.2,1)}
+dialog.sheet::backdrop{background:rgba(30,35,32,.45)}
+@keyframes sheetup{from{transform:translateY(40px);opacity:.4}}
+@media (min-width:620px){dialog.sheet{margin:auto;border-radius:26px}}
+.sheet-in{padding:10px 16px calc(18px + env(safe-area-inset-bottom))}
+.grab{width:42px;height:5px;border-radius:9px;background:#D9D4CA;margin:2px auto 8px}
+.sheet-x{position:absolute;z-index:3;top:10px;inset-inline-end:10px;width:44px;height:44px;border-radius:50%;font-size:24px;line-height:1;color:var(--muted)}
+.sheet-hero{position:relative;text-align:center;padding:18px 12px 16px;border-radius:var(--r);background:radial-gradient(120% 100% at 50% 0,#FCE3B4,#FFF6E6 60%,#fff);margin-bottom:12px}
+.sheet-hero .ki{position:relative;display:inline-grid;place-items:center;width:76px;height:76px;border-radius:24px;background:#fff;color:var(--brown);box-shadow:0 8px 20px rgba(122,79,10,.18)}
+.sheet-hero .ki svg{width:40px;height:40px}
+.sheet-hero .plus{font-size:13px}
+.sheet-hero .plus.p3{top:auto;bottom:-6px;inset-inline-end:-14px;animation-delay:.75s}
+.sheet-hero h2{margin:12px 0 4px;font-size:23px;font-weight:600}
+.sheet-hero p{margin:0 auto;max-width:34ch;color:var(--body);font-size:15px}
+.later{display:block;margin:10px auto 0;min-height:44px;padding:0 16px;color:var(--muted);font-weight:600}
+details.how{margin-top:12px}
+details.how summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;min-height:48px;padding:0 4px;font-weight:600;color:var(--green)}
+details.how summary::-webkit-details-marker{display:none}
 .btn-redeem.go{animation:none;transform:scale(.97)}
 .hint{margin:8px 4px 0;font-size:12.5px;line-height:1.45;color:var(--muted)}
 .minor{display:flex;justify-content:center;gap:2px;margin-top:2px;flex-wrap:wrap}
@@ -89,7 +136,7 @@ h1{margin:2px 0 0;font-size:clamp(26px,7vw,38px);line-height:1.15;font-weight:50
 .minor .warn{color:var(--danger);font-weight:500}
 
 /* stats chips */
-.chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0 2px}
+.chips{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:12px 0 2px}
 .chip{background:var(--card);border-radius:var(--r-sm);padding:8px 12px;box-shadow:var(--sh)}
 .chip b{display:block;font-size:18px;font-weight:700;line-height:1.2}
 .chip span{font-size:12px;color:var(--muted)}
@@ -212,6 +259,7 @@ nav.tabs a[aria-current=page]{color:var(--orange);font-weight:700}
     <div class="head">
       <p class="eyebrow" data-t="eyebrow">নুসুক উমরাহ চ্যালেঞ্জ</p>
       <h1 data-t="title">উমরাহ আপনার অপেক্ষায়</h1>
+      <p class="dua" lang="ar" aria-label="Insha'Allah">إن شاء الله</p>
     </div>
     <div class="card hero" id="hero">
       <span class="tag" id="tag" hidden></span>
@@ -219,7 +267,7 @@ nav.tabs a[aria-current=page]{color:var(--orange);font-weight:700}
         <svg class="door-big" viewBox="0 0 60 80" aria-hidden="true"><use href="#d0" fill="#00663A"/><path d="M30 8v72" stroke="rgba(255,255,255,.55)" stroke-width="1"/><circle cx="26.5" cy="46" r="1.6" fill="#fff"/><circle cx="33.5" cy="46" r="1.6" fill="#fff"/><use href="#kaaba" x="20" y="54" width="20" height="20"/></svg>
         <div class="code" id="code" aria-live="polite"></div>
         <div class="age" id="age"></div>
-        <a class="btn-redeem" id="redeemBtn" href="#take" hidden><svg class="kaaba" aria-hidden="true"><use href="#kaaba"/></svg><span data-t="redeem">রিডিম করুন</span></a>
+        <a class="btn-redeem" id="redeemBtn" href="#take" hidden><svg class="kaaba" aria-hidden="true"><use href="#kaaba"/></svg><span data-t="redeem">রিডিম করুন</span><svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
         <button class="btn-redeem" id="copyBtn" type="button" hidden><svg class="kaaba" aria-hidden="true"><use href="#kaaba"/></svg><span data-t="copyMain">কপি করুন</span><kbd>Space</kbd></button>
         <p class="hint" id="hint"></p>
         <div class="minor">
@@ -231,9 +279,14 @@ nav.tabs a[aria-current=page]{color:var(--orange);font-weight:700}
       <div class="empty" id="emptyBox" hidden><p id="emptyText"></p><a class="btn-green" href="#give" id="emptyGive" data-t="navGive" hidden>কোড দিন</a></div>
     </div>
 
+    <button class="give-cta" id="giveCta" type="button">
+      <span class="ki"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="12" height="10" rx="2"/><path d="M8 10V7a3 3 0 0 1 6 0"/><circle cx="17.5" cy="17.5" r="2.5"/><path d="M19.3 19.3 22 22"/></svg><i class="plus" data-t="plusOne">+১</i><i class="plus p2" data-t="plusOne">+১</i></span>
+      <span><b data-t="ctaTitle">আপনার কোডটাও দিন</b><span class="s" data-t="ctaSub">অন্যরা আপনার কোড ব্যবহার করলে আপনার কী বাড়তে থাকবে</span></span>
+      <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+
     <div class="chips" aria-label="stats">
       <div class="chip"><b id="stCopies">০</b><span data-t="stCopies">আজ কপি</span></div>
-      <div class="chip"><b id="stAdded">০</b><span data-t="stAdded">আজ নতুন</span></div>
       <div class="chip"><b id="stActive">০</b><span><i class="live"></i><span data-t="stActive">এখন সক্রিয়</span></span></div>
     </div>
 
@@ -241,31 +294,6 @@ nav.tabs a[aria-current=page]{color:var(--orange);font-weight:700}
     <div class="grid" id="grid"></div>
     <div class="more-state" id="moreState"></div>
     <div id="sentinel" style="height:1px"></div>
-  </section>
-
-  <!-- GIVE -->
-  <section class="view" id="v-give" data-view="give" hidden>
-    <div class="head"><p class="eyebrow" data-t="eyebrowGive">অন্যকে সাপোর্ট করুন</p><h1 data-t="giveTitle">আপনার কোড দিন</h1></div>
-    <div class="card give">
-      <p data-t="giveSub">নুসুক অ্যাপ থেকে কপি করা পুরো মেসেজটাই এখানে পেস্ট করুন। কোডটা আমরা নিজেরাই খুঁজে নেব।</p>
-      <label class="sr" for="giveText" data-t="giveTitle">আপনার কোড দিন</label>
-      <textarea id="giveText" data-tp="givePh" placeholder="নুসুকের মেসেজটা এখানে পেস্ট করুন…" spellcheck="false" autocomplete="off"></textarea>
-      <div class="found" id="found"></div>
-      <div class="msg" id="giveMsg" role="status"></div>
-      <div class="row">
-        <button class="btn-line" id="pasteBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4h6v3H9z"/></svg><span data-t="paste">পেস্ট করুন</span></button>
-        <button class="btn-green" id="addBtn" type="button" disabled data-t="addNone">কোড যোগ করুন</button>
-      </div>
-    </div>
-    <div class="sec"><h2 data-t="howTitle">নিজের কোড কোথায় পাবেন</h2></div>
-    <div class="card give">
-      <ol class="steps">
-        <li><div><b data-t="how1">নুসুক অ্যাপ খুলুন</b><span data-t="how1d">নিচের Play থেকে উমরাহ চ্যালেঞ্জে যান।</span></div></li>
-        <li><div><b data-t="how2">Share বাটনে চাপুন</b><span data-t="how2d">অ্যাপের নিচের মেনুতেই Share আছে।</span></div></li>
-        <li><div><b data-t="how3">মেসেজটা কপি করুন</b><span data-t="how3d">তারপর এখানে এসে উপরের বক্সে পেস্ট করুন।</span></div></li>
-      </ol>
-      <span class="sample" id="sample"></span>
-    </div>
   </section>
 
   <!-- MINE -->
@@ -296,6 +324,41 @@ nav.tabs a[aria-current=page]{color:var(--orange);font-weight:700}
     <div class="foot"><p data-t="foot1"></p><p data-t="foot2"></p></div>
   </section>
 </div>
+
+  <!-- GIVE (bottom sheet) -->
+  <dialog class="sheet" id="giveSheet" aria-labelledby="sheetTitle">
+    <div class="sheet-in">
+      <div class="grab" aria-hidden="true"></div>
+      <button class="sheet-x" id="sheetX" type="button" aria-label="close" data-ta="close">×</button>
+      <div class="sheet-hero">
+        <span class="ki"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="12" height="10" rx="2"/><path d="M8 10V7a3 3 0 0 1 6 0"/><circle cx="17.5" cy="17.5" r="2.5"/><path d="M19.3 19.3 22 22"/></svg><i class="plus" data-t="plusOne">+১</i><i class="plus p2" data-t="plusOne">+১</i><i class="plus p3" data-t="plusOne">+১</i></span>
+        <h2 id="sheetTitle" data-t="sheetTitle">আপনার কোডটাও দিন</h2>
+        <p data-t="sheetMsg">যত বেশি মানুষ কোডটা ব্যবহার করবে, নুসুকে আপনার কী তত বাড়তে থাকবে। শুধু অ্যাপের শেয়ার মেসেজটা এখানে পেস্ট করুন।</p>
+      </div>
+      <div class="card give">
+      <label class="sr" for="giveText" data-t="giveTitle">আপনার কোড দিন</label>
+      <textarea id="giveText" data-tp="givePh" placeholder="নুসুকের মেসেজটা এখানে পেস্ট করুন…" spellcheck="false" autocomplete="off"></textarea>
+      <div class="found" id="found"></div>
+      <div class="msg" id="giveMsg" role="status"></div>
+      <div class="row">
+        <button class="btn-line" id="pasteBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4h6v3H9z"/></svg><span data-t="paste">পেস্ট করুন</span></button>
+        <button class="btn-green" id="addBtn" type="button" disabled data-t="addNone">কোড যোগ করুন</button>
+      </div>
+      </div>
+      <details class="how">
+        <summary><span data-t="howTitle">নিজের কোড কোথায় পাবেন</span><span aria-hidden="true">+</span></summary>
+        <div class="card give">
+      <ol class="steps">
+        <li><div><b data-t="how1">নুসুক অ্যাপ খুলুন</b><span data-t="how1d">নিচের Play থেকে উমরাহ চ্যালেঞ্জে যান।</span></div></li>
+        <li><div><b data-t="how2">Share বাটনে চাপুন</b><span data-t="how2d">অ্যাপের নিচের মেনুতেই Share আছে।</span></div></li>
+        <li><div><b data-t="how3">মেসেজটা কপি করুন</b><span data-t="how3d">তারপর এখানে এসে উপরের বক্সে পেস্ট করুন।</span></div></li>
+      </ol>
+      <span class="sample" id="sample"></span>
+        </div>
+      </details>
+      <button class="later" id="sheetLater" type="button" data-t="later">পরে দেব</button>
+    </div>
+  </dialog>
 
 <nav class="tabs" aria-label="Main">
   <a href="#take" data-nav="take" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M6 21V8a6 6 0 0 1 12 0v13z"/><path d="M12 3v18"/><circle cx="10.2" cy="13" r=".7" fill="currentColor"/><circle cx="13.8" cy="13" r=".7" fill="currentColor"/><path d="M3 21h18"/></svg><span data-t="navTake">কোড নিন</span></a>
