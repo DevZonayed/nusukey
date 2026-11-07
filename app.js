@@ -56,7 +56,7 @@
       sheetTitle: 'আপনার কোডটাও দিন', sheetMsg: 'যত বেশি মানুষ কোডটা ব্যবহার করবে, নুসুকে আপনার কী তত বাড়তে থাকবে। শুধু অ্যাপের শেয়ার মেসেজটা এখানে পেস্ট করুন।',
       later: 'পরে দেব', plusOne: '+১', close: 'বন্ধ করুন',
       navShare: 'শেয়ার', shareTitle: 'সুযোগটা প্রিয়জনদেরও দিন', shareSub: 'আপনার একটা শেয়ারে হয়তো কারও উমরাহর পথ খুলে যাবে। ভালো কাজের পথ দেখানোও সওয়াবের কাজ।',
-      shareNow: 'শেয়ার করুন', copyMsg: 'মেসেজ কপি করুন', igHint: 'ইনস্টাগ্রামে পোস্ট করতে মেসেজটা কপি করে নিন।', msgCopied: 'মেসেজ কপি হয়েছে। এখন যেকোনো জায়গায় পেস্ট করুন।',
+      shareNow: 'শেয়ার করুন', copyMsg: 'মেসেজ কপি করুন', igHint: 'ফেসবুক আর ইনস্টাগ্রামে লেখা নিজে থেকে বসে না। তাই চাপ দিলেই মেসেজটা কপি হয়ে যাবে, পোস্টের ঘরে শুধু পেস্ট করুন।', pasteInFb: 'মেসেজ কপি হয়েছে। ফেসবুকে পোস্টের ঘরে চেপে ধরে পেস্ট করুন।', msgCopied: 'মেসেজ কপি হয়েছে। এখন যেকোনো জায়গায় পেস্ট করুন।',
       shareMsg: 'উমরাহ করার ইচ্ছাটা আমাদের অনেকের মনেই বহু বছর ধরে আছে। নুসুক অ্যাপের উমরাহ চ্যালেঞ্জে এখন দুইজনের জন্য ১০০টা ফ্রি উমরাহ জেতার সুযোগ আছে। 🕋\n\nএই সাইটে এক ট্যাপেই অন্যদের রেফারেল কোড পাবেন। নিজের কোডটা দিলে অন্যরাও আপনাকে সাপোর্ট করতে পারবে। সাইন-আপ লাগে না, পুরোপুরি ফ্রি।\n\nকে জানে, হয়তো এবার আল্লাহর ঘরের ডাক আপনারই আসবে। ইনশাআল্লাহ।',
       shareShort: 'নুসুক উমরাহ চ্যালেঞ্জে দুইজনের জন্য ১০০টা ফ্রি উমরাহ জেতার সুযোগ। এক ট্যাপে রেফারেল কোড নিন, নিজেরটাও দিন। 🕋 ইনশাআল্লাহ।',
       giveSub: 'নুসুক অ্যাপ থেকে কপি করা পুরো মেসেজটাই এখানে পেস্ট করুন। কোডটা আমরা নিজেরাই খুঁজে নেব।',
@@ -97,7 +97,7 @@
       sheetTitle: 'Share your code too', sheetMsg: "The more people use your code, the more keys you collect in Nusuk. Just paste the app's share message here.",
       later: 'Maybe later', plusOne: '+1', close: 'Close',
       navShare: 'Share', shareTitle: 'Pass the chance on to your loved ones', shareSub: 'One share might open the way to Umrah for someone. Showing someone the way to good is a good deed too.',
-      shareNow: 'Share', copyMsg: 'Copy message', igHint: 'For Instagram, copy the message and paste it in your post.', msgCopied: 'Message copied. Paste it anywhere.',
+      shareNow: 'Share', copyMsg: 'Copy message', igHint: "Facebook and Instagram don't let sites fill in your post, so tapping copies the message for you. Just paste it in the post box.", pasteInFb: 'Message copied. Paste it in the Facebook post box.', msgCopied: 'Message copied. Paste it anywhere.',
       shareMsg: "So many of us have wanted to perform Umrah for years. Right now the Nusuk app's Umrah challenge is giving away 100 free Umrah trips for two. 🕋\n\nOn this site you can grab someone's referral code in one tap, and share yours so others can support you. No sign-up, and it's free.\n\nWho knows, maybe this time the call to Allah's House is yours. In sha Allah.",
       shareShort: "The Nusuk Umrah challenge is giving away 100 free Umrah trips for two. Grab a referral code in one tap and share yours. 🕋 In sha Allah.",
       giveSub: "Paste the whole message from the Nusuk app. We'll find the code in it.",
@@ -138,7 +138,7 @@
       sheetTitle: 'شارك رمزك أيضًا', sheetMsg: 'كلما استخدم الناس رمزك زادت مفاتيحك في نسك. فقط الصق رسالة المشاركة من التطبيق هنا.',
       later: 'لاحقًا', plusOne: '+١', close: 'إغلاق',
       navShare: 'مشاركة', shareTitle: 'شارك الفرصة مع أحبابك', shareSub: 'مشاركة واحدة قد تفتح لأحدهم طريق العمرة. والدال على الخير كفاعله.',
-      shareNow: 'مشاركة', copyMsg: 'نسخ الرسالة', igHint: 'لإنستغرام انسخ الرسالة والصقها في منشورك.', msgCopied: 'نُسخت الرسالة. الصقها أينما شئت.',
+      shareNow: 'مشاركة', copyMsg: 'نسخ الرسالة', igHint: 'فيسبوك وإنستغرام لا يسمحان بكتابة المنشور تلقائيًا، لذلك ننسخ الرسالة لك عند الضغط. الصقها في خانة المنشور فقط.', pasteInFb: 'نُسخت الرسالة. الصقها في خانة المنشور على فيسبوك.', msgCopied: 'نُسخت الرسالة. الصقها أينما شئت.',
       shareMsg: 'العمرة أمنية يحملها كثير منا منذ سنين. تحدي العمرة في تطبيق نسك يقدّم الآن 100 عمرة مجانية لشخصين. 🕋\n\nفي هذا الموقع تأخذ رمز إحالة بضغطة واحدة، وتشارك رمزك ليدعمك غيرك. بلا تسجيل ومجانًا.\n\nمن يدري، لعل الدعوة إلى بيت الله تكون لك هذه المرة. إن شاء الله.',
       shareShort: 'تحدي العمرة في نسك يقدّم 100 عمرة مجانية لشخصين. خذ رمز إحالة بضغطة وشارك رمزك. 🕋 إن شاء الله.',
       giveSub: 'الصق رسالة تطبيق نسك كاملة، وسنستخرج الرمز منها.',
@@ -503,6 +503,7 @@
   }
   function closeShare() { const d = $('shareSheet'); if (d.open) { if (d.close) d.close(); else d.removeAttribute('open'); } }
   async function nativeShare() {
+    copyText(t('shareMsg') + '\n\n' + SHARE_URL); // Facebook/Instagram drop shared text, so keep it on the clipboard
     try { await navigator.share({ title: 'NusukKey', text: t('shareMsg'), url: SHARE_URL }); closeShare(); }
     catch (err) { if (!err || err.name !== 'AbortError') toast(t('copyFail')); }
   }
@@ -580,6 +581,8 @@
     $('shareX').addEventListener('click', closeShare);
     $('shareNow').addEventListener('click', nativeShare);
     $('shareSheet').addEventListener('click', (e) => { if (e.target === $('shareSheet')) closeShare(); });
+    // Facebook and Messenger only accept a link: copy the message on the same tap, then let the link open
+    for (const id of ['chFb', 'chMs']) $(id).addEventListener('click', () => { copyText(t('shareMsg') + '\n\n' + SHARE_URL); toast(t('pasteInFb')); });
     $('chCopy').addEventListener('click', async () => { toast((await copyText(t('shareMsg') + '\n\n' + SHARE_URL)) ? t('msgCopied') : t('copyFail')); });
     $('sheetX').addEventListener('click', closeGive);
     $('sheetLater').addEventListener('click', closeGive);
