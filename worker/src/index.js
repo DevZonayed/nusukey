@@ -4,7 +4,9 @@ const CODE_ONE = /^NG-[A-Za-z0-9]{8}$/;
 const KEY_RE = /^NK-[A-Z2-7]{5}(?:-[A-Z2-7]{5}){3}$/;
 const MAX_BODY = 6000;
 const POOL_LIMIT = 4000;
-const POOL_TTL = 20; // seconds at the edge
+const POOL_TTL = 30; // seconds at the edge (per Cloudflare location)
+const REBUILD_MS = 120e3; // full pool snapshot rebuilt at most every 2 min (keeps D1 reads low)
+const PRESENCE_MS = 120e3;
 const MAX_ADDS_PER_KEY_DAY = 40;
 const HIDE_AFTER_REPORTS = 3;
 
@@ -72,6 +74,10 @@ async function readBody(req) {
   try { const v = JSON.parse(text); return v && typeof v === 'object' ? v : null; } catch { return null; }
 }
 
+const bumpAll = (env, metric, n = 1) =>
+  env.DB.prepare("INSERT INTO daily (day, metric, n) VALUES ('all', ?1, ?2) ON CONFLICT(day, metric) DO UPDATE SET n = n + ?2").bind(metric, n);
+const touch = (env, kh, t) =>
+  env.DB.prepare('INSERT INTO presence (key_hash, seen_at) VALUES (?1, ?2) ON CONFLICT(key_hash) DO UPDATE SET seen_at = ?2 WHERE presence.seen_at < ?3').bind(kh, t, t - PRESENCE_MS);
 const bump = (env, metric, n = 1) =>
   env.DB.prepare('INSERT INTO daily (day, metric, n) VALUES (?1, ?2, ?3) ON CONFLICT(day, metric) DO UPDATE SET n = n + ?3').bind(day(), metric, n);
 
@@ -81,23 +87,34 @@ async function pool(env, ctx) {
   const hit = await cache.match(cacheKey);
   if (hit) return hit;
 
-  const since = now() - 5 * 60e3;
-  const [codes, stats, active, total] = await env.DB.batch([
-    env.DB.prepare(`SELECT code AS c, added_at / 1000 AS a, copies AS n FROM codes WHERE reports < ${HIDE_AFTER_REPORTS} ORDER BY copies ASC, added_at DESC LIMIT ${POOL_LIMIT}`),
-    env.DB.prepare("SELECT metric, n FROM daily WHERE day = ?1 OR metric = 'copies_total'").bind(day()),
-    env.DB.prepare('SELECT COUNT(*) AS n FROM presence WHERE seen_at > ?1').bind(since),
-    env.DB.prepare(`SELECT COUNT(*) AS n FROM codes WHERE reports < ${HIDE_AFTER_REPORTS}`),
+  // 1 row read on most misses: the stored snapshot. A full rebuild (one scan) at most every REBUILD_MS.
+  const snap = await env.DB.prepare('SELECT body, built_at FROM snapshot WHERE id = 1').first();
+  let codes; let builtAt;
+  if (!snap || now() - snap.built_at > REBUILD_MS) {
+    const r = await env.DB.prepare(`SELECT code AS c, added_at / 1000 AS a, copies AS n FROM codes WHERE reports < ${HIDE_AFTER_REPORTS} ORDER BY copies ASC, added_at DESC LIMIT ${POOL_LIMIT}`).all();
+    codes = r.results; builtAt = now();
+    ctx.waitUntil(env.DB.prepare('INSERT INTO snapshot (id, body, built_at) VALUES (1, ?1, ?2) ON CONFLICT(id) DO UPDATE SET body = ?1, built_at = ?2').bind(JSON.stringify(codes), builtAt).run());
+  } else {
+    codes = JSON.parse(snap.body); builtAt = snap.built_at;
+  }
+  const [fresh, stats, active] = await env.DB.batch([
+    // codes added since the snapshot (index on added_at, so only new rows are read)
+    env.DB.prepare(`SELECT code AS c, added_at / 1000 AS a, copies AS n FROM codes WHERE added_at > ?1 AND reports < ${HIDE_AFTER_REPORTS} ORDER BY added_at DESC LIMIT 500`).bind(builtAt),
+    env.DB.prepare("SELECT metric, n FROM daily WHERE day = ?1 OR day = 'all'").bind(day()),
+    env.DB.prepare('SELECT COUNT(*) AS n FROM presence WHERE seen_at > ?1').bind(now() - 5 * 60e3),
   ]);
+  const have = new Set(codes.map((x) => x.c));
+  for (const x of fresh.results) if (!have.has(x.c)) codes.unshift(x);
   const m = {};
   for (const r of stats.results) m[r.metric] = (m[r.metric] || 0) + r.n;
   const body = {
-    codes: codes.results.map((r) => ({ c: r.c, a: Math.floor(r.a), n: r.n })),
+    codes: codes.map((r) => ({ c: r.c, a: Math.floor(r.a), n: r.n })),
     stats: {
       active: active.results[0].n,
       copiesToday: m.copies || 0,
       addedToday: m.added || 0,
       copiesTotal: m.copies_total || 0,
-      total: total.results[0].n,
+      total: m.codes_total || 0,
     },
   };
   const res = new Response(JSON.stringify(body), {
@@ -111,7 +128,7 @@ async function me(env, kh) {
   const [seen, mine] = await env.DB.batch([
     env.DB.prepare('SELECT DISTINCT code FROM events WHERE key_hash = ?1').bind(kh),
     env.DB.prepare('SELECT code FROM codes WHERE owner_hash = ?1 ORDER BY added_at').bind(kh),
-    env.DB.prepare('INSERT INTO presence (key_hash, seen_at) VALUES (?1, ?2) ON CONFLICT(key_hash) DO UPDATE SET seen_at = ?2').bind(kh, now()),
+    touch(env, kh, now()),
   ]);
   return json({ seen: seen.results.map((r) => r.code), mine: mine.results.map((r) => r.code) });
 }
@@ -129,8 +146,8 @@ async function addCodes(env, kh, body) {
     env.DB.prepare('INSERT OR IGNORE INTO codes (code, added_at, owner_hash) VALUES (?1, ?2, ?3) RETURNING code').bind(c, t, kh)));
   const added = []; const existing = [];
   res.forEach((r, i) => (r.results.length ? added : existing).push(codes[i]));
-  const writes = [env.DB.prepare('INSERT INTO presence (key_hash, seen_at) VALUES (?1, ?2) ON CONFLICT(key_hash) DO UPDATE SET seen_at = ?2').bind(kh, t)];
-  if (added.length) writes.push(bump(env, 'added', added.length));
+  const writes = [touch(env, kh, t)];
+  if (added.length) writes.push(bump(env, 'added', added.length), bumpAll(env, 'codes_total', added.length));
   await env.DB.batch(writes);
   return json({ added, existing });
 }
@@ -146,11 +163,12 @@ async function event(env, kh, body) {
       await env.DB.batch([
         env.DB.prepare('UPDATE codes SET copies = copies + 1, last_copied_at = ?2 WHERE code = ?1').bind(code, t),
         bump(env, 'copies'),
-        env.DB.prepare("INSERT INTO daily (day, metric, n) VALUES ('all', 'copies_total', 1) ON CONFLICT(day, metric) DO UPDATE SET n = n + 1"),
+        bumpAll(env, 'copies_total'),
       ]);
     } else if (kind === 'report') {
       // a code's owner can't report it; reports from many keys hide it for everyone
-      await env.DB.prepare('UPDATE codes SET reports = reports + 1 WHERE code = ?1 AND (owner_hash IS NULL OR owner_hash != ?2)').bind(code, kh).run();
+      const r = await env.DB.prepare('UPDATE codes SET reports = reports + 1 WHERE code = ?1 AND (owner_hash IS NULL OR owner_hash != ?2) RETURNING reports').bind(code, kh).first();
+      if (r && r.reports === HIDE_AFTER_REPORTS) await bumpAll(env, 'codes_total', -1).run();
     }
   }
   return json({ ok: true });

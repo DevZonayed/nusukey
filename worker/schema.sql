@@ -29,3 +29,11 @@ CREATE TABLE IF NOT EXISTS presence (
   seen_at INTEGER NOT NULL
 );
 CREATE INDEX IF NOT EXISTS presence_seen ON presence (seen_at);
+
+CREATE INDEX IF NOT EXISTS codes_added ON codes (added_at);
+
+CREATE TABLE IF NOT EXISTS snapshot (
+  id INTEGER PRIMARY KEY CHECK (id = 1),
+  body TEXT NOT NULL,
+  built_at INTEGER NOT NULL
+);
